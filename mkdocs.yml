@@ -53,6 +53,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mermaid.min.js
+  - javascripts/easter-egg.js
 
 plugins:
   - search:
