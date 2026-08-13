@@ -104,14 +104,17 @@
     setTimeout(function () { if (bubble.parentNode) bubble.parentNode.removeChild(bubble); }, 1400);
   }
 
-  // Material 的 instant navigation 会拦截 <a> 点击做 SPA 切换，与我们的
-  // 硬跳转冲突。所以在 logo 上注册捕获阶段监听器，阻止事件继续传播到
-  // Material 的处理逻辑，由我们全权处理（计数 + 跳转）。
+  // Material 的 instant navigation 会在 document 级监听 click 并覆盖 <a> 的
+  // location.href（无刷新切换）。实测单靠捕获阶段 stopPropagation 拦不住——
+  // bundle 的监听器注册得更早。解法组合：
+  //   1. 捕获阶段 + stopImmediatePropagation()：阻止同元素后续监听器执行
+  //   2. 延迟 ~50ms 跳转：让 Material 的同步处理先跑完，我们的跳转最后生效
   var logo = document.querySelector('.md-header__button.md-logo');
   if (logo) {
     logo.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
       var now = Date.now();
       var clicks = parseInt(sessionStorage.getItem(KEY) || '0', 10);
       var last = parseInt(sessionStorage.getItem(LAST) || '0', 10);
@@ -123,7 +126,8 @@
       if (clicks >= MAX_CLICKS) {
         sessionStorage.removeItem(KEY);
         sessionStorage.removeItem(LAST);
-        goSecret();
+        // 延迟跳转，绕开 Material instant navigation 的同步覆盖
+        setTimeout(goSecret, 50);
       } else {
         showProgress(clicks);
         // 保持 logo 原功能：点击回首页（手动导航，绕过 instant navigation 冲突）
@@ -133,7 +137,7 @@
         var curPath = cur.replace(/\/$/, '');
         var rootPath = root.replace(/\/$/, '');
         if (curPath !== rootPath) {
-          window.location.href = root;
+          setTimeout(function () { window.location.href = root; }, 50);
         }
       }
     }, true); // capture 阶段，先于 Material 的 document 级监听器
