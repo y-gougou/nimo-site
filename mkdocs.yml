@@ -1,0 +1,58 @@
+site_name: Nimo 的麦迪逊花园
+site_description: 记录我的学习过程与收获
+site_author: Nimo
+site_url: https://nimo.github.io/
+
+theme:
+  name: material
+  language: zh
+  font:
+    text: Noto Sans SC
+  icon:
+    logo: material/book-open-page-variant
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 切换深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 切换浅色模式
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+nav:
+  - 首页: index.md
+  - 学习笔记:
+    - 梯子学习笔记: notes/proxy-learning.md
