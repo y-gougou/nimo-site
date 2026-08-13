@@ -13,15 +13,35 @@
 (function () {
   'use strict';
 
-  var SECRET_URL = 'secret/garden.html';
   var KEY = 'nimo-garden-logo-clicks';
   var LAST = 'nimo-garden-logo-last';
   var MAX_CLICKS = 5;
   var RESET_MS = 30000; // 30 秒
 
+  /**
+   * 站点根路径：从 logo 链接取绝对根（如 https://y-gougou.github.io/nimo-site/）。
+   * 不能写死相对路径——在子页面（/course/01-package/）相对跳转会 404。
+   * 取不到时退回相对路径（本地预览兜底）。
+   */
+  function getRoot() {
+    var logo = document.querySelector('.md-header__button.md-logo');
+    if (logo) {
+      var href = logo.getAttribute('href') || '';
+      if (href && href !== '#') {
+        return href.charAt(href.length - 1) === '/' ? href : href + '/';
+      }
+    }
+    var base = document.querySelector('base');
+    if (base && base.getAttribute('href')) {
+      var b = base.getAttribute('href');
+      return b.charAt(b.length - 1) === '/' ? b : b + '/';
+    }
+    return '';
+  }
+
   function goSecret() {
     if (window.location.href.indexOf('secret/garden') !== -1) return;
-    window.location.href = SECRET_URL;
+    window.location.href = getRoot() + 'secret/garden.html';
   }
 
   function isLogo(el) {
