@@ -37,7 +37,11 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -45,6 +49,9 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
+
+extra_javascript:
+  - javascripts/mermaid.min.js
 
 plugins:
   - search:
@@ -54,5 +61,10 @@ plugins:
 
 nav:
   - 首页: index.md
-  - 学习笔记:
-    - 梯子学习笔记: notes/proxy-learning.md
+  - 课程笔记:
+    - 第 1 课 · Linux 软件包入门: course/01-package.md
+    - 第 2 课 · 动手安装实战: course/02-install-practice.md
+    - 第 3 课 · 为什么要用代理: course/03-proxy-basics.md
+    - 第 4 课 · Clash Party 配置指南: course/04-clash-party.md
+    - 第 5 课 · DNS 覆写是什么: course/05-dns-override.md
+    - 第 6 课 · 常见问题排查手册: course/06-troubleshooting.md
