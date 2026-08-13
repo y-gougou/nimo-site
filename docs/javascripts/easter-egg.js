@@ -104,22 +104,38 @@
     setTimeout(function () { if (bubble.parentNode) bubble.parentNode.removeChild(bubble); }, 1400);
   }
 
-  document.addEventListener('click', function (e) {
-    if (!isLogo(e.target)) return;
-    var now = Date.now();
-    var clicks = parseInt(sessionStorage.getItem(KEY) || '0', 10);
-    var last = parseInt(sessionStorage.getItem(LAST) || '0', 10);
-    if (now - last > RESET_MS) clicks = 0;
-    last = now;
-    clicks += 1;
-    sessionStorage.setItem(KEY, String(clicks));
-    sessionStorage.setItem(LAST, String(now));
-    if (clicks >= MAX_CLICKS) {
-      sessionStorage.removeItem(KEY);
-      sessionStorage.removeItem(LAST);
-      goSecret();
-    } else {
-      showProgress(clicks);
-    }
-  });
+  // Material 的 instant navigation 会拦截 <a> 点击做 SPA 切换，与我们的
+  // 硬跳转冲突。所以在 logo 上注册捕获阶段监听器，阻止事件继续传播到
+  // Material 的处理逻辑，由我们全权处理（计数 + 跳转）。
+  var logo = document.querySelector('.md-header__button.md-logo');
+  if (logo) {
+    logo.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var now = Date.now();
+      var clicks = parseInt(sessionStorage.getItem(KEY) || '0', 10);
+      var last = parseInt(sessionStorage.getItem(LAST) || '0', 10);
+      if (now - last > RESET_MS) clicks = 0;
+      last = now;
+      clicks += 1;
+      sessionStorage.setItem(KEY, String(clicks));
+      sessionStorage.setItem(LAST, String(now));
+      if (clicks >= MAX_CLICKS) {
+        sessionStorage.removeItem(KEY);
+        sessionStorage.removeItem(LAST);
+        goSecret();
+      } else {
+        showProgress(clicks);
+        // 保持 logo 原功能：点击回首页（手动导航，绕过 instant navigation 冲突）
+        var root = getRoot();
+        // 已经在根路径时不重复导航（避免整页刷新闪烁）
+        var cur = window.location.href;
+        var curPath = cur.replace(/\/$/, '');
+        var rootPath = root.replace(/\/$/, '');
+        if (curPath !== rootPath) {
+          window.location.href = root;
+        }
+      }
+    }, true); // capture 阶段，先于 Material 的 document 级监听器
+  }
 })();
