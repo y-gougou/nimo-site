@@ -1,51 +1,105 @@
 /**
  * 🌸 秘密花园彩蛋
  * 入口 1：搜索框输入 "nimo" 触发传送
- * 入口 2：连续点击站名 logo 5 次触发传送
+ * 入口 2：点击站名 logo 5 次触发传送（带进度提示）
+ *
+ * 设计说明：
+ * - logo 点击用 document 级事件委托绑定，页面切换（Material instant
+ *   navigation 只替换 main 内容）后依然可靠，不需要重新绑定。
+ * - 计数存 sessionStorage，跨页面导航保留；30 秒内未继续点击才重置，
+ *   真人慢慢点 5 下也能触发。
+ * - 每次点击在 logo 旁显示「🌸 n/5」气泡，让彩蛋有反馈、可感知。
  */
 (function () {
   'use strict';
 
   var SECRET_URL = 'secret/garden.html';
+  var KEY = 'nimo-garden-logo-clicks';
+  var LAST = 'nimo-garden-logo-last';
+  var MAX_CLICKS = 5;
+  var RESET_MS = 30000; // 30 秒
 
   function goSecret() {
     if (window.location.href.indexOf('secret/garden') !== -1) return;
     window.location.href = SECRET_URL;
   }
 
+  function isLogo(el) {
+    while (el && el !== document.body) {
+      if (el.classList && el.classList.contains('md-logo')) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
   /* ---------- 入口 1：搜索框输入 nimo ---------- */
-  var searchInput = document.querySelector('.md-search__input');
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      var v = (searchInput.value || '').trim().toLowerCase();
+  // 同样用委托 + 轮询兜底：Material 搜索框是动态渲染的
+  function bindSearch() {
+    var input = document.querySelector('.md-search__input');
+    if (!input) return;
+    input.addEventListener('input', function () {
+      var v = (input.value || '').trim().toLowerCase();
       if (v === 'nimo') {
         goSecret();
       }
     });
   }
-
-  /* ---------- 入口 2：连续点击 logo 5 次 ---------- */
-  // logo 是 <a> 链接，点击会触发导航导致 JS 状态丢失，
-  // 所以用 sessionStorage 持久化计数（跨页面导航保留）。
-  var logo = document.querySelector('.md-header__button.md-logo');
-  var KEY = 'nimo-garden-logo-clicks';
-  var clicks = parseInt(sessionStorage.getItem(KEY) || '0', 10);
-  var lastTime = parseInt(sessionStorage.getItem('nimo-garden-logo-last') || '0', 10);
-  if (logo) {
-    logo.addEventListener('click', function () {
-      var now = Date.now();
-      // 5 秒内没继续点就重新计数（真人连点远快于此）
-      if (now - lastTime > 5000) clicks = 0;
-      lastTime = now;
-      clicks += 1;
-      sessionStorage.setItem(KEY, String(clicks));
-      sessionStorage.setItem('nimo-garden-logo-last', String(now));
-      if (clicks >= 5) {
-        clicks = 0;
-        sessionStorage.removeItem(KEY);
-        sessionStorage.removeItem('nimo-garden-logo-last');
-        goSecret();
-      }
-    });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindSearch);
+  } else {
+    bindSearch();
   }
+  // Material instant navigation 后 main 内容被替换，搜索框在 header 中不受影响；
+  // 但保险起见在每次点击 logo 时也尝试补绑（幂等）
+  setInterval(function () {
+    var input = document.querySelector('.md-search__input');
+    if (input && !input.dataset.nimoBound) {
+      input.dataset.nimoBound = '1';
+      input.addEventListener('input', function () {
+        var v = (input.value || '').trim().toLowerCase();
+        if (v === 'nimo') {
+          goSecret();
+        }
+      });
+    }
+  }, 2000);
+
+  /* ---------- 入口 2：点击 logo 5 次（事件委托） ---------- */
+  function showProgress(n) {
+    var old = document.querySelector('.nimo-egg-progress');
+    if (old) old.remove();
+    if (n >= MAX_CLICKS) return;
+    var logo = document.querySelector('.md-header__button.md-logo');
+    if (!logo) return;
+    var bubble = document.createElement('span');
+    bubble.className = 'nimo-egg-progress';
+    bubble.textContent = '🌸 ' + n + '/' + MAX_CLICKS;
+    bubble.style.cssText =
+      'position:fixed;top:12px;left:96px;z-index:9999;background:rgba(45,212,191,.15);' +
+      'color:#2dd4bf;border:1px solid rgba(45,212,191,.4);border-radius:999px;' +
+      'padding:2px 10px;font-size:12px;pointer-events:none;' +
+      'font-family:ui-sans-serif,system-ui,sans-serif;transition:opacity .4s;';
+    document.body.appendChild(bubble);
+    setTimeout(function () { bubble.style.opacity = '0'; }, 900);
+    setTimeout(function () { if (bubble.parentNode) bubble.parentNode.removeChild(bubble); }, 1400);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!isLogo(e.target)) return;
+    var now = Date.now();
+    var clicks = parseInt(sessionStorage.getItem(KEY) || '0', 10);
+    var last = parseInt(sessionStorage.getItem(LAST) || '0', 10);
+    if (now - last > RESET_MS) clicks = 0;
+    last = now;
+    clicks += 1;
+    sessionStorage.setItem(KEY, String(clicks));
+    sessionStorage.setItem(LAST, String(now));
+    if (clicks >= MAX_CLICKS) {
+      sessionStorage.removeItem(KEY);
+      sessionStorage.removeItem(LAST);
+      goSecret();
+    } else {
+      showProgress(clicks);
+    }
+  });
 })();
