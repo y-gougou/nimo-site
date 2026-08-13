@@ -15,6 +15,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.footer
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -61,7 +62,8 @@ plugins:
 
 nav:
   - 首页: index.md
-  - 课程笔记:
+  - 📚 今日课程:
+    - 课程总览: course/index.md
     - 第 1 课 · Linux 软件包入门: course/01-package.md
     - 第 2 课 · 动手安装实战: course/02-install-practice.md
     - 第 3 课 · 为什么要用代理: course/03-proxy-basics.md
