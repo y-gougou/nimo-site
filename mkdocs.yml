@@ -63,11 +63,17 @@ plugins:
 
 nav:
   - 首页: index.md
-  - 📚 今日课程:
-    - 课程总览: course/index.md
-    - 第 1 课 · Linux 软件包入门: course/01-package.md
-    - 第 2 课 · 动手安装实战: course/02-install-practice.md
-    - 第 3 课 · 为什么要用代理: course/03-proxy-basics.md
-    - 第 4 课 · Clash Party 配置指南: course/04-clash-party.md
-    - 第 5 课 · DNS 覆写是什么: course/05-dns-override.md
-    - 第 6 课 · 常见问题排查手册: course/06-troubleshooting.md
+  - 📚 学习日志:
+    - 日志总览: log/index.md
+    - 2026-08-13 · 软件包与代理入门:
+      - 课程总览: course/index.md
+      - 第 1 课 · Linux 软件包入门: course/01-package.md
+      - 第 2 课 · 动手安装实战: course/02-install-practice.md
+      - 第 3 课 · 为什么要用代理: course/03-proxy-basics.md
+      - 第 4 课 · Clash Party 配置指南: course/04-clash-party.md
+      - 第 5 课 · DNS 覆写是什么: course/05-dns-override.md
+      - 第 6 课 · 常见问题排查手册: course/06-troubleshooting.md
+    - 2026-08-14 · ChatGPT 解锁记: log/2026-08-14.md
+    - 2026-08-15 · Codex CLI 工程学习:
+      - 今日学习记录: log/2026-08-15.md
+      - 交互式工作台: codex-cli/index.html
