@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向学生与工程项目的 Codex CLI 任务工作台和分层学习路线。">
+  <meta name="theme-color" content="#071b1a">
+  <title>Codex CLI 工程工作台 · Nimo 的麦迪逊花园</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #061313;
+      --bg-soft: #0a1c1b;
+      --surface: rgba(13, 37, 35, 0.78);
+      --surface-strong: #102a28;
+      --surface-hover: #163633;
+      --text: #edf8f5;
+      --muted: #9eb9b3;
+      --faint: #68837e;
+      --line: rgba(174, 227, 214, 0.15);
+      --teal: #54d9bd;
+      --teal-strong: #83eed6;
+      --teal-soft: rgba(84, 217, 189, 0.12);
+      --amber: #f4c871;
+      --purple: #c6adff;
+      --danger: #ff968e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --max: 1180px;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #eef7f4;
+      --bg-soft: #e4f0ec;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-strong: #ffffff;
+      --surface-hover: #e3f3ee;
+      --text: #102622;
+      --muted: #4f6c65;
+      --faint: #769088;
+      --line: rgba(13, 76, 65, 0.15);
+      --teal: #087f6c;
+      --teal-strong: #075f52;
+      --teal-soft: rgba(8, 127, 108, 0.10);
+      --amber: #9a6300;
+      --purple: #7051b5;
+      --danger: #b93a32;
+      --shadow: 0 24px 70px rgba(25, 76, 66, 0.13);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(84, 217, 189, 0.13), transparent 30rem),
+        radial-gradient(circle at 12% 32%, rgba(198, 173, 255, 0.08), transparent 25rem),
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    a { color: inherit; }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand,
+    .top-actions,
+    .status-line,
+    .formula,
+    .skill-list,
+    .terminal-head,
+    .panel-title-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--teal-strong);
+      background: var(--teal-soft);
+      font-family: var(--mono);
+    }
+
+    .icon-button,
+    .copy-button {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+    }
+
+    .copy-button { padding: 7px 10px; }
+    .icon-button:hover,
+    .copy-button:hover {
+      border-color: color-mix(in srgb, var(--teal) 55%, var(--line));
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+    .icon-button:active,
+    .copy-button:active { transform: translateY(1px); }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--teal-strong);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: clamp(2.6rem, 7vw, 5.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 720;
+    }
+
+    h1 span { color: var(--teal-strong); }
+    h2 {
+      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+    h3 { margin-bottom: 8px; font-size: 1.05rem; }
+
+    .hero-copy {
+      max-width: 700px;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .pill,
+    .mini-pill,
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .pill { padding: 8px 12px; color: var(--muted); background: var(--surface); }
+    .mini-pill { padding: 4px 8px; color: var(--teal-strong); background: var(--teal-soft); font-size: 0.78rem; }
+    .skill-pill { padding: 6px 9px; color: var(--muted); background: var(--bg-soft); font-size: 0.82rem; }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 14px var(--teal);
+    }
+
+    .hero-terminal,
+    .task-panel,
+    .checks-panel,
+    .learning-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-terminal { overflow: hidden; transform: rotate(1.2deg); }
+    .terminal-head {
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--faint);
+      font: 0.78rem var(--mono);
+    }
+
+    .terminal-dots { display: flex; gap: 6px; }
+    .terminal-dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--faint);
+      opacity: 0.58;
+    }
+
+    .hero-terminal pre,
+    .prompt-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: var(--mono);
+    }
+
+    .hero-terminal pre { padding: 22px; min-height: 250px; }
+    .terminal-comment { color: var(--faint); }
+    .terminal-accent { color: var(--teal-strong); }
+    .terminal-result { color: var(--amber); }
+
+    .section { padding: 56px 0; }
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+    .section-heading p { max-width: 520px; margin-bottom: 3px; color: var(--muted); }
+
+    .task-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+
+    .task-tab,
+    .level-button {
+      width: 100%;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--surface);
+      cursor: pointer;
+      transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .task-tab {
+      min-height: 68px;
+      padding: 10px;
+      border-radius: 14px;
+    }
+
+    .task-tab:hover,
+    .level-button:hover { color: var(--text); background: var(--surface-hover); transform: translateY(-1px); }
+    .task-tab[aria-pressed="true"],
+    .level-button[aria-pressed="true"] {
+      color: var(--teal-strong);
+      border-color: color-mix(in srgb, var(--teal) 55%, var(--line));
+      background: var(--teal-soft);
+    }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: minmax(0, 1.42fr) minmax(270px, 0.58fr);
+      gap: 14px;
+    }
+
+    .task-panel,
+    .checks-panel { padding: 22px; }
+    .panel-title-row { justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
+    .panel-title-row p { margin-bottom: 0; color: var(--muted); }
+
+    .command-steps { list-style: none; padding: 0; margin: 8px 0 0; counter-reset: step; }
+    .command-steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .command-steps li:last-child { border-bottom: 0; }
+    .command-steps li::before {
+      content: counter(step, decimal-leading-zero);
+      color: var(--faint);
+      font-family: var(--mono);
+    }
+    .command-steps code { display: block; margin-bottom: 4px; color: var(--teal-strong); font: 0.92rem var(--mono); }
+    .command-steps span { color: var(--muted); }
+
+    .prompt-block {
+      position: relative;
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+    }
+    .prompt-block .copy-button { position: absolute; top: 10px; right: 10px; }
+    .prompt-label { margin-bottom: 9px; color: var(--faint); font: 0.75rem var(--mono); letter-spacing: 0.05em; }
+    .prompt-block pre { padding-right: 76px; color: var(--text); }
+
+    .check-list { padding: 0; margin: 18px 0 0; list-style: none; }
+    .check-list li {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 9px;
+      margin-bottom: 13px;
+      color: var(--muted);
+    }
+    .check-list li::before { content: "✓"; color: var(--teal-strong); font-weight: 700; }
+    .skill-label { margin: 24px 0 10px; color: var(--faint); font: 0.75rem var(--mono); }
+
+    .learning-wrap {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.4fr) minmax(0, 1.6fr);
+      gap: 14px;
+    }
+    .level-nav { display: grid; gap: 9px; align-content: start; }
+    .level-button { padding: 14px 16px; border-radius: 14px; text-align: left; }
+    .level-button strong { display: block; color: inherit; }
+    .level-button span { display: block; margin-top: 3px; color: var(--faint); font-size: 0.78rem; }
+    .learning-card { padding: 24px; }
+    .learning-card header { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    .learning-card header p { margin-bottom: 0; color: var(--muted); }
+    .learning-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding-top: 20px; }
+    .learning-grid ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    .learning-grid li { margin-bottom: 9px; }
+
+    .reference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .reference-column { border-top: 1px solid var(--line); }
+    .reference-column h3 { padding-top: 18px; }
+    .ref-row {
+      display: grid;
+      grid-template-columns: minmax(130px, 0.75fr) minmax(0, 1.25fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .ref-row code { color: var(--teal-strong); font-family: var(--mono); }
+    kbd {
+      display: inline-block;
+      min-width: 25px;
+      padding: 1px 6px;
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--surface-strong);
+      font: 0.78rem var(--mono);
+      text-align: center;
+    }
+
+    .formula {
+      justify-content: center;
+      margin: 28px 0 0;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(120deg, var(--teal-soft), transparent);
+    }
+    .formula strong { margin-right: 8px; }
+    .formula i { color: var(--faint); font-style: normal; }
+
+    footer { padding: 42px 0 54px; color: var(--faint); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
+    .footer-inner p { margin-bottom: 0; }
+    .footer-inner a { color: var(--teal-strong); text-decoration: none; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible { outline: 3px solid color-mix(in srgb, var(--teal) 65%, transparent); outline-offset: 3px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 58px; }
+      .hero-terminal { transform: none; }
+      .task-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .workbench, .learning-wrap { grid-template-columns: 1fr; }
+      .level-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(calc(100% - 22px), var(--max)); }
+      .topbar-inner { min-height: 56px; }
+      .brand span:last-child { display: none; }
+      .hero { padding: 44px 0 34px; gap: 30px; }
+      h1 { font-size: clamp(2.45rem, 15vw, 4rem); }
+      .section { padding: 38px 0; }
+      .section-heading, .learning-card header, .footer-inner { display: block; }
+      .task-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-panel, .checks-panel, .learning-card { padding: 17px; border-radius: var(--radius-md); }
+      .learning-grid, .reference-grid, .level-nav { grid-template-columns: 1fr; }
+      .prompt-block pre { padding-right: 0; padding-top: 38px; }
+      .ref-row { grid-template-columns: 1fr; gap: 4px; }
+      .formula { justify-content: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="页面导航">
+    <div class="shell topbar-inner">
+      <a class="brand" href="../" aria-label="返回 Nimo 的麦迪逊花园">
+        <span class="brand-mark">N</span>
+        <span>返回麦迪逊花园</span>
+      </a>
+      <div class="top-actions">
+        <span class="mini-pill">2026-08-15</span>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="切换明暗主题">◐</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Codex CLI · Engineering Field Guide</p>
+        <h1>把 AI 变成<br><span>工程搭档</span></h1>
+        <p class="hero-copy">一套面向自动化学习、仿真、编程与课程设计的终端工作流。少背命令，多建立“定位—规划—执行—验证”的闭环。</p>
+        <div class="status-line">
+          <span class="pill"><span class="dot"></span> 安全权限优先</span>
+          <span class="pill">任务驱动</span>
+          <span class="pill">四级进阶</span>
+        </div>
+      </div>
+
+      <div class="hero-terminal" aria-label="Codex CLI 安全启动示例">
+        <div class="terminal-head">
+          <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>~/code/control-lab</span>
+        </div>
+        <pre><span class="terminal-comment"># 推荐的日常安全基线</span>
+<span class="terminal-accent">$</span> codex \
+  --sandbox workspace-write \
+  --ask-for-approval on-request
+
+<span class="terminal-result">›</span> /status
+<span class="terminal-comment">  workspace  ~/code/control-lab
+  sandbox    workspace-write
+  approvals  on-request</span></pre>
+      </div>
+    </section>
+
+    <section class="section" id="workbench">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 · Task Workbench</p>
+            <h2>今天要完成什么？</h2>
+          </div>
+          <p>选择一个真实场景，页面会给出命令路径、可直接使用的任务模板，以及完成前必须验证的内容。</p>
+        </div>
+
+        <div class="task-tabs" role="group" aria-label="选择任务场景">
+          <button class="task-tab" type="button" data-task="explore" aria-pressed="true">阅读项目</button>
+          <button class="task-tab" type="button" data-task="build" aria-pressed="false">修改功能</button>
+          <button class="task-tab" type="button" data-task="debug" aria-pressed="false">排查故障</button>
+          <button class="task-tab" type="button" data-task="review" aria-pressed="false">检查交付</button>
+          <button class="task-tab" type="button" data-task="continue" aria-pressed="false">延续任务</button>
+        </div>
+
+        <div class="workbench">
+          <article class="task-panel" aria-live="polite">
+            <div class="panel-title-row">
+              <div>
+                <h3 id="task-title">阅读并理解一个陌生工程</h3>
+                <p id="task-subtitle">先建立地图，不修改文件</p>
+              </div>
+              <span class="mini-pill" id="task-mode">READ FIRST</span>
+            </div>
+            <ol class="command-steps" id="task-steps"></ol>
+            <div class="prompt-block">
+              <div class="prompt-label">READY-TO-USE PROMPT</div>
+              <button class="copy-button" id="copy-prompt" type="button">复制</button>
+              <pre id="task-prompt"></pre>
+            </div>
+          </article>
+
+          <aside class="checks-panel" aria-live="polite">
+            <div class="panel-title-row">
+              <div>
+                <h3>完成前确认</h3>
+                <p>不要把“写完”当成“完成”</p>
+              </div>
+              <span class="mini-pill" id="task-risk">不改代码</span>
+            </div>
+            <ul class="check-list" id="task-checks"></ul>
+            <div class="skill-label">RECOMMENDED SKILLS</div>
+            <div class="skill-list" id="task-skills"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 · Learning Roadmap</p>
+            <h2>从会启动，到会自动化</h2>
+          </div>
+          <p>每一级只解决一类问题。先形成安全、可验证的工程习惯，再引入配置、Skills、MCP 和自动化。</p>
+        </div>
+
+        <div class="learning-wrap">
+          <nav class="level-nav" aria-label="学习等级">
+            <button class="level-button" type="button" data-level="1" aria-pressed="true"><strong>Level 1 · 安全上手</strong><span>看清环境再行动</span></button>
+            <button class="level-button" type="button" data-level="2" aria-pressed="false"><strong>Level 2 · 工程闭环</strong><span>修改必须带验证</span></button>
+            <button class="level-button" type="button" data-level="3" aria-pressed="false"><strong>Level 3 · 固化规范</strong><span>让习惯自动加载</span></button>
+            <button class="level-button" type="button" data-level="4" aria-pressed="false"><strong>Level 4 · 扩展自动化</strong><span>连接工具与流程</span></button>
+          </nav>
+
+          <article class="learning-card" aria-live="polite">
+            <header>
+              <div>
+                <h3 id="level-title">安全上手：看清环境再行动</h3>
+                <p id="level-goal">目标：能安全进入项目，让 Codex 准确读取上下文。</p>
+              </div>
+              <span class="mini-pill" id="level-marker">基础</span>
+            </header>
+            <div class="learning-grid">
+              <div>
+                <h3>掌握这些</h3>
+                <ul id="level-skills"></ul>
+              </div>
+              <div>
+                <h3>完成这个练习</h3>
+                <ul id="level-practice"></ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reference">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 · Quick Reference</p>
+            <h2>只记最常用的</h2>
+          </div>
+          <p>不追求覆盖全部命令，只保留日常最容易忘、又最能改变工作效率的操作。</p>
+        </div>
+
+        <div class="reference-grid">
+          <section class="reference-column" aria-labelledby="shortcut-title">
+            <h3 id="shortcut-title">交互快捷键</h3>
+            <div class="ref-row"><span><kbd>@</kbd></span><span>搜索并引用项目文件</span></div>
+            <div class="ref-row"><span><kbd>Shift</kbd> + <kbd>Tab</kbd></span><span>切换 Plan 模式</span></div>
+            <div class="ref-row"><span><kbd>Tab</kbd></span><span>工作中把指令排到下一轮</span></div>
+            <div class="ref-row"><span><kbd>Enter</kbd></span><span>工作中立即注入纠偏信息</span></div>
+            <div class="ref-row"><span><kbd>Ctrl</kbd> + <kbd>G</kbd></span><span>打开编辑器编写长任务</span></div>
+            <div class="ref-row"><span><kbd>Ctrl</kbd> + <kbd>R</kbd></span><span>搜索提示词历史</span></div>
+            <div class="ref-row"><span><kbd>!</kbd></span><span>在当前沙箱中运行 Shell 命令</span></div>
+          </section>
+
+          <section class="reference-column" aria-labelledby="command-title">
+            <h3 id="command-title">终端入口</h3>
+            <div class="ref-row"><code>codex -C 路径</code><span>从指定项目目录启动</span></div>
+            <div class="ref-row"><code>codex --search</code><span>需要最新资料时启用实时搜索</span></div>
+            <div class="ref-row"><code>codex --image 图像</code><span>附加报错截图、波形或界面参考</span></div>
+            <div class="ref-row"><code>codex resume</code><span>恢复保存的会话</span></div>
+            <div class="ref-row"><code>codex review --uncommitted</code><span>审查尚未提交的修改</span></div>
+            <div class="ref-row"><code>codex doctor</code><span>诊断安装、登录、Git和配置</span></div>
+            <div class="ref-row"><code>codex exec "任务"</code><span>执行稳定、可重复的非交互任务</span></div>
+          </section>
+        </div>
+
+        <div class="formula" aria-label="高质量 Codex 任务公式">
+          <strong>任务公式</strong>
+          <span class="skill-pill">目标 Goal</span><i>+</i>
+          <span class="skill-pill">上下文 Context</span><i>+</i>
+          <span class="skill-pill">约束 Constraints</span><i>+</i>
+          <span class="skill-pill">完成标准 Done when</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <p>Codex CLI 工程工作台 · Nimo 的学习记录</p>
+      <p><a href="../">返回网站首页</a></p>
+    </div>
+  </footer>
+
+  <div class="sr-only" id="copy-status" aria-live="polite"></div>
+
+  <script>
+    const taskData = {
+      explore: {
+        title: "阅读并理解一个陌生工程",
+        subtitle: "先建立地图，不修改文件",
+        mode: "READ FIRST",
+        risk: "不改代码",
+        steps: [
+          ["/status", "确认目录、模型、权限和剩余上下文"],
+          ["@README.md @src", "明确加入入口文档与核心代码"],
+          ["先解释项目", "让 Codex 输出结构、入口、依赖、测试和风险"],
+          ["/side", "临时追问术语，不打断主任务"]
+        ],
+        prompt: "请先阅读当前项目，不修改任何文件。\n\n输出：项目结构、程序入口、数据流、运行命令、测试方法，以及三个最值得注意的风险。",
+        checks: ["找到了真正的运行入口", "区分了代码事实与推断", "给出了可以验证的运行命令"],
+        skills: ["OpenAI Docs", "Browser"]
+      },
+      build: {
+        title: "安全地修改或新增功能",
+        subtitle: "计划、实施、测试、审查形成闭环",
+        mode: "PLAN → BUILD",
+        risk: "控制范围",
+        steps: [
+          ["/plan", "列出改动范围、接口、风险和验证方案"],
+          ["确认后实施", "要求小步修改，不顺手重构无关代码"],
+          ["运行测试或仿真", "让结果来自真实命令，而不是描述"],
+          ["/diff → /review", "检查修改内容、回归风险和缺失测试"]
+        ],
+        prompt: "目标：实现指定功能。\n\n约束：不改变无关接口，不新增依赖；所有工程参数标明单位。\n\n完成标准：相关测试通过，说明修改文件、验证结果和剩余风险。请先进入 Plan 模式。",
+        checks: ["改动没有超出任务边界", "测试或仿真真实运行", "最终说明包含剩余风险"],
+        skills: ["GitHub", "Spreadsheets"]
+      },
+      debug: {
+        title: "排查代码、仿真或设备故障",
+        subtitle: "先复现和定位，不直接大改",
+        mode: "CAUSE → TEST",
+        risk: "先做实验",
+        steps: [
+          ["@报错文件 @日志", "提供最小可复现上下文和真实错误"],
+          ["/plan", "按‘原因—验证实验—修复’组织排查"],
+          ["!运行复现命令", "记录退出码、日志和实际现象"],
+          ["最小修复", "添加回归测试后再确认问题消失"]
+        ],
+        prompt: "这是预期现象、实际现象和完整报错。\n\n请先列出按可能性排序的原因，并为每个原因设计验证实验。不要立即重写全部代码；找到证据后再提出最小修复。",
+        checks: ["问题能够稳定复现", "原因有日志或实验支持", "修复后增加了回归验证"],
+        skills: ["Browser", "OpenAI Docs"]
+      },
+      review: {
+        title: "检查代码并准备交付",
+        subtitle: "从‘能运行’提升到‘可信任’",
+        mode: "VERIFY",
+        risk: "证据优先",
+        steps: [
+          ["/diff", "查看已暂存、未暂存和未跟踪文件"],
+          ["!运行检查命令", "执行测试、格式化、静态检查或编译"],
+          ["/review", "查找错误、回归风险和缺失测试"],
+          ["生成交付摘要", "记录修改、证据、限制和下一步"]
+        ],
+        prompt: "请审查当前修改。优先关注功能错误、边界条件、参数单位、异常处理和缺失测试。不要修改文件；按严重程度报告，并指出对应文件。",
+        checks: ["检查了未跟踪文件", "关键检查全部真实执行", "报告区分问题、建议和限制"],
+        skills: ["GitHub", "Documents / PDF"]
+      },
+      continue: {
+        title: "管理长任务和多种解决路线",
+        subtitle: "保留上下文，也保留退路",
+        mode: "KEEP CONTEXT",
+        risk: "保留历史",
+        steps: [
+          ["/rename", "给当前会话一个容易识别的名字"],
+          ["/compact", "对话过长时总结并释放上下文"],
+          ["/fork 或 /side", "分叉方案，或临时处理旁支问题"],
+          ["/resume", "下次从保存的会话继续"]
+        ],
+        prompt: "继续当前工程目标。先总结已经确认的事实、已完成工作、当前阻塞、剩余验证和不可更改的约束，然后只推进下一项未完成工作。",
+        checks: ["关键决策已写入项目文档", "会话名称能够识别", "分支方案没有污染主任务"],
+        skills: ["Documents / PDF", "Visualize"]
+      }
+    };
+
+    const levelData = {
+      1: {
+        title: "安全上手：看清环境再行动",
+        goal: "目标：能安全进入项目，让 Codex 准确读取上下文。",
+        marker: "基础",
+        skills: ["理解终端命令与 /斜杠命令的区别", "掌握 /status、/permissions 和 @文件", "知道 workspace-write 与审批的意义"],
+        practice: ["打开一个已有项目并只读分析", "让 Codex 找到入口、依赖和测试命令", "用 /status 核对工作目录和权限"]
+      },
+      2: {
+        title: "工程闭环：修改必须带验证",
+        goal: "目标：能够独立完成一次小范围修改并证明结果。",
+        marker: "核心",
+        skills: ["用 /plan 拆解复杂任务", "用 Tab 排队、Enter 即时纠偏", "掌握 /diff、/review 和测试闭环"],
+        practice: ["修改一个 PID 仿真参数接口", "增加至少一个边界测试", "运行测试并用 /review 完成复查"]
+      },
+      3: {
+        title: "固化规范：让好习惯自动加载",
+        goal: "目标：不再每次重复说明项目规则和验证方式。",
+        marker: "进阶",
+        skills: ["用 /init 创建并精简 AGENTS.md", "配置个人与项目 config.toml", "把单位、安全和测试要求写入项目规范"],
+        practice: ["为课程设计建立 AGENTS.md", "写入真实构建、测试和仿真命令", "新开会话并验证规则是否自动生效"]
+      },
+      4: {
+        title: "扩展自动化：连接工具与重复工作",
+        goal: "目标：将稳定流程交给 Codex 重复执行。",
+        marker: "自动化",
+        skills: ["用 /skills 选择专业工作流", "理解 MCP 与插件的外部连接能力", "使用 codex exec 运行非交互任务"],
+        practice: ["让 Spreadsheets 分析一次实验数据", "用 GitHub Skill 审查一个 PR 或 Issue", "把稳定的只读检查改写成 codex exec 任务"]
+      }
+    };
+
+    const taskTitle = document.getElementById("task-title");
+    const taskSubtitle = document.getElementById("task-subtitle");
+    const taskMode = document.getElementById("task-mode");
+    const taskRisk = document.getElementById("task-risk");
+    const taskSteps = document.getElementById("task-steps");
+    const taskPrompt = document.getElementById("task-prompt");
+    const taskChecks = document.getElementById("task-checks");
+    const taskSkills = document.getElementById("task-skills");
+
+    function renderTask(key) {
+      const task = taskData[key];
+      taskTitle.textContent = task.title;
+      taskSubtitle.textContent = task.subtitle;
+      taskMode.textContent = task.mode;
+      taskRisk.textContent = task.risk;
+      taskPrompt.textContent = task.prompt;
+      taskSteps.replaceChildren();
+      task.steps.forEach(([command, note]) => {
+        const item = document.createElement("li");
+        const wrap = document.createElement("div");
+        const code = document.createElement("code");
+        const description = document.createElement("span");
+        code.textContent = command;
+        description.textContent = note;
+        wrap.append(code, description);
+        item.append(wrap);
+        taskSteps.append(item);
+      });
+      taskChecks.replaceChildren();
+      task.checks.forEach((check) => {
+        const item = document.createElement("li");
+        item.textContent = check;
+        taskChecks.append(item);
+      });
+      taskSkills.replaceChildren();
+      task.skills.forEach((skill) => {
+        const pill = document.createElement("span");
+        pill.className = "skill-pill";
+        pill.textContent = skill;
+        taskSkills.append(pill);
+      });
+    }
+
+    document.querySelectorAll("[data-task]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-task]").forEach((peer) => peer.setAttribute("aria-pressed", String(peer === button)));
+        renderTask(button.dataset.task);
+      });
+    });
+
+    function fillList(id, values) {
+      const list = document.getElementById(id);
+      list.replaceChildren();
+      values.forEach((value) => {
+        const item = document.createElement("li");
+        item.textContent = value;
+        list.append(item);
+      });
+    }
+
+    function renderLevel(key) {
+      const level = levelData[key];
+      document.getElementById("level-title").textContent = level.title;
+      document.getElementById("level-goal").textContent = level.goal;
+      document.getElementById("level-marker").textContent = level.marker;
+      fillList("level-skills", level.skills);
+      fillList("level-practice", level.practice);
+    }
+
+    document.querySelectorAll("[data-level]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-level]").forEach((peer) => peer.setAttribute("aria-pressed", String(peer === button)));
+        renderLevel(button.dataset.level);
+      });
+    });
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("codex-guide-theme");
+    if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    themeToggle.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("codex-guide-theme", next);
+    });
+
+    document.getElementById("copy-prompt").addEventListener("click", async (event) => {
+      const text = taskPrompt.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        event.currentTarget.textContent = "已复制";
+        document.getElementById("copy-status").textContent = "任务模板已复制";
+      } catch {
+        event.currentTarget.textContent = "请手动复制";
+        document.getElementById("copy-status").textContent = "自动复制失败，请手动选择任务模板";
+      }
+      window.setTimeout(() => { event.currentTarget.textContent = "复制"; }, 1600);
+    });
+
+    renderTask("explore");
+    renderLevel("1");
+  </script>
+</body>
+</html>
