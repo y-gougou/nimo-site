@@ -37,3 +37,4 @@
 > 以 dsh 为载体，走完 Linux 工具链、GitHub 用法、进程端口、故障排查、systemd、Obsidian、API 配置一整条链路。
 
 - [2026-08-18 · DeepSeek Harness：从安装到故障排查的一天](2026-08-18.md)
+- [2026-08-18 · Docker 入门：第一天](2026-08-18-docker.md)
