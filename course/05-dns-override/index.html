@@ -333,6 +333,8 @@
       
         
       
+        
+      
     
     
     
@@ -898,6 +900,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log/2026-08-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-08-18 · DeepSeek Harness 探索日
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1046,7 +1076,7 @@
 <h2 id="2-dns">2. 国内网络下的 DNS 问题<a class="headerlink" href="#2-dns" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
     A[你的 DNS 请求] --&gt; B{发给谁?}
-    B --&gt;|运营商 DNS&lt;br&gt;中国移动等| C[问题 1: 污染&lt;br&gt;海外域名返回假 IP]
+    B --&gt;|运营商 DNS&lt;br&gt;国内运营商等| C[问题 1: 污染&lt;br&gt;海外域名返回假 IP]
     B --&gt;|运营商 DNS| D[问题 2: 泄露&lt;br&gt;访问记录暴露给运营商]
     B --&gt;|DoH 加密查询&lt;br&gt;走代理| E[✅ 真实 IP + 隐私保护]</code></pre>
 <p><strong>问题 1：DNS 污染</strong>。运营商 DNS 对某些海外域名返回<strong>篡改过的假 IP</strong>，导致你访问的"google.com"其实是个错误地址 → 连不上或被跳转到奇怪页面。</p>
