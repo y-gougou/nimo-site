@@ -28,7 +28,7 @@ sequenceDiagram
 ```mermaid
 flowchart TD
     A[你的 DNS 请求] --> B{发给谁?}
-    B -->|运营商 DNS<br>中国移动等| C[问题 1: 污染<br>海外域名返回假 IP]
+    B -->|运营商 DNS<br>国内运营商等| C[问题 1: 污染<br>海外域名返回假 IP]
     B -->|运营商 DNS| D[问题 2: 泄露<br>访问记录暴露给运营商]
     B -->|DoH 加密查询<br>走代理| E[✅ 真实 IP + 隐私保护]
 ```
