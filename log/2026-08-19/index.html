@@ -27,7 +27,7 @@
     
     
       
-        <title>2026-08-19 · Docker 进阶 - Nimo 的麦迪逊花园</title>
+        <title>2026-08-19 · Docker 基础主干 - Nimo 的麦迪逊花园</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2026-08-19-docker-dockerfilecompose-registry" class="md-skip">
+        <a href="#2026-08-19-docker" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2026-08-19 · Docker 进阶
+              2026-08-19 · Docker 基础主干
             
           </span>
         </div>
@@ -825,7 +825,7 @@
   <span class="md-ellipsis">
     
   
-    2026-08-19 · Docker 进阶
+    2026-08-19 · Docker 基础主干
   
 
     
@@ -843,7 +843,7 @@
   <span class="md-ellipsis">
     
   
-    2026-08-19 · Docker 进阶
+    2026-08-19 · Docker 基础主干
   
 
     
@@ -949,7 +949,7 @@
 
 
 
-<h1 id="2026-08-19-docker-dockerfilecompose-registry">2026-08-19 · Docker 进阶：生命周期、数据、端口、网络、Dockerfile、Compose 与 Registry<a class="headerlink" href="#2026-08-19-docker-dockerfilecompose-registry" title="Permanent link">&para;</a></h1>
+<h1 id="2026-08-19-docker">2026-08-19 · Docker 基础主干与工程入门<a class="headerlink" href="#2026-08-19-docker" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>📅 <strong>学习日志</strong> · 2026 年 8 月 19 日 · 自动化专业 / 容器技术</p>
 </blockquote>
@@ -1071,6 +1071,13 @@
 <li>容器删了，宿主机目录毫发无损（类比：给容器插 U 盘）</li>
 <li>适用：代码、配置文件、ROS workspace（你想亲眼看到文件）</li>
 </ul>
+<p><strong>只读挂载（保护原始数据）</strong>：有些数据你不希望容器修改 —— 比如原始数据集、配置模板。加 <code>:ro</code>（read-only）后容器只能读、不能改宿主机文件：</p>
+<div class="highlight"><pre><span></span><code>docker run -v ~/dataset:/data:ro ubuntu bash
+</code></pre></div>
+<p>或更明确的写法：</p>
+<div class="highlight"><pre><span></span><code>docker run --mount type=bind,source=$HOME/dataset,target=/data,readonly ubuntu bash
+</code></pre></div>
+<p>对科研原始数据尤其好用 —— 万一容器里程序写错，宿主机上的数据集分毫不动。</p>
 <p><strong>解法二：Volume</strong>（Docker 管数据目录）</p>
 <div class="highlight"><pre><span></span><code>docker volume create mydata
 docker run -v mydata:/data ubuntu bash
@@ -1080,7 +1087,6 @@ docker run -v mydata:/data ubuntu bash
 <li>数据跟卷走，不跟容器走 —— 跨容器共享、抗容器删除</li>
 <li>卷被容器引用时删不掉（volume is in use）—— 先删容器才能删卷</li>
 <li>适用：数据库数据、程序生成的数据（不想手动碰文件）</li>
-<li>适用：数据库数据、程序生成的数据</li>
 </ul>
 <p><strong>⚠️ 重点：Volume ≠ 永久备份</strong> —— 卷活在你宿主机磁盘上；宿主机/云服务器没了，卷也没了。真正的保险 = 定期备份到外部存储（对象存储/NAS/异地）。</p>
 <h1 id="_3">第三部分 · 端口映射（对外开门）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
@@ -1122,10 +1128,14 @@ CMD [&quot;python&quot;,&quot;main.py&quot;] # 启动时执行（住进去开灯
 </code></pre></div>
 <ul>
 <li>流程：Dockerfile → <code>docker build -t 名字:版本 .</code> → 镜像 → <code>docker run</code> → 容器</li>
-<li>每行 Dockerfile = 一层镜像（build 输出 Step 1/5 → 5/5）；每步在临时容器里执行，用完即弃</li>
+<li>镜像分层：Dockerfile 按 instruction 顺序构建，修改文件系统的构建指令会形成镜像层，Docker 利用这些层做缓存和复用（LABEL 这类只改 metadata 的指令不产生新的文件系统层）</li>
 <li><strong>RUN vs CMD</strong>：RUN = 造镜像时做一次；CMD = 每次启动容器都做</li>
 <li><strong>.dockerignore</strong>：Docker 的黑名单，排除缓存/数据集/密钥进镜像（<code>COPY . .</code> 不挑食！）</li>
 </ul>
+<p><strong>可复现 ≠ 永远完全一样</strong>：<code>FROM python:3.12-slim</code> 这类 tag 是<strong>可变的</strong> —— 几个月后再 build，同一个 tag 可能已指向更新后的基础镜像。严格要求复现时，应固定更具体的版本（甚至 digest）。科研工作流的复现强度排序：</p>
+<div class="highlight"><pre><span></span><code>Dockerfile + 明确软件版本 + requirements/lock 文件 + 镜像 tag/digest → 最强复现
+</code></pre></div>
+<p>另外：API Key、密码、SSH Key <strong>不要用 ARG/ENV 烧进镜像</strong>（可能残留在最终镜像或元数据里）—— Docker 官方建议敏感信息用 build secrets。</p>
 <h1 id="docker-compose">第七部分 · Docker Compose（多容器编排）<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code>services:                # 环境由哪些服务组成
   web1:
@@ -1163,7 +1173,7 @@ docker load -i 文件.tar                  # 离线导入
 <h1 id="_6">第九部分 · 云服务器部署<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code># 服务器上（SSH 登录后）：
 ssh 用户名@服务器IP                        # 远程进入服务器
-sudo apt install -y docker.io docker-compose-v2   # 装 Docker
+sudo apt install -y docker.io docker-compose-v2   # 装 Docker（Ubuntu 仓库路线）
 docker pull 你的账号/项目:v1               # 拉镜像（路线 B）
 docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
 #                    ↑ 自动重启（服务器 7×24 的生命线）
@@ -1172,6 +1182,16 @@ docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
 <li>两条路线：A 代码路线（git clone + build）vs B 镜像路线（pull）—— 科研推荐 B，环境分毫不差</li>
 <li>数据挂载在服务器目录；服务器到期前：代码 git push、镜像 docker push、数据备份外部</li>
 </ul>
+<p><strong>安装命令为什么网上有两套</strong>（来源区别）：</p>
+<div class="highlight"><pre><span></span><code>Ubuntu 发行版仓库路线：docker.io + docker-compose-v2
+Docker 官方仓库路线：   docker-ce + docker-ce-cli + containerd.io
+                        + docker-buildx-plugin + docker-compose-plugin
+</code></pre></div>
+<p>两套都对，只是来源不同。Docker 官方甚至把 docker.io、docker-compose-v2 等发行版包列为"装官方版前要处理的冲突包"（两者不宜混装）。以后看到网上两套教程就不会懵了。</p>
+<p><strong>资源限制（服务器/科研环境的保命技能）</strong>：容器默认<strong>不会</strong>自动限制能用多少 CPU/内存 —— 一个实验写炸了（内存泄漏/死循环）可能吃掉整台服务器资源。需要时主动限制：</p>
+<div class="highlight"><pre><span></span><code>docker run --memory=8g --cpus=4 my-experiment
+</code></pre></div>
+<p>记住一点：<strong>容器不是虚拟机那种固定资源盒子，需要时应主动限制 CPU / Memory</strong>。这对以后 GPU 云服务器尤其重要。</p>
 <h1 id="docker">第十部分 · 科研 Docker 工作流（方法论）<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
 <p><strong>核心原则：环境、代码、数据 —— 三样东西分开放</strong></p>
 <div class="highlight"><pre><span></span><code>project/                  ← 进 Git（代码 + Dockerfile + compose.yaml + requirements.txt）
@@ -1187,6 +1207,29 @@ docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
 <p><strong>运行姿势</strong>：<code>docker run -v ~/project:/workspace -v ~/data:/data &lt;镜像&gt;</code> —— 容器一次性，代码和数据从外面挂进来。</p>
 <p><strong>换机器/服务器到期</strong>：git clone + docker build/pull + 挂载数据 → run；到期前代码 push、镜像 push、数据备份。</p>
 <hr />
+<h1 id="docker_1">第十一部分 · Docker 日常排错四件套<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>服务器上出问题时，这四步的标准排查顺序 —— 比再背十几个 run 参数更有价值。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>docker ps -a             ← 1. 先看容器状态（哪些在跑、哪些挂了、退出码多少）
+docker logs &lt;容器&gt;        ← 2. 看程序输出（最直接的问题线索）
+docker inspect &lt;容器&gt;     ← 3. 看底层配置（网络/挂载/IP/环境变量）
+docker stats             ← 4. 实时看 CPU/内存/网络/磁盘 IO
+</code></pre></div>
+<p><strong>四件套详解</strong>：</p>
+<ul>
+<li><code>docker logs -f &lt;容器&gt;</code> —— 看程序输出，<code>-f</code> = follow 实时跟随（和 journalctl -f 一个思路）</li>
+<li><code>docker inspect &lt;容器&gt;</code> —— 查容器对象的完整 JSON 配置（网络、挂载、IP、环境变量等底层信息）</li>
+<li><code>docker stats</code> —— 实时监控所有容器的资源占用</li>
+<li><code>docker system df</code> —— 看 Docker 到底吃了多少磁盘（按 镜像/容器/卷/构建缓存 分类）</li>
+</ul>
+<p><strong>垃圾清理（Docker 也会产生垃圾）</strong>：今天连续 build / run / stop / rm 这么多次，以后会发现 Docker 特别容易积累 stopped 容器、旧镜像、构建缓存。</p>
+<div class="highlight"><pre><span></span><code>docker system df        ← 先查看占用（只读，安全）
+
+docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜像/网络/缓存
+                          弄清楚删除范围后再使用！
+</code></pre></div>
+<hr />
 <h1 id="_7">📌 今日坑与教训清单（详细版）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>今天踩了 15 个坑，全部记录：报错原文 → 原理 → 解决 → 预防。复习时重点看这里。</p>
@@ -1200,6 +1243,9 @@ docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
       系统在登录那一刻读取你的组列表，当前会话还是旧身份。
 解决：注销重新登录（彻底）；或 newgrp docker 临时切换当前终端。
 预防：改完用户组，记得注销重登一次。
+
+⚠️ 安全补充：加入 docker 用户组基本等价于授予 root 级 Docker 控制能力，
+不应随意给不可信账号加这个组（云服务器上尤其要注意这一点）。
 </code></pre></div>
 <h3 id="2-docker">坑 2：容器里没有 docker 命令<a class="headerlink" href="#2-docker" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>报错：bash: docker: command not found
@@ -1242,7 +1288,8 @@ docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
 <h3 id="7composeymal">坑 7：compose.ymal 文件名拼错<a class="headerlink" href="#7composeymal" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>报错：no configuration file provided: not found
 场景：文件保存成了 compose.ymal（y-m-a-l），应该是 compose.yaml。
-原理：Docker 只认标准文件名：compose.yaml / compose.yml / docker-compose.yml。
+原理：Docker 只认标准文件名：compose.yaml / compose.yml（官方首选），
+      为向后兼容还支持 docker-compose.yaml / docker-compose.yml。
 解决：mv compose.ymal compose.yaml（mv = 移动/重命名）。
 预防：文件名拼错，程序找不到配置文件 —— 和坑 5 同族（名字错）。
 </code></pre></div>
