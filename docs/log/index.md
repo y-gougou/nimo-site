@@ -32,9 +32,8 @@
 - [2026-08-15 · Codex CLI：从命令到工程闭环](2026-08-15.md)
 - [打开 Codex CLI 交互式工作台](../codex-cli/)
 
-### 08-18 · DeepSeek Harness 探索日
+### 08-18 · 工具链探索日
 
-> 以 dsh 为载体，走完 Linux 工具链、GitHub 用法、进程端口、故障排查、systemd、Obsidian、API 配置一整条链路。
+> 上午 dsh：Linux 工具链、GitHub 用法、故障排查、systemd、Obsidian、API 配置；下午 Docker：安装引擎、第一个容器、隔离原理。
 
-- [2026-08-18 · DeepSeek Harness：从安装到故障排查的一天](2026-08-18.md)
-- [2026-08-18 · Docker 入门：第一天](2026-08-18-docker.md)
+- [2026-08-18 · 工具链探索：DeepSeek Harness 与 Docker 入门](2026-08-18.md)
