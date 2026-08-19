@@ -42,4 +42,4 @@
 
 > Docker 主干一日通关：生命周期、数据、端口、网络、Dockerfile、Compose、Registry、云服务器 + 15 个坑的完整教训清单。
 
-- [2026-08-19 · Docker 进阶：生命周期、数据、端口、网络、Dockerfile、Compose 与 Registry](2026-08-19.md)
+- [2026-08-19 · Docker 基础主干与工程入门](2026-08-19.md)
