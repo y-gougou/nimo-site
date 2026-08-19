@@ -37,3 +37,9 @@
 > 上午 dsh：Linux 工具链、GitHub 用法、故障排查、systemd、Obsidian、API 配置；下午 Docker：安装引擎、第一个容器、隔离原理。
 
 - [2026-08-18 · 工具链探索：DeepSeek Harness 与 Docker 入门](2026-08-18.md)
+
+### 08-19 · Docker 进阶
+
+> 容器生命周期状态机（start/exec/stop/rm）+ 容器数据问题与 Bind Mount 解法。
+
+- [2026-08-19 · Docker 进阶：容器生命周期与数据持久化](2026-08-19.md)
