@@ -916,7 +916,40 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        四、下一步
+        四、端口映射（对外开门）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、容器网络（对内组网）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、补课：前后端与网络基础
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、下一步
       
     </span>
   </a>
@@ -1013,7 +1046,40 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        四、下一步
+        四、端口映射（对外开门）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、容器网络（对内组网）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、补课：前后端与网络基础
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、下一步
       
     </span>
   </a>
@@ -1037,13 +1103,13 @@
 
 
 
-<h1 id="2026-08-19-docker">2026-08-19 · Docker 进阶：容器生命周期与数据持久化<a class="headerlink" href="#2026-08-19-docker" title="Permanent link">&para;</a></h1>
+<h1 id="2026-08-19-docker">2026-08-19 · Docker 进阶：生命周期、数据、端口与网络<a class="headerlink" href="#2026-08-19-docker" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>📅 <strong>学习日志</strong> · 2026 年 8 月 19 日 · 自动化专业 / 容器技术</p>
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">一句话总结</p>
-<p>继续 Docker 第二课：亲手把容器生命周期状态机完整走了一遍（start/exec/stop/rm），并用两个实验验证了容器数据问题的解法 —— 容器是临时的，数据要活在容器之外（Bind Mount）。</p>
+<p>Docker 第二天：亲手走完容器生命周期状态机、用两个实验验证 Bind Mount 数据持久化、学会用端口映射把容器服务"对外开门"、用自定义网络让容器"内部组网互访"，并补上了前后端与网络寻址的基础概念课。</p>
 </div>
 <hr />
 <h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -1085,6 +1151,26 @@
 <td>6</td>
 <td>挂载的本质</td>
 <td>同一份数据的两个视角，不是复制，写入双向可见</td>
+</tr>
+<tr>
+<td>7</td>
+<td>端口映射</td>
+<td><code>-p 外面:里面</code> = 在容器墙上开窗，浏览器才能访问容器内服务</td>
+</tr>
+<tr>
+<td>8</td>
+<td>容器网络</td>
+<td>同一自定义网络内容器用"名字"互访（Docker 内置 DNS）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>前后端概念</td>
+<td>前端=用户看到的页面；后端=干活的程序；靠请求-响应通信</td>
+</tr>
+<tr>
+<td>10</td>
+<td>网络寻址</td>
+<td>IP=哪台电脑，端口=哪个程序；<code>IP:端口</code> 定位一个服务</td>
 </tr>
 </tbody>
 </table>
@@ -1134,8 +1220,35 @@ ls ~/docker-data        # hello.txt 还在！
 Dockerfile + compose.yaml  → 可复现环境
 </code></pre></div>
 <p>以后跑实验的标准姿势：<code>docker run -v ~/数据:/data -v ~/代码:/workspace ...</code> —— 容器随便删，数据稳如泰山。</p>
-<h2 id="_5">四、下一步<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>第六阶段：Docker Volume（<code>docker volume create/ls/inspect/rm</code>）—— Bind Mount 是自己管目录，Volume 是让 Docker 管数据目录，两者的区别与适用场景。</p>
+<h2 id="_5">四、端口映射（对外开门）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker run -d -p 8080:80 --name web-demo nginx
+</code></pre></div>
+<p>新参数：<code>-d</code> = 后台运行（服务器类容器的标准姿势）；<code>--name</code> = 起名字；<code>-p 外面:里面</code> = 端口映射。</p>
+<p><strong>为什么需要两个端口</strong>：容器有独立的网络世界 —— 房间里的 nginx 监听"房间内"的 80，但外面的人够不到。<code>-p 8080:80</code> = 在墙上开一扇窗：外面（宿主机）8080 → 里面（容器）80，Docker 负责转接。</p>
+<p>验证：<code>curl http://127.0.0.1:8080</code> 返回 nginx 欢迎页 HTML（浏览器打开就是 "Welcome to nginx!"）。<code>docker ps</code> 的 PORTS 列 <code>0.0.0.0:8080-&gt;80/tcp</code> 就是这扇窗的施工图。</p>
+<p><strong>应用</strong>：所有"要给别人访问"的服务都是这个模式 —— Jupyter（8888）、数据库（5432）、ROSBridge（9090）、自己写的 API。端口默认值只是习惯，不是法律，可以改（容器内 5432 映射到外面 15432 都行，只要外面不被占）。</p>
+<h2 id="_6">五、容器网络（对内组网）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker network create ypnet                        # 拉一根内部专线
+docker run -d --name web1 --network ypnet nginx    # 容器接入专线
+docker run --rm --network ypnet busybox wget -O- http://web1   # 用名字访问！
+</code></pre></div>
+<p>三种网络模式：<code>bridge</code>（默认，容器连在虚拟桥上）、<code>host</code>（直接用宿主机网络）、<code>none</code>（无网络）。</p>
+<p><strong>核心知识</strong>：同一自定义网络里的容器，<strong>用名字互访</strong>（Docker 内置 DNS 把容器名翻译成 IP，不用记地址）。</p>
+<p><strong>端口映射 vs 容器网络（防混关键）</strong>：</p>
+<div class="highlight"><pre><span></span><code>-p 8080:80     = 对外开门（外面的人 → 容器），给外部访问用
+--network xxx  = 容器之间拉专线（容器 ↔ 容器），给内部通信用
+</code></pre></div>
+<p><strong>未来架构</strong>：前端容器 →（名字）→ 后端容器 →（名字）→ 数据库容器。对外只开前端一扇门，数据库不映射端口（只对内部，不给外面看，安全）。</p>
+<h2 id="_7">六、补课：前后端与网络基础<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>这节是为了补 Docker 网络的地基 —— 前端/后端、IP/端口这些概念，来自真实 Web 世界的通用知识。</p>
+</blockquote>
+<p><strong>前后端是什么</strong>：前端 = 用户看到、操作的部分（浏览器页面）；后端 = 干活的程序（处理请求、操作数据）。两者是两个独立程序，靠"请求-响应"通信（类比：菜单/服务员 = 前端，厨房 = 后端）。nimo-site 是纯前端（GitHub Pages 只存 HTML）；dsh 是前端+后端（浏览器 → dsh 进程 → LLM API）。</p>
+<p><strong>网络寻址两层</strong>：IP = 哪台电脑（楼），端口 = 哪个程序（房），<code>IP:端口</code> 定位一个服务 —— 学校 API 的 baseURL <code>xplt.sdu.edu.cn:4000</code> 就是这个格式。</p>
+<p><strong>完整请求链路</strong>：浏览器 → 解析域名成 IP → 连接 IP:端口 → 发请求 → 后端处理 → 响应回来 → 浏览器展示。</p>
+<p><strong>容器加入后</strong>：-p 管"外面→容器"，--network 管"容器↔容器"。回看 dsh：浏览器 → <code>127.0.0.1:3080</code>（端口寻址）→ dsh 后端 → 学校 API（前端访问后端的完整实例）。</p>
+<h2 id="_8">七、下一步<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>第九阶段：Dockerfile —— 从"会用 Docker"到"真正使用 Docker"的关键：用 FROM/RUN/COPY/CMD 把环境写成"源代码"，<code>docker build</code> 生成镜像，实现科研环境复现。</p>
 
 
 
