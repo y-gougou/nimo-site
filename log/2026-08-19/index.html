@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2026-08-19-docker" class="md-skip">
+        <a href="#2026-08-19-docker-dockerfilecompose-registry" class="md-skip">
           跳转至
         </a>
       
@@ -879,83 +879,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、容器生命周期
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、容器数据问题（科研重点）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、科研场景映射
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、端口映射（对外开门）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、容器网络（对内组网）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、补课：前后端与网络基础
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1009,83 +932,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、容器生命周期
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、容器数据问题（科研重点）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、科研场景映射
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、端口映射（对外开门）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、容器网络（对内组网）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、补课：前后端与网络基础
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1103,13 +949,13 @@
 
 
 
-<h1 id="2026-08-19-docker">2026-08-19 · Docker 进阶：生命周期、数据、端口与网络<a class="headerlink" href="#2026-08-19-docker" title="Permanent link">&para;</a></h1>
+<h1 id="2026-08-19-docker-dockerfilecompose-registry">2026-08-19 · Docker 进阶：生命周期、数据、端口、网络、Dockerfile、Compose 与 Registry<a class="headerlink" href="#2026-08-19-docker-dockerfilecompose-registry" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>📅 <strong>学习日志</strong> · 2026 年 8 月 19 日 · 自动化专业 / 容器技术</p>
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">一句话总结</p>
-<p>Docker 第二天：亲手走完容器生命周期状态机、用两个实验验证 Bind Mount 数据持久化、学会用端口映射把容器服务"对外开门"、用自定义网络让容器"内部组网互访"，并补上了前后端与网络寻址的基础概念课。</p>
+<p>Docker 主干一日通关：容器生命周期、数据持久化、端口映射、容器网络、Dockerfile、Compose、Registry 全流程走完，并补上前端/后端与网络寻址的基础概念。挫折很多（今天踩了 15 个坑），但每个坑都是教材 —— 文末有完整的坑与教训清单。</p>
 </div>
 <hr />
 <h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -1134,48 +980,73 @@
 </tr>
 <tr>
 <td>3</td>
-<td>退出码含义</td>
+<td>退出码</td>
 <td>0 = 正常结束；137 = 被强杀（SIGKILL）</td>
 </tr>
 <tr>
 <td>4</td>
 <td>容器临时性</td>
-<td>rm 一删，容器里的数据全没（实验验证）</td>
+<td>rm 一删，容器里的数据全没</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Bind Mount</td>
-<td><code>-v ~/目录:/容器目录</code> 把宿主机目录挂进容器</td>
+<td><code>-v ~/目录:/容器目录</code>，同一份数据两个视角</td>
 </tr>
 <tr>
 <td>6</td>
-<td>挂载的本质</td>
-<td>同一份数据的两个视角，不是复制，写入双向可见</td>
+<td>Volume</td>
+<td>Docker 托管的数据仓库；被容器引用时删不掉</td>
 </tr>
 <tr>
 <td>7</td>
 <td>端口映射</td>
-<td><code>-p 外面:里面</code> = 在容器墙上开窗，浏览器才能访问容器内服务</td>
+<td><code>-p 外面:里面</code> = 在容器墙上开窗，对外开门</td>
 </tr>
 <tr>
 <td>8</td>
 <td>容器网络</td>
-<td>同一自定义网络内容器用"名字"互访（Docker 内置 DNS）</td>
+<td>同一网络内容器用"名字"互访（内置 DNS）</td>
 </tr>
 <tr>
 <td>9</td>
-<td>前后端概念</td>
-<td>前端=用户看到的页面；后端=干活的程序；靠请求-响应通信</td>
+<td>前后端基础</td>
+<td>前端=页面，后端=干活的程序，请求-响应通信</td>
 </tr>
 <tr>
 <td>10</td>
-<td>网络寻址</td>
-<td>IP=哪台电脑，端口=哪个程序；<code>IP:端口</code> 定位一个服务</td>
+<td>Dockerfile</td>
+<td>环境的源代码；RUN 构建时执行，CMD 启动时执行</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Compose</td>
+<td>一个 compose.yaml 管整个多容器环境</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Registry</td>
+<td>镜像仓库；push 上传 / pull 下载，环境迁移</td>
+</tr>
+<tr>
+<td>13</td>
+<td>镜像命名</td>
+<td>镜像名 = 地址 + 名字 + 版本；不带地址 = 默认 Docker Hub</td>
+</tr>
+<tr>
+<td>14</td>
+<td>云服务器部署</td>
+<td>本地 build+push → 服务器 pull+run + --restart=always</td>
+</tr>
+<tr>
+<td>15</td>
+<td>科研工作流</td>
+<td>环境/代码/数据三分离：Git + Registry + 外部备份</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="_2">一、容器生命周期<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="_2">第一部分 · 容器生命周期<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <p>昨天学会了 <code>docker run</code>（创建 + 进入 + 退出）。今天学<strong>不重新创建</strong>，直接操控已有容器 —— 核心是生命周期状态机：</p>
 <div class="highlight"><pre><span></span><code>create → start → running → stop → exited → rm
           ↑                          ↓
@@ -1183,72 +1054,253 @@
 </code></pre></div>
 <p>实验观察：</p>
 <ul>
-<li><code>docker start zealous_merkle</code>：容器 ID 不变，STATUS 从 Exited → Up —— <strong>start 是唤醒，不是新建</strong></li>
+<li><code>docker start &lt;容器&gt;</code>：容器 ID 不变，STATUS 从 Exited → Up —— <strong>start 是唤醒，不是新建</strong></li>
 <li><code>docker exec -it &lt;容器&gt; bash</code>：钻进<strong>运行中</strong>的容器，exit 退出后容器<strong>继续跑</strong>（PID 1 还活着）—— 与 <code>run -it</code> 里 exit 杀掉 PID 1 完全不同</li>
-<li>容器里敲 <code>docker</code> 报 command not found：CLI 是宿主机的工具，容器里没有 —— 隔离的铁证</li>
+<li>容器里敲 <code>docker</code> 报 command not found：CLI 是宿主机工具，容器里没有 —— 隔离的铁证</li>
 <li><code>docker stop</code>：docker ps 里消失、ps -a 里变 Exited —— 停车 ≠ 删除</li>
-<li><code>docker rm</code>：从 ps -a 彻底消失 —— 报废，不可恢复；但 <code>docker images</code> 里镜像还在（模具还在）</li>
+<li><code>docker rm</code>：从 ps -a 彻底消失 —— 报废，不可恢复；但镜像还在（模具还在）</li>
 </ul>
 <p>意外收获 —— 退出码：hello-world 是 <code>Exited (0)</code>（正常结束），而 stop 的 bash 容器是 <code>Exited (137)</code>（128+9，被 SIGKILL 强杀）。<code>docker stop</code> 会先发温柔信号等 10 秒，不响应才强杀。</p>
-<h2 id="_3">二、容器数据问题（科研重点）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><strong>实验 A：体验数据消失</strong></p>
-<div class="highlight"><pre><span></span><code>docker run -it ubuntu bash          # 建容器
-echo &quot;重要数据&quot; &gt; /important.txt    # 写数据
-exit                                # 退出
-docker rm &lt;容器&gt;                    # 删容器
-docker run --rm ubuntu cat /important.txt
-# → cat: /important.txt: No such file or directory
+<h1 id="bind-mount-volume">第二部分 · 容器数据（Bind Mount + Volume）<a class="headerlink" href="#bind-mount-volume" title="Permanent link">&para;</a></h1>
+<p><strong>问题</strong>：容器是临时的，rm 一删，里面写的东西全跟着消失。镜像只会重建"干净的初始环境"。</p>
+<p><strong>解法一：Bind Mount</strong>（自己管宿主机目录）</p>
+<div class="highlight"><pre><span></span><code>docker run -v ~/docker-data:/data ubuntu bash
 </code></pre></div>
-<p>结论：容器是临时的，rm 一删，里面写的东西全跟着消失。镜像只会重建"干净的初始环境"。</p>
-<p><strong>实验 B：Bind Mount 救回数据</strong></p>
-<div class="highlight"><pre><span></span><code>mkdir ~/docker-data
-docker run -it -v ~/docker-data:/data ubuntu bash
-echo &quot;persistent&quot; &gt; /data/hello.txt
-exit &amp;&amp; docker rm &lt;容器&gt;
-ls ~/docker-data        # hello.txt 还在！
-</code></pre></div>
-<p>关键理解：</p>
 <ul>
-<li><code>-v 宿主机目录:容器目录</code> = 挂载 —— <strong>同一个地方的两个视角</strong>，不是复制</li>
-<li>写入双向可见：容器里写宿主机看到，宿主机写容器里看到</li>
-<li>容器删了，宿主机目录毫发无损</li>
-<li>类比：给容器插 U 盘 —— 播放器（容器）删了，U 盘（数据）还在</li>
+<li>挂载 = <strong>同一个地方的两个视角</strong>，不是复制；写入双向可见</li>
+<li>容器删了，宿主机目录毫发无损（类比：给容器插 U 盘）</li>
+<li>适用：代码、配置文件、ROS workspace（你想亲眼看到文件）</li>
 </ul>
-<h2 id="_4">三、科研场景映射<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>项目代码 / ROS workspace  → git 管理（版本化）
-数据集 / checkpoint / 结果 → Bind Mount 挂进容器（数据存活）
-Dockerfile + compose.yaml  → 可复现环境
+<p><strong>解法二：Volume</strong>（Docker 管数据目录）</p>
+<div class="highlight"><pre><span></span><code>docker volume create mydata
+docker run -v mydata:/data ubuntu bash
 </code></pre></div>
-<p>以后跑实验的标准姿势：<code>docker run -v ~/数据:/data -v ~/代码:/workspace ...</code> —— 容器随便删，数据稳如泰山。</p>
-<h2 id="_5">四、端口映射（对外开门）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>卷名（无 / 开头）= Volume；路径（/ 或 ~ 开头）= Bind Mount，系统靠这个区分</li>
+<li>数据跟卷走，不跟容器走 —— 跨容器共享、抗容器删除</li>
+<li>卷被容器引用时删不掉（volume is in use）—— 先删容器才能删卷</li>
+<li>适用：数据库数据、程序生成的数据（不想手动碰文件）</li>
+<li>适用：数据库数据、程序生成的数据</li>
+</ul>
+<p><strong>⚠️ 重点：Volume ≠ 永久备份</strong> —— 卷活在你宿主机磁盘上；宿主机/云服务器没了，卷也没了。真正的保险 = 定期备份到外部存储（对象存储/NAS/异地）。</p>
+<h1 id="_3">第三部分 · 端口映射（对外开门）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code>docker run -d -p 8080:80 --name web-demo nginx
 </code></pre></div>
-<p>新参数：<code>-d</code> = 后台运行（服务器类容器的标准姿势）；<code>--name</code> = 起名字；<code>-p 外面:里面</code> = 端口映射。</p>
-<p><strong>为什么需要两个端口</strong>：容器有独立的网络世界 —— 房间里的 nginx 监听"房间内"的 80，但外面的人够不到。<code>-p 8080:80</code> = 在墙上开一扇窗：外面（宿主机）8080 → 里面（容器）80，Docker 负责转接。</p>
-<p>验证：<code>curl http://127.0.0.1:8080</code> 返回 nginx 欢迎页 HTML（浏览器打开就是 "Welcome to nginx!"）。<code>docker ps</code> 的 PORTS 列 <code>0.0.0.0:8080-&gt;80/tcp</code> 就是这扇窗的施工图。</p>
-<p><strong>应用</strong>：所有"要给别人访问"的服务都是这个模式 —— Jupyter（8888）、数据库（5432）、ROSBridge（9090）、自己写的 API。端口默认值只是习惯，不是法律，可以改（容器内 5432 映射到外面 15432 都行，只要外面不被占）。</p>
-<h2 id="_6">五、容器网络（对内组网）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>docker network create ypnet                        # 拉一根内部专线
-docker run -d --name web1 --network ypnet nginx    # 容器接入专线
-docker run --rm --network ypnet busybox wget -O- http://web1   # 用名字访问！
+<ul>
+<li><code>-d</code> = 后台运行；<code>--name</code> = 起名字；<code>-p 外面:里面</code> = 端口映射</li>
+<li><strong>为什么两个端口</strong>：容器有独立的网络世界，房间里的 nginx 监听"房间内"的 80，外面够不到。<code>-p</code> = 在墙上开窗，Docker 转接</li>
+<li>验证：<code>curl http://127.0.0.1:8080</code> 返回 nginx 欢迎页 HTML；<code>docker ps</code> 的 PORTS 列 <code>0.0.0.0:8080-&gt;80/tcp</code> 是施工图</li>
+<li>端口默认值只是习惯，不是法律（Jupyter 8888、数据库 5432、ROSBridge 9090 都可改）</li>
+</ul>
+<h1 id="_4">第四部分 · 容器网络（对内组网）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>docker network create ypnet
+docker run -d --name web1 --network ypnet nginx
+docker run --rm --network ypnet busybox wget -O- http://web1   ← 用名字访问！
 </code></pre></div>
-<p>三种网络模式：<code>bridge</code>（默认，容器连在虚拟桥上）、<code>host</code>（直接用宿主机网络）、<code>none</code>（无网络）。</p>
-<p><strong>核心知识</strong>：同一自定义网络里的容器，<strong>用名字互访</strong>（Docker 内置 DNS 把容器名翻译成 IP，不用记地址）。</p>
-<p><strong>端口映射 vs 容器网络（防混关键）</strong>：</p>
-<div class="highlight"><pre><span></span><code>-p 8080:80     = 对外开门（外面的人 → 容器），给外部访问用
---network xxx  = 容器之间拉专线（容器 ↔ 容器），给内部通信用
-</code></pre></div>
-<p><strong>未来架构</strong>：前端容器 →（名字）→ 后端容器 →（名字）→ 数据库容器。对外只开前端一扇门，数据库不映射端口（只对内部，不给外面看，安全）。</p>
-<h2 id="_7">六、补课：前后端与网络基础<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>三种模式：bridge（默认）/ host / none</li>
+<li><strong>核心</strong>：同一自定义网络里的容器，用名字互访（Docker 内置 DNS）</li>
+<li><strong>防混关键</strong>：<code>-p</code> = 对外开门（外面→容器）；<code>--network</code> = 内部专线（容器↔容器）</li>
+<li>未来架构：前端容器 →(名字)→ 后端容器 →(名字)→ 数据库容器；对外只开前端一扇门</li>
+</ul>
+<h1 id="_5">第五部分 · 补课：前后端与网络基础<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>这节是为了补 Docker 网络的地基 —— 前端/后端、IP/端口这些概念，来自真实 Web 世界的通用知识。</p>
+<p>这是为了补 Docker 网络的地基 —— 来自真实 Web 世界的通用知识。</p>
 </blockquote>
-<p><strong>前后端是什么</strong>：前端 = 用户看到、操作的部分（浏览器页面）；后端 = 干活的程序（处理请求、操作数据）。两者是两个独立程序，靠"请求-响应"通信（类比：菜单/服务员 = 前端，厨房 = 后端）。nimo-site 是纯前端（GitHub Pages 只存 HTML）；dsh 是前端+后端（浏览器 → dsh 进程 → LLM API）。</p>
-<p><strong>网络寻址两层</strong>：IP = 哪台电脑（楼），端口 = 哪个程序（房），<code>IP:端口</code> 定位一个服务 —— 学校 API 的 baseURL <code>xplt.sdu.edu.cn:4000</code> 就是这个格式。</p>
-<p><strong>完整请求链路</strong>：浏览器 → 解析域名成 IP → 连接 IP:端口 → 发请求 → 后端处理 → 响应回来 → 浏览器展示。</p>
-<p><strong>容器加入后</strong>：-p 管"外面→容器"，--network 管"容器↔容器"。回看 dsh：浏览器 → <code>127.0.0.1:3080</code>（端口寻址）→ dsh 后端 → 学校 API（前端访问后端的完整实例）。</p>
-<h2 id="_8">七、下一步<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>第九阶段：Dockerfile —— 从"会用 Docker"到"真正使用 Docker"的关键：用 FROM/RUN/COPY/CMD 把环境写成"源代码"，<code>docker build</code> 生成镜像，实现科研环境复现。</p>
+<ul>
+<li><strong>前端</strong> = 用户看到、操作的部分（浏览器页面）；<strong>后端</strong> = 干活的程序（处理请求、操作数据）。两者是两个独立程序，靠"请求-响应"通信</li>
+<li><strong>寻址两层</strong>：IP = 哪台电脑（楼），端口 = 哪个程序（房），<code>IP:端口</code> 定位一个服务 —— 学校 API 的 baseURL <code>xplt.sdu.edu.cn:4000</code> 就是这个格式</li>
+<li><strong>完整请求链路</strong>：浏览器 → 解析域名成 IP → 连接 IP:端口 → 发请求 → 后端处理 → 响应回来</li>
+<li>回看 dsh：浏览器 → <code>127.0.0.1:3080</code>（端口寻址）→ dsh 后端 → 学校 API（前端访问后端的完整实例）</li>
+</ul>
+<h1 id="dockerfile">第六部分 · Dockerfile（环境的源代码）<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>FROM python:3.12-slim    # 地基（基础镜像）
+WORKDIR /app             # 工作目录
+COPY . .                 # 把代码搬进镜像（第一个. = 构建上下文，第二个. = 镜像里的 /app）
+RUN pip install -r requirements.txt   # 构建时执行（盖房时砌墙，只一次）
+CMD [&quot;python&quot;,&quot;main.py&quot;] # 启动时执行（住进去开灯，每次启动都执行）
+</code></pre></div>
+<ul>
+<li>流程：Dockerfile → <code>docker build -t 名字:版本 .</code> → 镜像 → <code>docker run</code> → 容器</li>
+<li>每行 Dockerfile = 一层镜像（build 输出 Step 1/5 → 5/5）；每步在临时容器里执行，用完即弃</li>
+<li><strong>RUN vs CMD</strong>：RUN = 造镜像时做一次；CMD = 每次启动容器都做</li>
+<li><strong>.dockerignore</strong>：Docker 的黑名单，排除缓存/数据集/密钥进镜像（<code>COPY . .</code> 不挑食！）</li>
+</ul>
+<h1 id="docker-compose">第七部分 · Docker Compose（多容器编排）<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>services:                # 环境由哪些服务组成
+  web1:
+    image: nginx
+    ports: [&quot;8080:80&quot;]
+  web2:
+    image: nginx
+    ports: [&quot;8081:80&quot;]
+
+docker compose up -d     # 一键启动全部
+docker compose down      # 一键停止+删除容器和网络
+docker compose ps        # 看状态
+docker compose logs      # 看日志
+</code></pre></div>
+<ul>
+<li>Compose 自动做三件事：建网络（服务名=主机名，互访零配置）、规范命名、一键启停</li>
+<li><strong>坑</strong>：up 是增量的 —— 失败的残留容器会被复用（端口映射缺失）；诡异状态先 down 清场再 up</li>
+</ul>
+<h1 id="registry">第八部分 · Registry 与环境迁移<a class="headerlink" href="#registry" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>docker tag &lt;已有镜像&gt; &lt;地址/名字:版本&gt;   # 贴&quot;带地址的名片&quot;（不复制，内容不变）
+docker push &lt;地址/名字:版本&gt;             # 上传到仓库（地址写在名字里）
+docker pull &lt;地址/名字:版本&gt;             # 从仓库下载
+docker rmi &lt;镜像名&gt;                      # 删镜像（rm 删容器，rmi 删镜像）
+docker login                            # 登录公共仓库（本地仓库不需要）
+docker save &lt;镜像&gt; -o 文件.tar           # 离线导出（备份/迁移）
+docker load -i 文件.tar                  # 离线导入
+</code></pre></div>
+<ul>
+<li><strong>Registry = 存镜像的仓库</strong>：Docker Hub 是公共的（要账号），本地 <code>registry</code> 容器 = 迷你仓库（不用登录，localhost 默认信任）</li>
+<li><strong>镜像名 = 地址 + 名字 + 版本</strong>；不带地址 = 默认 Docker Hub（所以 <code>docker run ypproject:v1</code> 会去 Docker Hub 找然后失败）</li>
+<li><strong>迁移闭环</strong>：build → tag → push → rmi（模拟换机）→ pull → run（环境原样复现）</li>
+<li><strong>分层传输</strong>：仓库里已有的层不重复传（Layer already exists）</li>
+<li><strong>坑</strong>：容器占用的镜像删不掉；pull 回来的名字带地址，run 要用全名</li>
+</ul>
+<h1 id="_6">第九部分 · 云服务器部署<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code># 服务器上（SSH 登录后）：
+ssh 用户名@服务器IP                        # 远程进入服务器
+sudo apt install -y docker.io docker-compose-v2   # 装 Docker
+docker pull 你的账号/项目:v1               # 拉镜像（路线 B）
+docker run -d --restart=always -p 8080:80 -v ~/data:/data 项目:v1
+#                    ↑ 自动重启（服务器 7×24 的生命线）
+</code></pre></div>
+<ul>
+<li>两条路线：A 代码路线（git clone + build）vs B 镜像路线（pull）—— 科研推荐 B，环境分毫不差</li>
+<li>数据挂载在服务器目录；服务器到期前：代码 git push、镜像 docker push、数据备份外部</li>
+</ul>
+<h1 id="docker">第十部分 · 科研 Docker 工作流（方法论）<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<p><strong>核心原则：环境、代码、数据 —— 三样东西分开放</strong></p>
+<div class="highlight"><pre><span></span><code>project/                  ← 进 Git（代码 + Dockerfile + compose.yaml + requirements.txt）
+├── src/  configs/  Dockerfile  compose.yaml  README.md  .gitignore
+/data/                    ← 不进 Git（大文件）
+├── datasets/  checkpoints/  logs/  results/
+</code></pre></div>
+<p><strong>三套资产的三个流向</strong>：</p>
+<div class="highlight"><pre><span></span><code>代码 + Dockerfile → Git（版本化）
+镜像 → Registry（环境随取随用）
+数据 → 外部存储备份（对象存储 / NAS / 异地）
+</code></pre></div>
+<p><strong>运行姿势</strong>：<code>docker run -v ~/project:/workspace -v ~/data:/data &lt;镜像&gt;</code> —— 容器一次性，代码和数据从外面挂进来。</p>
+<p><strong>换机器/服务器到期</strong>：git clone + docker build/pull + 挂载数据 → run；到期前代码 push、镜像 push、数据备份。</p>
+<hr />
+<h1 id="_7">📌 今日坑与教训清单（挫折全记录）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>今天踩了 15 个坑，每个都是教材。复习时重点看这里。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>坑</th>
+<th>现象</th>
+<th>教训</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>docker 组未生效</td>
+<td>permission denied ... docker.sock</td>
+<td>组变更要重新登录才生效</td>
+</tr>
+<tr>
+<td>2</td>
+<td>容器里没有 docker 命令</td>
+<td>command not found</td>
+<td>容器只有镜像带的东西，CLI 在宿主机</td>
+</tr>
+<tr>
+<td>3</td>
+<td>stop 后退出码 137</td>
+<td>Exited (137)</td>
+<td>被强杀（SIGKILL）；0 才是正常结束</td>
+</tr>
+<tr>
+<td>4</td>
+<td>main.py 顶层缩进</td>
+<td>IndentationError</td>
+<td>Python 顶层代码不能缩进；py_compile 可提前检查</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dockerfile 拼写 silm</td>
+<td>build 时镜像找不到</td>
+<td>名字拼错程序找不到，认真核对</td>
+</tr>
+<tr>
+<td>6</td>
+<td>build 忘写最后的 .</td>
+<td>requires 1 argument</td>
+<td>docker build 必须给构建上下文</td>
+</tr>
+<tr>
+<td>7</td>
+<td>compose.ymal 拼错</td>
+<td>no configuration file provided</td>
+<td>Docker 只认 compose.yaml/yml</td>
+</tr>
+<tr>
+<td>8</td>
+<td>YAML 冒号后没空格</td>
+<td>mapping values not allowed</td>
+<td><code>key: value</code> 冒号后必须有空格</td>
+</tr>
+<tr>
+<td>9</td>
+<td>compose up 复用坏容器</td>
+<td>PORTS 列空的</td>
+<td>up 是增量的；先 down 清场再 up</td>
+</tr>
+<tr>
+<td>10</td>
+<td>nginx 镜像没有 wget</td>
+<td>wget: not found</td>
+<td>精简镜像工具少；busybox 当探针</td>
+</tr>
+<tr>
+<td>11</td>
+<td>rmi 删不掉镜像</td>
+<td>container is using its image</td>
+<td>容器存在（哪怕 Exited）就占用镜像，先删容器</td>
+</tr>
+<tr>
+<td>12</td>
+<td>pull 回来的名字带地址</td>
+<td>docker run 短名失败</td>
+<td>镜像名 = 地址+名字+版本，run 用全名</td>
+</tr>
+<tr>
+<td>13</td>
+<td>tag 方向写反</td>
+<td>No such image</td>
+<td>tag &lt;已存在的源&gt; &lt;新名字&gt;</td>
+</tr>
+<tr>
+<td>14</td>
+<td>wget -o- vs -O-</td>
+<td>没输出</td>
+<td>大写 -O 输出到终端，小写 -o 输出到文件</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Volume 删不掉</td>
+<td>volume is in use</td>
+<td>卷被容器引用时受保护，先删容器</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="_8">今日总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>今天把 Docker 主干完整走完：<strong>生命周期 → 数据 → 端口 → 网络 → Dockerfile → Compose → Registry → 云服务器 → 科研工作流</strong>。</p>
+<ul>
+<li><strong>最值钱的是方法论</strong>：遇错先看报错原文（Docker 的报错其实都写得很清楚），再拆解、再修 —— 今天 15 个坑都是这么过来的</li>
+<li><strong>最值钱的是心智模型</strong>：容器=一次性房间、镜像=模具、-p=开窗、--network=专线、tag=贴名片、Registry=仓库</li>
+<li><strong>下一步</strong>：按提纲，等有场景再碰 ROS Docker、GPU Docker、Kubernetes（暂时不用深入）</li>
+</ul>
 
 
 
