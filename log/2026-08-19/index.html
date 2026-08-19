@@ -12,13 +12,11 @@
         <meta name="author" content="Nimo">
       
       
-        <link rel="canonical" href="https://nimo.github.io/course/06-troubleshooting/">
+        <link rel="canonical" href="https://nimo.github.io/log/2026-08-19/">
       
       
-        <link rel="prev" href="../05-dns-override/">
+        <link rel="prev" href="../2026-08-18/">
       
-      
-        <link rel="next" href="../../log/2026-08-14/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>第 6 课 · 常见问题排查手册 - Nimo 的麦迪逊花园</title>
+        <title>2026-08-19 · Docker 进阶 - Nimo 的麦迪逊花园</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6" class="md-skip">
+        <a href="#2026-08-19-docker" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第 6 课 · 常见问题排查手册
+              2026-08-19 · Docker 进阶
             
           </span>
         </div>
@@ -238,7 +236,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../log/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -355,7 +353,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../log/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -396,8 +394,6 @@
                 
   
   
-    
-  
   
   
     
@@ -426,15 +422,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../course/" class="md-nav__link ">
               
   
   
@@ -458,7 +454,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -478,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-package/" class="md-nav__link">
+      <a href="../../course/01-package/" class="md-nav__link">
         
   
   
@@ -506,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-install-practice/" class="md-nav__link">
+      <a href="../../course/02-install-practice/" class="md-nav__link">
         
   
   
@@ -534,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-proxy-basics/" class="md-nav__link">
+      <a href="../../course/03-proxy-basics/" class="md-nav__link">
         
   
   
@@ -562,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-clash-party/" class="md-nav__link">
+      <a href="../../course/04-clash-party/" class="md-nav__link">
         
   
   
@@ -590,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-dns-override/" class="md-nav__link">
+      <a href="../../course/05-dns-override/" class="md-nav__link">
         
   
   
@@ -615,37 +611,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 6 课 · 常见问题排查手册
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../course/06-troubleshooting/" class="md-nav__link">
         
   
   
@@ -661,120 +630,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 排查总纲：先分清问题类型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 排查工具箱
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 常见问题速查表
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 案例复盘：两个真实排查
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 案例复盘：两个真实排查">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#achatgpt-403" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 A：ChatGPT 登录 403
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 B：浏览器报代理地址有问题
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 日志是排查的好帮手
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 排查心法
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -795,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../log/2026-08-14/" class="md-nav__link">
+      <a href="../2026-08-14/" class="md-nav__link">
         
   
   
@@ -888,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../log/2026-08-15/" class="md-nav__link">
+      <a href="../2026-08-15/" class="md-nav__link">
         
   
   
@@ -926,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../log/2026-08-18/" class="md-nav__link">
+      <a href="../2026-08-18/" class="md-nav__link">
         
   
   
@@ -951,10 +806,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../log/2026-08-19/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-08-19 · Docker 进阶
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -970,6 +852,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 今日学习清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、容器生命周期
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、容器数据问题（科研重点）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、科研场景映射
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、下一步
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1009,10 +966,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 排查总纲：先分清问题类型
+        📌 今日学习清单
       
     </span>
   </a>
@@ -1020,10 +977,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 排查工具箱
+        一、容器生命周期
       
     </span>
   </a>
@@ -1031,10 +988,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 常见问题速查表
+        二、容器数据问题（科研重点）
       
     </span>
   </a>
@@ -1042,49 +999,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 案例复盘：两个真实排查
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 案例复盘：两个真实排查">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#achatgpt-403" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 A：ChatGPT 登录 403
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 B：浏览器报代理地址有问题
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 日志是排查的好帮手
+        三、科研场景映射
       
     </span>
   </a>
@@ -1092,10 +1010,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 排查心法
+        四、下一步
       
     </span>
   </a>
@@ -1119,175 +1037,105 @@
 
 
 
-<h1 id="6">第 6 课 · 常见问题排查手册<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
+<h1 id="2026-08-19-docker">2026-08-19 · Docker 进阶：容器生命周期与数据持久化<a class="headerlink" href="#2026-08-19-docker" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p><strong>课程目标</strong>：掌握"上不了网 / 服务连不上"的系统性排查方法，学会用命令定位问题。
-<strong>学习用时</strong>：约 20 分钟。</p>
+<p>📅 <strong>学习日志</strong> · 2026 年 8 月 19 日 · 自动化专业 / 容器技术</p>
 </blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">一句话总结</p>
+<p>继续 Docker 第二课：亲手把容器生命周期状态机完整走了一遍（start/exec/stop/rm），并用两个实验验证了容器数据问题的解法 —— 容器是临时的，数据要活在容器之外（Bind Mount）。</p>
+</div>
 <hr />
-<h2 id="1">1. 排查总纲：先分清问题类型<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>遇到任何"连不上"的问题，第一步不是乱试，而是<strong>归类</strong>：</p>
-<pre class="mermaid"><code>flowchart TD
-    A[问题: 连不上] --&gt; B{是网络问题&lt;br&gt;还是配置问题?}
-    B --&gt; C[网络问题&lt;br&gt;墙 / 节点 / 端口不通]
-    B --&gt; D[配置问题&lt;br&gt;代理指向 / token / 白名单]
-    C --&gt; E[排查: 代理测试 / 出口 IP / 端口监听]
-    D --&gt; F[排查: 环境变量 / 配置文件 / 日志]</code></pre>
-<p><strong>判断技巧</strong>：网络问题通常表现为<strong>超时</strong>（timeout、000）；配置问题通常表现为<strong>有响应但被拒绝</strong>（401/403）。</p>
-<hr />
-<h2 id="2">2. 排查工具箱<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ① 进程在不在</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pgrep<span class="w"> </span>-af<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;clash|mihomo&#39;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ② 端口有没有监听</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">127</span>.0.0.1
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># ③ 代理出网测试（200 = 通，000 = 不通）</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>curl<span class="w"> </span>-x<span class="w"> </span>http://127.0.0.1:7890<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;HTTP %{http_code}\n&quot;</span><span class="w"> </span>https://www.google.com
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># ④ 直连对比（判断是不是被墙）</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>curl<span class="w"> </span>-s<span class="w"> </span>-m<span class="w"> </span><span class="m">10</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;HTTP %{http_code}\n&quot;</span><span class="w"> </span>https://www.baidu.com
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># ⑤ 出口 IP 和地区（判断节点是否干净）</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>curl<span class="w"> </span>-x<span class="w"> </span>http://127.0.0.1:7890<span class="w"> </span>https://api.ip.sb/geoip
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># ⑥ 系统代理设置</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>gsettings<span class="w"> </span>get<span class="w"> </span>org.gnome.system.proxy<span class="w"> </span>mode
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>gsettings<span class="w"> </span>get<span class="w"> </span>org.gnome.system.proxy.http<span class="w"> </span>port
-</code></pre></div>
-<pre class="mermaid"><code>flowchart LR
-    subgraph 网络层[网络问题排查]
-        A[进程] --&gt; B[端口] --&gt; C[代理出网] --&gt; D[出口IP]
-    end
-    subgraph 配置层[配置问题排查]
-        E[环境变量] --&gt; F[配置文件] --&gt; G[日志]
-    end</code></pre>
-<hr />
-<h2 id="3">3. 常见问题速查表<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>#</th>
-<th>症状</th>
-<th>原因</th>
-<th>解法</th>
+<th>今日收获</th>
+<th>一句话</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>浏览器报"代理服务器地址有问题"</td>
-<td>系统代理指向的端口没有服务在监听</td>
-<td><code>ss -tlnp</code> 确认实际端口，改系统代理设置对齐</td>
+<td>生命周期状态机</td>
+<td>create → start → running → stop → exited → rm</td>
 </tr>
 <tr>
 <td>2</td>
-<td>ChatGPT 登录 403 "Country not supported"</td>
-<td>出口节点 IP 被 OpenAI 拉黑（机房段）</td>
-<td>换干净节点（美/日/新加坡主流机房），开 DNS 覆写</td>
+<td>run vs start vs exec</td>
+<td>新建 / 唤醒已有 / 钻进运行中的，三者完全不同</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Telegram 机器人连不上</td>
-<td>网关环境变量 <code>TELEGRAM_PROXY</code> 指向旧端口</td>
-<td>更新为当前代理端口</td>
+<td>退出码含义</td>
+<td>0 = 正常结束；137 = 被强杀（SIGKILL）</td>
 </tr>
 <tr>
 <td>4</td>
-<td>开了全局模式还是打不开外网</td>
-<td>模式选择器拨到了 DIRECT 直连</td>
-<td>切到代理组 / 自动选择</td>
+<td>容器临时性</td>
+<td>rm 一删，容器里的数据全没（实验验证）</td>
 </tr>
 <tr>
 <td>5</td>
-<td>网关服务 active 但机器人不回复</td>
-<td>白名单把用户消息拦截了（授权问题）</td>
-<td>查日志 <code>Unauthorized user</code>，修白名单</td>
+<td>Bind Mount</td>
+<td><code>-v ~/目录:/容器目录</code> 把宿主机目录挂进容器</td>
 </tr>
 <tr>
 <td>6</td>
-<td>GitHub 下载超时</td>
-<td>直连被墙</td>
-<td>用 ghfast.top / ghproxy.net 镜像</td>
-</tr>
-<tr>
-<td>7</td>
-<td>安装包报"wrong architecture"</td>
-<td>下载了错误的架构（arm64 装到 x64）</td>
-<td>确认 <code>uname -m</code>，重新下载</td>
+<td>挂载的本质</td>
+<td>同一份数据的两个视角，不是复制，写入双向可见</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="4">4. 案例复盘：两个真实排查<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<h3 id="achatgpt-403">案例 A：ChatGPT 登录 403<a class="headerlink" href="#achatgpt-403" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A[ChatGPT 登录报&lt;br&gt;403 Country not supported] --&gt; B{账号问题?}
-    B --&gt;|不是| C{网络通吗?}
-    C --&gt;|通| D[查出口 IP 和机房]
-    D --&gt; E[发现: G-Core Labs&lt;br&gt;俄罗斯背景被拉黑机房]
-    E --&gt; F[换美国/日本干净节点]
-    F --&gt; G[✅ 登录成功]</code></pre>
-<p><strong>要点</strong>：403 不是网络不通——请求<strong>到达了</strong> OpenAI 服务器，但服务器拒绝。拒绝原因要看出口 IP 的"身份"（机房/地区），而不是账号或密码。</p>
-<h3 id="b">案例 B：浏览器报代理地址有问题<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A[浏览器报&lt;br&gt;代理服务器地址有问题] --&gt; B[查系统代理设置&lt;br&gt;gsettings]
-    B --&gt; C[发现指向 7897]
-    C --&gt; D[查实际监听&lt;br&gt;ss -tlnp]
-    D --&gt; E[客户端监听 7890&lt;br&gt;7897 无服务]
-    E --&gt; F[改系统代理为 7890]
-    F --&gt; G[✅ 恢复正常]</code></pre>
-<p><strong>要点</strong>：换了代理客户端，端口可能变（Clash Verge 7897 → 追云 7890 → Clash Party ?）。<strong>任何依赖代理端口的配置都要跟着更新</strong>：系统代理、环境变量、网关配置。</p>
-<hr />
-<h2 id="5">5. 日志是排查的好帮手<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Hermes 网关日志</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tail<span class="w"> </span>-50<span class="w"> </span>~/.hermes/logs/gateway.log
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tail<span class="w"> </span>-30<span class="w"> </span>~/.hermes/logs/errors.log
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 看关键行</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;ConnectError|TimedOut|Unauthorized|reconnected&#39;</span><span class="w"> </span>~/.hermes/logs/gateway.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+<h2 id="_2">一、容器生命周期<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>昨天学会了 <code>docker run</code>（创建 + 进入 + 退出）。今天学<strong>不重新创建</strong>，直接操控已有容器 —— 核心是生命周期状态机：</p>
+<div class="highlight"><pre><span></span><code>create → start → running → stop → exited → rm
+          ↑                          ↓
+          └────── start（再启动）──────┘
 </code></pre></div>
-<p><strong>日志关键词对照</strong>：</p>
-<table>
-<thead>
-<tr>
-<th>日志内容</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ConnectError</code> / <code>TimedOut</code></td>
-<td>网络不通（超时类）→ 网络问题</td>
-</tr>
-<tr>
-<td><code>HTTP 401/403</code></td>
-<td>凭证/地区被拒 → 配置问题</td>
-</tr>
-<tr>
-<td><code>Unauthorized user: xxx</code></td>
-<td>白名单拦截 → 授权配置问题</td>
-</tr>
-<tr>
-<td><code>reconnected successfully</code></td>
-<td>已自动恢复，无需处理</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 <strong>重要认知</strong>：网关日志里出现"连接失败"<strong>不一定要干预</strong>——适配器会自动退避重试（8 次/轮），网络抖动会自愈。看到 <code>✓ reconnected successfully</code> 就说明恢复了，别乱改配置。</p>
-</blockquote>
-<hr />
-<h2 id="6_1">6. 排查心法<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>先归类</strong>：网络问题 vs 配置问题，两类解法完全不同</li>
-<li><strong>看日志</strong>：日志会告诉你真相（超时 = 网络，401/403 = 配置）</li>
-<li><strong>用工具</strong>：<code>ss</code> / <code>curl</code> / <code>gsettings</code> / <code>pgrep</code>，一条条验证</li>
-<li><strong>别乱改</strong>：自愈的问题（reconnected）不需要动配置</li>
-<li><strong>记录坑</strong>：踩过的坑写下来，就是最好的学习笔记（这篇手册就是这么来的 😄）</li>
-</ol>
-<hr />
-<p><em>上一篇：<a href="../05-dns-override/">第 5 课 · DNS 覆写是什么</a> · 返回<a href="../../">首页</a></em></p>
+<p>实验观察：</p>
+<ul>
+<li><code>docker start zealous_merkle</code>：容器 ID 不变，STATUS 从 Exited → Up —— <strong>start 是唤醒，不是新建</strong></li>
+<li><code>docker exec -it &lt;容器&gt; bash</code>：钻进<strong>运行中</strong>的容器，exit 退出后容器<strong>继续跑</strong>（PID 1 还活着）—— 与 <code>run -it</code> 里 exit 杀掉 PID 1 完全不同</li>
+<li>容器里敲 <code>docker</code> 报 command not found：CLI 是宿主机的工具，容器里没有 —— 隔离的铁证</li>
+<li><code>docker stop</code>：docker ps 里消失、ps -a 里变 Exited —— 停车 ≠ 删除</li>
+<li><code>docker rm</code>：从 ps -a 彻底消失 —— 报废，不可恢复；但 <code>docker images</code> 里镜像还在（模具还在）</li>
+</ul>
+<p>意外收获 —— 退出码：hello-world 是 <code>Exited (0)</code>（正常结束），而 stop 的 bash 容器是 <code>Exited (137)</code>（128+9，被 SIGKILL 强杀）。<code>docker stop</code> 会先发温柔信号等 10 秒，不响应才强杀。</p>
+<h2 id="_3">二、容器数据问题（科研重点）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>实验 A：体验数据消失</strong></p>
+<div class="highlight"><pre><span></span><code>docker run -it ubuntu bash          # 建容器
+echo &quot;重要数据&quot; &gt; /important.txt    # 写数据
+exit                                # 退出
+docker rm &lt;容器&gt;                    # 删容器
+docker run --rm ubuntu cat /important.txt
+# → cat: /important.txt: No such file or directory
+</code></pre></div>
+<p>结论：容器是临时的，rm 一删，里面写的东西全跟着消失。镜像只会重建"干净的初始环境"。</p>
+<p><strong>实验 B：Bind Mount 救回数据</strong></p>
+<div class="highlight"><pre><span></span><code>mkdir ~/docker-data
+docker run -it -v ~/docker-data:/data ubuntu bash
+echo &quot;persistent&quot; &gt; /data/hello.txt
+exit &amp;&amp; docker rm &lt;容器&gt;
+ls ~/docker-data        # hello.txt 还在！
+</code></pre></div>
+<p>关键理解：</p>
+<ul>
+<li><code>-v 宿主机目录:容器目录</code> = 挂载 —— <strong>同一个地方的两个视角</strong>，不是复制</li>
+<li>写入双向可见：容器里写宿主机看到，宿主机写容器里看到</li>
+<li>容器删了，宿主机目录毫发无损</li>
+<li>类比：给容器插 U 盘 —— 播放器（容器）删了，U 盘（数据）还在</li>
+</ul>
+<h2 id="_4">三、科研场景映射<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>项目代码 / ROS workspace  → git 管理（版本化）
+数据集 / checkpoint / 结果 → Bind Mount 挂进容器（数据存活）
+Dockerfile + compose.yaml  → 可复现环境
+</code></pre></div>
+<p>以后跑实验的标准姿势：<code>docker run -v ~/数据:/data -v ~/代码:/workspace ...</code> —— 容器随便删，数据稳如泰山。</p>
+<h2 id="_5">四、下一步<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>第六阶段：Docker Volume（<code>docker volume create/ls/inspect/rm</code>）—— Bind Mount 是自己管目录，Volume 是让 Docker 管数据目录，两者的区别与适用场景。</p>
 
 
 
@@ -1323,7 +1171,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../05-dns-override/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 5 课 · DNS 覆写是什么">
+          <a href="../2026-08-18/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2026-08-18 · 工具链探索日">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1333,27 +1181,11 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                第 5 课 · DNS 覆写是什么
+                2026-08-18 · 工具链探索日
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../log/2026-08-14/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2026-08-14 · ChatGPT 解锁记">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                2026-08-14 · ChatGPT 解锁记
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
