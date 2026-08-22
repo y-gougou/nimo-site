@@ -1413,7 +1413,7 @@
 <hr />
 <h2 id="3">3. 验证包信息（安装前必做）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p><code>dpkg-deb -I</code> 命令可以<strong>只读</strong>地查看 deb 包的"说明书"，不安装：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dpkg-deb<span class="w"> </span>-I<span class="w"> </span>包名.deb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;Package|Version|Architecture|Maintainer&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dpkg-deb<span class="w"> </span>-I<span class="w"> </span>包名.deb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'Package|Version|Architecture|Maintainer'</span>
 </code></pre></div>
 <pre class="mermaid"><code>flowchart TD
     A[拿到 deb 包] --&gt; B[dpkg-deb -I 检查]
@@ -1482,7 +1482,7 @@
 <ol>
 <li><strong><code>which</code> 找不到但明明装了</strong>：有些应用（Electron/Flutter 类，如微信、QQ、ChatGPT）可执行文件不在 PATH 里，只有桌面入口。用 <code>dpkg -l</code> + 菜单搜索确认，别被 <code>which</code> 骗了。</li>
 <li><strong>安装卡住不动</strong>：某些官方包（如 VS Code）安装时会弹交互式问题（"要不要添加软件源？"）。在无终端环境会卡死，<code>dpkg -l</code> 显示 <code>iF</code> 状态。解法是预置答案后重配：
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;code code/add-microsoft-repo boolean false&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"code code/add-microsoft-repo boolean false"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>debconf-set-selections
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>env<span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>dpkg<span class="w"> </span>--configure<span class="w"> </span>-a
 </code></pre></div></li>
 </ol>

@@ -1367,10 +1367,10 @@
     E --&gt; F[Linux 容器]</code></pre>
 <h1 id="docker-hub">第三部分 · 配置 Docker Hub 镜像源<a class="headerlink" href="#docker-hub" title="Permanent link">&para;</a></h1>
 <p>在 Docker Desktop 的 <code>Settings → Docker Engine</code> 中保留原配置并加入：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">&quot;registry-mirrors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="s2">&quot;https://docker.m.daocloud.io&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="s2">&quot;https://mirror.ccs.tencentyun.com&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="s2">&quot;https://docker.1ms.run&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">"registry-mirrors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="s2">"https://docker.m.daocloud.io"</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="s2">"https://mirror.ccs.tencentyun.com"</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="s2">"https://docker.1ms.run"</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">]</span>
 </code></pre></div>
 <p>没有一次塞入十几个来源，原因是失效镜像可能增加等待时间；同时删除了 HTTP 公共镜像，避免不必要的明文传输。</p>
@@ -1389,29 +1389,29 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>172.20.10.4:5000
 </code></pre></div>
 <p>它使用 HTTP，而 Docker 默认按 HTTPS 访问，所以在 Docker Engine JSON 中加入：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">&quot;insecure-registries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="s2">&quot;172.20.10.4:5000&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">"insecure-registries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="s2">"172.20.10.4:5000"</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">]</span>
 </code></pre></div>
 <p>完整核心配置：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">&quot;builder&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">&quot;gc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">      </span><span class="nt">&quot;defaultKeepStorage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20GB&quot;</span><span class="p">,</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">"builder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">"gc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">      </span><span class="nt">"defaultKeepStorage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20GB"</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span><span class="nt">&quot;experimental&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nt">&quot;buildkit&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span><span class="nt">"experimental"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nt">"buildkit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span><span class="nt">&quot;registry-mirrors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="s2">&quot;https://docker.m.daocloud.io&quot;</span><span class="p">,</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="s2">&quot;https://mirror.ccs.tencentyun.com&quot;</span><span class="p">,</span>
-<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="s2">&quot;https://docker.1ms.run&quot;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span><span class="nt">"registry-mirrors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="s2">"https://docker.m.daocloud.io"</span><span class="p">,</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="s2">"https://mirror.ccs.tencentyun.com"</span><span class="p">,</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="s2">"https://docker.1ms.run"</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">  </span><span class="p">],</span>
-<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">  </span><span class="nt">&quot;insecure-registries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="s2">&quot;172.20.10.4:5000&quot;</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">  </span><span class="nt">"insecure-registries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="s2">"172.20.10.4:5000"</span>
 <a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="p">}</span>
 </code></pre></div>
@@ -1537,7 +1537,7 @@
 <div class="highlight"><pre><span></span><code>docker history ypproject:v1
 
 IMAGE      CREATED BY                                    SIZE
-6c63a5535e75  CMD [&quot;python&quot; &quot;main.py&quot;]                   0B      ← CMD 不占空间
+6c63a5535e75  CMD ["python" "main.py"]                   0B      ← CMD 不占空间
 &lt;missing&gt;  pip install -r requirements.txt              9.7MB   ← RUN 有重量
 &lt;missing&gt;  COPY dir:...                                 24.6kB  ← COPY 搬代码
 &lt;missing&gt;  WORKDIR /app                                 8.19kB
@@ -1550,8 +1550,8 @@ IMAGE      CREATED BY                                    SIZE
 <li>ENV 等只改元数据的指令 SIZE 是 0B —— 不产生文件系统层</li>
 </ul>
 <p><strong>docker inspect &lt;镜像&gt;</strong> —— 看镜像的完整 JSON 配置：</p>
-<div class="highlight"><pre><span></span><code>docker inspect nginx --format &#39;{{.Config.Env}}&#39;
-docker inspect nginx --format &#39;{{.Config.ExposedPorts}}&#39;
+<div class="highlight"><pre><span></span><code>docker inspect nginx --format '{{.Config.Env}}'
+docker inspect nginx --format '{{.Config.ExposedPorts}}'
 </code></pre></div>
 <ul>
 <li>RepoTags：多个 tag 指向同一镜像（名片效果实锤）</li>
@@ -1562,7 +1562,7 @@ docker inspect nginx --format &#39;{{.Config.ExposedPorts}}&#39;
 <p><strong>ENV</strong> —— 设置环境变量：</p>
 <div class="highlight"><pre><span></span><code>ENV APP_NAME=ypapp
 ENV APP_PORT=8080
-CMD [&quot;bash&quot;, &quot;-c&quot;, &quot;echo $APP_NAME is running on port $APP_PORT&quot;]
+CMD ["bash", "-c", "echo $APP_NAME is running on port $APP_PORT"]
 → 运行输出：ypapp is running on port 8080
 </code></pre></div>
 <p><strong>EXPOSE</strong> —— 声明想开的端口（<strong>只是声明</strong>！）：</p>
@@ -1573,17 +1573,17 @@ CMD [&quot;bash&quot;, &quot;-c&quot;, &quot;echo $APP_NAME is running on port $
 </code></pre></div>
 <p><strong>CMD vs ENTRYPOINT</strong>（对比实验结论）：</p>
 <div class="highlight"><pre><span></span><code>docker run cmd-demo                      → hello from CMD
-docker run cmd-demo echo &quot;我传的参数&quot;      → 我传的参数（★ CMD 整组被替换）
+docker run cmd-demo echo "我传的参数"      → 我传的参数（★ CMD 整组被替换）
 docker run entry-demo                    → hello from ENTRYPOINT
-docker run entry-demo &quot;我传的参数&quot;         → hello from ENTRYPOINT 我传的参数（★ 参数追加）
+docker run entry-demo "我传的参数"         → hello from ENTRYPOINT 我传的参数（★ 参数追加）
 
-CMD        = 默认值，可被 docker run 后面内容&quot;整组替换&quot;
-ENTRYPOINT = 固定程序，docker run 后面内容&quot;追加&quot;到它后面
+CMD        = 默认值，可被 docker run 后面内容"整组替换"
+ENTRYPOINT = 固定程序，docker run 后面内容"追加"到它后面
 </code></pre></div>
 <p><strong>踩的坑</strong>：CMD 里引号没配对 → <code>Unterminated quoted string</code>；变量名忘写 $ → 输出原文字。CMD 的 JSON 数组形式引号容易错，写简单点。</p>
 <p><strong>科研经典用法</strong>：</p>
-<div class="highlight"><pre><span></span><code>ENTRYPOINT [&quot;python&quot;]        固定执行 python
-CMD [&quot;main.py&quot;]              默认参数 main.py
+<div class="highlight"><pre><span></span><code>ENTRYPOINT ["python"]        固定执行 python
+CMD ["main.py"]              默认参数 main.py
 docker run myimg                  → python main.py
 docker run myimg train.py         → python train.py
 </code></pre></div>

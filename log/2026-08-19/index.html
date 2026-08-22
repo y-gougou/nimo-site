@@ -1428,7 +1428,7 @@ docker run --rm --network ypnet busybox wget -O- http://web1   ← 用名字访�
 WORKDIR /app             # 工作目录
 COPY . .                 # 把代码搬进镜像（第一个. = 构建上下文，第二个. = 镜像里的 /app）
 RUN pip install -r requirements.txt   # 构建时执行（盖房时砌墙，只一次）
-CMD [&quot;python&quot;,&quot;main.py&quot;] # 启动时执行（住进去开灯，每次启动都执行）
+CMD ["python","main.py"] # 启动时执行（住进去开灯，每次启动都执行）
 </code></pre></div>
 <ul>
 <li>流程：Dockerfile → <code>docker build -t 名字:版本 .</code> → 镜像 → <code>docker run</code> → 容器</li>
@@ -1444,10 +1444,10 @@ CMD [&quot;python&quot;,&quot;main.py&quot;] # 启动时执行（住进去开灯
 <div class="highlight"><pre><span></span><code>services:                # 环境由哪些服务组成
   web1:
     image: nginx
-    ports: [&quot;8080:80&quot;]
+    ports: ["8080:80"]
   web2:
     image: nginx
-    ports: [&quot;8081:80&quot;]
+    ports: ["8081:80"]
 
 docker compose up -d     # 一键启动全部
 docker compose down      # 一键停止+删除容器和网络
@@ -1460,7 +1460,7 @@ docker compose logs      # 看日志
 <li><strong>数据边界</strong>：<code>docker compose down</code> 默认不删除命名 Volume；<code>down -v</code> 才会连卷删除，执行前要确认数据可丢弃</li>
 </ul>
 <h1 id="registry">第八部分 · Registry 与环境迁移<a class="headerlink" href="#registry" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>docker tag &lt;已有镜像&gt; &lt;地址/名字:版本&gt;   # 贴&quot;带地址的名片&quot;（不复制，内容不变）
+<div class="highlight"><pre><span></span><code>docker tag &lt;已有镜像&gt; &lt;地址/名字:版本&gt;   # 贴"带地址的名片"（不复制，内容不变）
 docker push &lt;地址/名字:版本&gt;             # 上传到仓库（地址写在名字里）
 docker pull &lt;地址/名字:版本&gt;             # 从仓库下载
 docker rmi &lt;镜像名&gt;                      # 删镜像（rm 删容器，rmi 删镜像）
@@ -1544,7 +1544,7 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
       at unix:///var/run/docker.sock
 场景：昨天执行了 usermod -aG docker 加了组，今天新开的终端还是没权限。
 原理：docker 客户端通过 unix socket（/var/run/docker.sock）与引擎通信，
-      这个 socket 属于 docker 组。但&quot;组变更&quot;要重新登录才生效 ——
+      这个 socket 属于 docker 组。但"组变更"要重新登录才生效 ——
       系统在登录那一刻读取你的组列表，当前会话还是旧身份。
 解决：注销重新登录（彻底）；或 newgrp docker 临时切换当前终端。
 预防：改完用户组，记得注销重登一次。
@@ -1558,7 +1558,7 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
 原理：容器是隔离的，里面只有镜像自带的东西；docker CLI 是宿主机工具，
       不会出现在容器里。遥控器永远在宿主手里。
 解决：在宿主机敲 docker；容器里想用工具先确认镜像里有没有。
-预防：记住&quot;容器只有镜像带的东西&quot;。
+预防：记住"容器只有镜像带的东西"。
 </code></pre></div>
 <h3 id="3stop-137">坑 3：stop 后退出码 137（被强杀）<a class="headerlink" href="#3stop-137" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>现象：docker ps -a 显示 Exited (137)，而 hello-world 是 Exited (0)。
@@ -1566,7 +1566,7 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
       docker stop 的流程：先发温柔信号（SIGTERM）等 10 秒，
       进程不响应才发强杀。bash 没理会温柔信号 → 被强杀 → 137。
 对比：0 = 进程自己正常退出。
-预防：看 STATUS 的退出码，能判断容器是&quot;正常下班&quot;还是&quot;被拖走&quot;。
+预防：看 STATUS 的退出码，能判断容器是"正常下班"还是"被拖走"。
 </code></pre></div>
 <h3 id="4mainpy-python">坑 4：main.py 顶层缩进（Python 语法）<a class="headerlink" href="#4mainpy-python" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>报错：（运行时）IndentationError: unexpected indent
@@ -1584,7 +1584,7 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
       先核对拼写再怀疑网络。
 </code></pre></div>
 <h3 id="6docker-build">坑 6：docker build 忘了最后的点<a class="headerlink" href="#6docker-build" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>报错：docker: &#39;docker build&#39; requires 1 argument
+<div class="highlight"><pre><span></span><code>报错：docker: 'docker build' requires 1 argument
 场景：docker build -t ypproject:v1 少了最后的 .。
 原理：. = 构建上下文 —— 告诉 Docker 从哪个目录找 Dockerfile 和文件。
 解决：补上：docker build -t ypproject:v1 .
@@ -1617,7 +1617,7 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
 <div class="highlight"><pre><span></span><code>报错：sh: 1: wget: not found
 场景：想用 wget 验证容器互访，nginx 精简镜像里没这工具。
 原理：精简镜像只带自己需要的工具。
-解决：用 busybox 镜像当&quot;探针&quot;（自带 wget/ping，只有几 MB）。
+解决：用 busybox 镜像当"探针"（自带 wget/ping，只有几 MB）。
 预防：容器里用工具前先确认镜像里有没有；busybox 是万能探针。
 </code></pre></div>
 <h3 id="11rmi">坑 11：rmi 删不掉镜像（容器占用）<a class="headerlink" href="#11rmi" title="Permanent link">&para;</a></h3>
@@ -1630,34 +1630,34 @@ docker system prune     ← ⚠️ 清理命令：删除未使用的容器/镜�
 预防：删镜像前先 docker ps -a 看有没有容器在用。
 </code></pre></div>
 <h3 id="12pull-run">坑 12：pull 回来的镜像名带地址（短名 run 失败）<a class="headerlink" href="#12pull-run" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>报错：docker run ypproject:v1 → Unable to find image &#39;ypproject:v1&#39; locally
+<div class="highlight"><pre><span></span><code>报错：docker run ypproject:v1 → Unable to find image 'ypproject:v1' locally
       → pull access denied for ypproject, repository does not exist
 场景：从 localhost:5000 拉回镜像后，用短名 run。
 原理：镜像名 = 地址 + 名字 + 版本；pull 回来的名字是
       localhost:5000/ypproject:v1（带出身地址）。Docker 按名字精确匹配，
       短名不存在 → 自动去 Docker Hub 找（也不存在）→ 报错。
 解决：docker run localhost:5000/ypproject:v1（用全名）。
-预防：记住&quot;不带地址 = 默认 Docker Hub&quot;；run 用 pull 回来的全名。
+预防：记住"不带地址 = 默认 Docker Hub"；run 用 pull 回来的全名。
 </code></pre></div>
 <h3 id="13tag">坑 13：tag 参数方向写反<a class="headerlink" href="#13tag" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>报错：Error response from daemon: No such image: ypproject:v1
 场景：想给镜像加短名，写了 docker tag ypproject:v1 localhost:5000/ypproject:v1。
 原理：docker tag &lt;已存在的源&gt; &lt;新名字&gt; —— 写反了方向，源（短名）不存在。
-      而且 tag 是&quot;加别名&quot;不是&quot;重命名&quot;：源镜像保留，只是多一个名字。
+      而且 tag 是"加别名"不是"重命名"：源镜像保留，只是多一个名字。
 解决：docker tag localhost:5000/ypproject:v1 ypproject:v1（源是长名）。
 预防：参数顺序 = 先有的，后想要的名字。
 </code></pre></div>
 <h3 id="14wget-o-o">坑 14：wget 的 -o 和 -O 大小写<a class="headerlink" href="#14wget-o-o" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>现象：wget -q -o- http://web1 没有任何输出。
 原理：wget 里大写 -O = 输出到终端（stdout）；小写 -o = 输出到文件。
-      -o- 把内容写进了名为 &quot;-&quot; 的文件，终端自然没显示。
+      -o- 把内容写进了名为 "-" 的文件，终端自然没显示。
 解决：用大写：wget -q -O- http://web1。
 预防：命令参数大小写敏感 —— 不确定时查 wget --help。
 </code></pre></div>
 <h3 id="15volume">坑 15：Volume 删不掉（卷被容器占用）<a class="headerlink" href="#15volume" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>报错：Error response from daemon: remove ypdata: volume is in use
 场景：docker volume rm ypdata 被容器 B 拦住（当时已 Exited）。
-原理：卷被容器&quot;引用&quot;时删不掉 —— Docker 检查的是容器是否存在
+原理：卷被容器"引用"时删不掉 —— Docker 检查的是容器是否存在
       （包括 Exited），不只是是否运行。和坑 11 的镜像保护同款机制。
 解决：docker rm &lt;容器&gt; 删掉引用容器的容器 → 再 docker volume rm。
 预防：删卷前先确认没有容器挂载它。
