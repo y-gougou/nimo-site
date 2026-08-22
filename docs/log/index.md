@@ -44,8 +44,9 @@
 
 - [2026-08-19 · Docker 基础主干与工程入门](2026-08-19.md)
 
-### 08-22 · Docker 补强
+### 08-22 · Docker 全链路与补强
 
-> 查漏补缺日：docker history/inspect、ENV/EXPOSE/ENTRYPOINT 实操、两电脑模拟云服务器部署、ROS Docker 结合毕设深入、GPU/CUDA 概念。
+> 上午 Windows Docker Desktop 全链路实战（WSL 2 / 镜像源 / HTTP Registry / nginx 排错证据链）；下午 Docker 概念补强（history/inspect、ENV/ENTRYPOINT、两电脑模拟云部署、ROS/GPU 结合毕设）。
 
-- [2026-08-22 · Docker 补强：排错工具、ENV/ENTRYPOINT、云部署模拟、ROS/GPU](2026-08-22.md)
+- [2026-08-22 · Docker 全链路实战与概念补强](2026-08-22.md)
+- [Docker 主题知识库](../docker/index.md)

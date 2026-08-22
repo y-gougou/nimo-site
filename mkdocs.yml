@@ -1,7 +1,10 @@
 site_name: Nimo 的麦迪逊花园
 site_description: 记录我的学习过程与收获
 site_author: Nimo
-site_url: https://nimo.github.io/
+site_url: https://y-gougou.github.io/nimo-site/
+repo_url: https://github.com/y-gougou/nimo-site
+repo_name: y-gougou/nimo-site
+edit_uri: edit/main/docs/
 
 theme:
   name: material
@@ -63,6 +66,13 @@ plugins:
 
 nav:
   - 首页: index.md
+  - 🐳 Docker 知识库:
+    - 学习路线与知识地图: docker/index.md
+    - 运行架构 · Windows、WSL 2 与 Linux: docker/01-architecture.md
+    - 镜像、容器与 Registry: docker/02-image-container-registry.md
+    - 网络、端口与 nginx 实战: docker/03-network-nginx.md
+    - 数据、构建与 Compose: docker/04-storage-build-compose.md
+    - 排错手册: docker/05-troubleshooting.md
   - 📚 学习日志:
     - 日志总览: log/index.md
     - 2026-08-13 · 软件包与代理入门:
@@ -79,4 +89,4 @@ nav:
       - 交互式工作台: codex-cli/index.html
     - 2026-08-18 · 工具链探索日: log/2026-08-18.md
     - 2026-08-19 · Docker 基础主干: log/2026-08-19.md
-    - 2026-08-22 · Docker 补强: log/2026-08-22.md
+    - 2026-08-22 · Docker 全链路与补强: log/2026-08-22.md
