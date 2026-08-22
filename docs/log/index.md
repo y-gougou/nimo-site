@@ -43,3 +43,10 @@
 > Docker 主干一日通关：生命周期、数据、端口、网络、Dockerfile、Compose、Registry、云服务器 + 15 个坑的完整教训清单。
 
 - [2026-08-19 · Docker 基础主干与工程入门](2026-08-19.md)
+
+### 08-22 · Windows Docker Desktop 实战
+
+> 从 Engine 因 WSL 缺失无法启动，到内网 HTTP Registry、nginx 端口映射和浏览器排错的完整证据链。
+
+- [2026-08-22 · Windows Docker Desktop 全链路实战](2026-08-22.md)
+- [进入 Docker 主题知识库](../docker/index.md)
