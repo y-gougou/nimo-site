@@ -12,13 +12,13 @@
         <meta name="author" content="Nimo">
       
       
-        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/course/05-dns-override/">
+        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/docker/04-storage-build-compose/">
       
       
-        <link rel="prev" href="../04-clash-party/">
+        <link rel="prev" href="../03-network-nginx/">
       
       
-        <link rel="next" href="../06-troubleshooting/">
+        <link rel="next" href="../05-troubleshooting/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>第 5 课 · DNS 覆写是什么 - Nimo 的麦迪逊花园</title>
+        <title>数据、构建与 Compose - Nimo 的麦迪逊花园</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-dns" class="md-skip">
+        <a href="#compose" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第 5 课 · DNS 覆写是什么
+              数据、构建与 Compose
             
           </span>
         </div>
@@ -244,11 +244,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../docker/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -266,12 +268,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../log/" class="md-tabs__link">
           
   
@@ -362,6 +362,8 @@
       
   
   
+    
+  
   
   
     
@@ -385,18 +387,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../docker/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -414,13 +419,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -440,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/01-architecture/" class="md-nav__link">
+      <a href="../01-architecture/" class="md-nav__link">
         
   
   
@@ -468,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/02-image-container-registry/" class="md-nav__link">
+      <a href="../02-image-container-registry/" class="md-nav__link">
         
   
   
@@ -496,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/03-network-nginx/" class="md-nav__link">
+      <a href="../03-network-nginx/" class="md-nav__link">
         
   
   
@@ -504,342 +509,6 @@
     
   
     网络、端口与 nginx 实战
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../docker/04-storage-build-compose/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    数据、构建与 Compose
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../docker/05-troubleshooting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    排错手册
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../log/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📚 学习日志
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    📚 学习日志
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2026-08-13 · 软件包与代理入门
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    2026-08-13 · 软件包与代理入门
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-package/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 1 课 · Linux 软件包入门
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-install-practice/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2 课 · 动手安装实战
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-proxy-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 3 课 · 为什么要用代理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-clash-party/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 4 课 · Clash Party 配置指南
   
 
     
@@ -876,7 +545,7 @@
   <span class="md-ellipsis">
     
   
-    第 5 课 · DNS 覆写是什么
+    数据、构建与 Compose
   
 
     
@@ -894,7 +563,7 @@
   <span class="md-ellipsis">
     
   
-    第 5 课 · DNS 覆写是什么
+    数据、构建与 Compose
   
 
     
@@ -920,76 +589,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 先搞懂 DNS 是什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 国内网络下的 DNS 问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. DNS 覆写是什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-fake-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. fake-ip 模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 要不要开？—— 建议：开
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 验证 DNS 是否被接管
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 课后作业
+        为什么要把数据放到容器外
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bind Mount
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dockerfile：把环境写成代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compose：描述整个应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一套可迁移的项目结构
       
     </span>
   </a>
@@ -1012,7 +670,336 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-troubleshooting/" class="md-nav__link">
+      <a href="../05-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    排错手册
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../log/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 学习日志
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 学习日志
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-08-13 · 软件包与代理入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-08-13 · 软件包与代理入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/01-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 课 · Linux 软件包入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/02-install-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 课 · 动手安装实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/03-proxy-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 课 · 为什么要用代理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/04-clash-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 课 · Clash Party 配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/05-dns-override/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 课 · DNS 覆写是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/06-troubleshooting/" class="md-nav__link">
         
   
   
@@ -1290,76 +1277,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 先搞懂 DNS 是什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 国内网络下的 DNS 问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. DNS 覆写是什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-fake-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. fake-ip 模式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 要不要开？—— 建议：开
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 验证 DNS 是否被接管
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 课后作业
+        为什么要把数据放到容器外
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bind Mount
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dockerfile：把环境写成代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compose：描述整个应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一套可迁移的项目结构
       
     </span>
   </a>
@@ -1386,114 +1362,103 @@
   
 
 
-<h1 id="5-dns">第 5 课 · DNS 覆写是什么<a class="headerlink" href="#5-dns" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong>课程目标</strong>：搞懂"DNS 覆写"这个开关背后的原理，以及为什么在国内网络建议开启。
-<strong>学习用时</strong>：约 15 分钟。</p>
-</blockquote>
-<hr />
-<h2 id="1-dns">1. 先搞懂 DNS 是什么<a class="headerlink" href="#1-dns" title="Permanent link">&para;</a></h2>
-<p>DNS（Domain Name System）是<strong>域名解析系统</strong>——把人类好记的域名（<code>www.google.com</code>）翻译成机器用的 IP 地址（<code>142.250.72.36</code>）。</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant 你 as 你的电脑
-    participant DNS as DNS 服务器
-    participant 谷歌 as google.com
-
-    你-&gt;&gt;DNS: ① www.google.com 的 IP 是多少?
-    DNS--&gt;&gt;你: ② 142.250.72.36
-    你-&gt;&gt;谷歌: ③ 直接访问 IP
-    谷歌--&gt;&gt;你: ④ 返回网页</code></pre>
-<hr />
-<h2 id="2-dns">2. 国内网络下的 DNS 问题<a class="headerlink" href="#2-dns" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[你的 DNS 请求] --&gt; B{发给谁?}
-    B --&gt;|运营商 DNS&lt;br&gt;国内运营商等| C[问题 1: 污染&lt;br&gt;海外域名返回假 IP]
-    B --&gt;|运营商 DNS| D[问题 2: 泄露&lt;br&gt;访问记录暴露给运营商]
-    B --&gt;|DoH 加密查询&lt;br&gt;走代理| E[✅ 真实 IP + 隐私保护]</code></pre>
-<p><strong>问题 1：DNS 污染</strong>。运营商 DNS 对某些海外域名返回<strong>篡改过的假 IP</strong>，导致你访问的"google.com"其实是个错误地址 → 连不上或被跳转到奇怪页面。</p>
-<p><strong>问题 2：DNS 泄露</strong>。你的 DNS 查询本身会暴露"你在访问哪些域名"。更关键的是，某些服务（如 OpenAI）会根据 DNS 来源判断地区——<strong>DNS 泄露可能触发"地区不支持"</strong>。</p>
-<hr />
-<h2 id="3-dns">3. DNS 覆写是什么<a class="headerlink" href="#3-dns" title="Permanent link">&para;</a></h2>
-<p>Clash 系客户端的 <strong>DNS 覆写（Override DNS）</strong>：打开后，客户端<strong>接管你系统的 DNS 设置</strong>，所有应用的域名解析请求先经过 Clash 内核处理：</p>
-<pre class="mermaid"><code>flowchart LR
-    subgraph 关闭时[❌ 未开启 DNS 覆写]
-        A1[应用] --&gt; A2[运营商 DNS&lt;br&gt;污染+泄露]
-    end
-    subgraph 开启时[✅ 开启 DNS 覆写]
-        B1[应用] --&gt; B2[127.0.0.1&lt;br&gt;Clash 内核]
-        B2 --&gt; B3[DoH 加密查询&lt;br&gt;doh.pub 等]
-        B2 --&gt; B4[fake-ip 机制]
-    end</code></pre>
-<p>开启后：
-- 系统 DNS 被指向 <code>127.0.0.1</code>（客户端自己）
-- 客户端用 <strong>DoH（DNS over HTTPS，加密查询）</strong> 向可信 DNS 服务器解析
-- 结合 <strong>fake-ip 模式</strong> 实现按规则分流</p>
-<hr />
-<h2 id="4-fake-ip">4. fake-ip 模式<a class="headerlink" href="#4-fake-ip" title="Permanent link">&para;</a></h2>
-<p>Clash Party 默认启用 <strong>fake-ip 增强模式</strong>：</p>
-<pre class="mermaid"><code>flowchart TD
-    A[应用请求解析域名] --&gt; B[Clash 返回一个假的 IP&lt;br&gt;198.18.x.x]
-    B --&gt; C[应用访问假 IP]
-    C --&gt; D[Clash 拦截流量&lt;br&gt;按规则匹配域名]
-    D --&gt; E{规则判断}
-    E --&gt;|国内域名| F[真实 DNS 解析&lt;br&gt;直连]
-    E --&gt;|国外域名| G[走代理节点解析+访问]</code></pre>
-<p><strong>好处</strong>：应用根本不需要知道真实 IP，Clash 在流量层按域名规则分流。这就是"开箱即用"的体验来源。</p>
-<hr />
-<h2 id="5">5. 要不要开？—— 建议：开<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>场景</th>
-<th>建议</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>国内宽带 + 梯子（我的情况）</strong></td>
-<td>✅ 开。防污染、防泄露、fake-ip 分流依赖它</td>
-</tr>
-<tr>
-<td>本地跑 AdGuard Home / Pi-hole 等 DNS 工具</td>
-<td>⚠️ 可能冲突，需谨慎</td>
-</tr>
-<tr>
-<td>需要局域网设备共享 DNS</td>
-<td>⚠️ 注意配置</td>
-</tr>
-</tbody>
-</table>
-<p><strong>三个理由</strong>：</p>
-<ol>
-<li><strong>防 DNS 泄露</strong> → 避免访问记录暴露 + 避免被服务商地区判定误伤</li>
-<li><strong>fake-ip 模式依赖它</strong> → 不开覆写，内核接管不了解析，分流失效</li>
-<li><strong>防污染</strong> → DoH 加密查询拿到真实 IP</li>
-</ol>
-<blockquote>
-<p>💡 <strong>经验</strong>：我排查 ChatGPT 403 时，除了换节点，DNS 覆写也是预防"地区误判"的重要一环。开了它，域名解析全部走代理通道，服务商看到的解析来源是干净的。</p>
-</blockquote>
-<hr />
-<h2 id="6-dns">6. 验证 DNS 是否被接管<a class="headerlink" href="#6-dns" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 查看系统 DNS 设置（开启覆写后应指向 127.0.0.1 附近）</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cat<span class="w"> </span>/etc/resolv.conf
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 或</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>resolvectl<span class="w"> </span>status<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+<h1 id="compose">数据、构建与 Compose<a class="headerlink" href="#compose" title="Permanent link">&para;</a></h1>
+<h2 id="_1">为什么要把数据放到容器外<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>容器的可写层跟随容器生命周期。删除容器后，这一层的数据也会删除。</p>
+<p>长期数据通常放在：</p>
+<ul>
+<li>Bind Mount：你管理宿主机目录</li>
+<li>Volume：Docker 管理存储位置</li>
+</ul>
+<h2 id="bind-mount">Bind Mount<a class="headerlink" href="#bind-mount" title="Permanent link">&para;</a></h2>
+<p>适合源码、配置、实验数据和需要直接查看的文件：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/project"</span>,target<span class="o">=</span>/workspace<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>ubuntu<span class="w"> </span>ls<span class="w"> </span>/workspace
 </code></pre></div>
-<pre class="mermaid"><code>flowchart TD
-    A[检查 resolv.conf] --&gt; B{DNS 指向 127.0.0.1?}
-    B --&gt;|是| C[✅ DNS 覆写生效]
-    B --&gt;|否| D[DNS 还是运营商地址&lt;br&gt;覆写未生效或未开启]
-    D --&gt; E[检查客户端 DNS 设置&lt;br&gt;确认覆写开关]</code></pre>
-<hr />
-<h2 id="_1">📝 课后作业<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li>打开 Clash Party 的 DNS 设置，找到"DNS 覆写"开关，开启它</li>
-<li>运行 <code>cat /etc/resolv.conf</code> 看系统 DNS 变成了什么</li>
-<li>思考：fake-ip 模式下，为什么应用不需要知道真实 IP？</li>
-</ol>
-<hr />
-<p><em>上一篇：<a href="../04-clash-party/">第 4 课 · Clash Party 配置指南</a> · 下一篇：<a href="../06-troubleshooting/">第 6 课 · 常见问题排查手册</a></em></p>
+<p>原始数据建议只读挂载：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/dataset"</span>,target<span class="o">=</span>/data,readonly<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>ubuntu<span class="w"> </span>ls<span class="w"> </span>/data
+</code></pre></div>
+<p>在 Windows + WSL 2 开发 Linux 项目时，频繁读写或依赖文件变更监听的源码放在 WSL Linux 文件系统中通常更合适。</p>
+<h2 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h2>
+<p>适合数据库和由程序维护的数据：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">docker</span> <span class="n">volume</span> <span class="n">create</span> <span class="n">mysql-data</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">docker</span> <span class="n">run</span> <span class="n">-d</span> <span class="p">`</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="p">-</span><span class="n">-name</span> <span class="n">mysql</span> <span class="p">`</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  <span class="n">-e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="p">=</span><span class="n">example</span> <span class="p">`</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  <span class="n">-v</span> <span class="n">mysql-data</span><span class="p">:/</span><span class="n">var</span><span class="p">/</span><span class="n">lib</span><span class="p">/</span><span class="n">mysql</span> <span class="p">`</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  <span class="n">mysql</span><span class="p">:</span><span class="n">8</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Volume 不是备份</p>
+<p>Volume 仍然保存在这台电脑的磁盘中。磁盘损坏、Docker 数据被重置或电脑丢失时，Volume 也可能丢失。重要数据仍需外部备份。</p>
+</div>
+<h2 id="dockerfile">Dockerfile：把环境写成代码<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h2>
+<p>目录：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>nginx-demo/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├─ Dockerfile
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>└─ index.html
+</code></pre></div>
+<p>Dockerfile：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">COPY</span><span class="w"> </span>index.html<span class="w"> </span>/usr/share/nginx/html/index.html
+</code></pre></div>
+<p>构建和运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">docker</span> <span class="n">build</span> <span class="n">-t</span> <span class="n">nginx-demo</span><span class="p">:</span><span class="n">v2</span> <span class="p">.</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">docker</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">-d</span> <span class="n">-p</span> <span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">8081</span><span class="p">:</span><span class="n">80</span> <span class="p">-</span><span class="n">-name</span> <span class="n">web-v2</span> <span class="n">nginx-demo</span><span class="p">:</span><span class="n">v2</span>
+</code></pre></div>
+<p>重要概念：</p>
+<ul>
+<li><code>FROM</code>：选择基础镜像</li>
+<li><code>COPY</code>：把构建上下文中的文件放进镜像</li>
+<li><code>RUN</code>：构建镜像时执行</li>
+<li><code>CMD</code>：容器每次启动时执行默认命令</li>
+<li><code>.dockerignore</code>：排除无关文件、缓存和敏感内容</li>
+</ul>
+<p>API Key、密码和 SSH 私钥不要写进 Dockerfile，也不要复制进镜像。</p>
+<h2 id="compose_1">Compose：描述整个应用<a class="headerlink" href="#compose_1" title="Permanent link">&para;</a></h2>
+<p><code>compose.yaml</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.10.4:5000/nginx-demo:v1</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"127.0.0.1:8080:80"</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nt">redis</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:alpine</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-data:/data</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="nt">redis-data</span><span class="p">:</span>
+</code></pre></div>
+<p>常用命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">docker</span> <span class="n">compose</span> <span class="n">config</span>       <span class="c"># 先检查最终配置</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="n">-d</span>        <span class="c"># 创建或更新并启动</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">docker</span> <span class="n">compose</span> <span class="nb">ps </span>          <span class="c"># 查看状态</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">docker</span> <span class="n">compose</span> <span class="n">logs</span> <span class="o">-f</span>      <span class="c"># 持续查看日志</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span>         <span class="c"># 删除容器和默认网络</span>
+</code></pre></div>
+<p><code>docker compose down</code> 默认不会删除声明的命名 Volume；只有明确执行 <code>docker compose down -v</code> 才会连卷一起删除，使用前必须确认数据是否可丢弃。</p>
+<h2 id="_2">一套可迁移的项目结构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>project/
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├─ src/
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>├─ configs/
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>├─ Dockerfile
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>├─ compose.yaml
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>├─ requirements.txt / lock 文件
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>├─ .dockerignore
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>└─ README.md
+</code></pre></div>
+<p>资产分工：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>代码和配置 → Git
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>镜像       → Registry
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>数据       → Volume / 外部存储 / 备份
+</code></pre></div>
 
 
 
@@ -1529,7 +1494,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../04-clash-party/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 4 课 · Clash Party 配置指南">
+          <a href="../03-network-nginx/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 网络、端口与 nginx 实战">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1539,20 +1504,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                第 4 课 · Clash Party 配置指南
+                网络、端口与 nginx 实战
               </div>
             </div>
           </a>
         
         
           
-          <a href="../06-troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 6 课 · 常见问题排查手册">
+          <a href="../05-troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="下一页: 排错手册">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                第 6 课 · 常见问题排查手册
+                排错手册
               </div>
             </div>
             <div class="md-footer__button md-icon">
