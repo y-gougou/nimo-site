@@ -43,3 +43,9 @@
 > Docker 主干一日通关：生命周期、数据、端口、网络、Dockerfile、Compose、Registry、云服务器 + 15 个坑的完整教训清单。
 
 - [2026-08-19 · Docker 基础主干与工程入门](2026-08-19.md)
+
+### 08-22 · Docker 补强
+
+> 查漏补缺日：docker history/inspect、ENV/EXPOSE/ENTRYPOINT 实操、两电脑模拟云服务器部署、ROS Docker 结合毕设深入、GPU/CUDA 概念。
+
+- [2026-08-22 · Docker 补强：排错工具、ENV/ENTRYPOINT、云部署模拟、ROS/GPU](2026-08-22.md)
