@@ -1,59 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://nimo.github.io/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/01-package/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/01-package/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/02-install-practice/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/02-install-practice/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/03-proxy-basics/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/03-proxy-basics/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/04-clash-party/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/04-clash-party/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/05-dns-override/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/05-dns-override/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/course/06-troubleshooting/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/course/06-troubleshooting/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/2026-08-14/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/01-architecture/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/2026-08-15/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/02-image-container-registry/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/2026-08-18/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/03-network-nginx/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/2026-08-19/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/04-storage-build-compose/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
-         <loc>https://nimo.github.io/log/2026-08-22/</loc>
+         <loc>https://y-gougou.github.io/nimo-site/docker/05-troubleshooting/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/2026-08-14/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/2026-08-15/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/2026-08-18/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/2026-08-19/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://y-gougou.github.io/nimo-site/log/2026-08-22/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
 </urlset>

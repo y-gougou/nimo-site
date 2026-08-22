@@ -12,13 +12,13 @@
         <meta name="author" content="Nimo">
       
       
-        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/course/06-troubleshooting/">
+        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/docker/05-troubleshooting/">
       
       
-        <link rel="prev" href="../05-dns-override/">
+        <link rel="prev" href="../04-storage-build-compose/">
       
       
-        <link rel="next" href="../../log/2026-08-14/">
+        <link rel="next" href="../../log/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>第 6 课 · 常见问题排查手册 - Nimo 的麦迪逊花园</title>
+        <title>排错手册 - Nimo 的麦迪逊花园</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6" class="md-skip">
+        <a href="#docker" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第 6 课 · 常见问题排查手册
+              排错手册
             
           </span>
         </div>
@@ -244,11 +244,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../docker/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -266,12 +268,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../log/" class="md-tabs__link">
           
   
@@ -362,6 +362,8 @@
       
   
   
+    
+  
   
   
     
@@ -385,18 +387,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../docker/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -414,13 +419,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -440,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/01-architecture/" class="md-nav__link">
+      <a href="../01-architecture/" class="md-nav__link">
         
   
   
@@ -468,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/02-image-container-registry/" class="md-nav__link">
+      <a href="../02-image-container-registry/" class="md-nav__link">
         
   
   
@@ -496,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/03-network-nginx/" class="md-nav__link">
+      <a href="../03-network-nginx/" class="md-nav__link">
         
   
   
@@ -524,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/04-storage-build-compose/" class="md-nav__link">
+      <a href="../04-storage-build-compose/" class="md-nav__link">
         
   
   
@@ -532,342 +537,6 @@
     
   
     数据、构建与 Compose
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../docker/05-troubleshooting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    排错手册
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../log/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📚 学习日志
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    📚 学习日志
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2026-08-13 · 软件包与代理入门
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    2026-08-13 · 软件包与代理入门
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-package/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 1 课 · Linux 软件包入门
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-install-practice/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2 课 · 动手安装实战
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-proxy-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 3 课 · 为什么要用代理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-clash-party/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 4 课 · Clash Party 配置指南
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-dns-override/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 5 课 · DNS 覆写是什么
   
 
     
@@ -904,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    第 6 课 · 常见问题排查手册
+    排错手册
   
 
     
@@ -922,7 +591,7 @@
   <span class="md-ellipsis">
     
   
-    第 6 课 · 常见问题排查手册
+    排错手册
   
 
     
@@ -948,10 +617,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 排查总纲：先分清问题类型
+        标准排查顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-docker-desktop-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 层：Docker Desktop 与 Engine
       
     </span>
   </a>
@@ -962,7 +642,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 排查工具箱
+        第 2 层：镜像
       
     </span>
   </a>
@@ -973,7 +653,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 常见问题速查表
+        第 3 层：容器
       
     </span>
   </a>
@@ -981,49 +661,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-http" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 案例复盘：两个真实排查
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 案例复盘：两个真实排查">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#achatgpt-403" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 A：ChatGPT 登录 403
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 B：浏览器报代理地址有问题
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 日志是排查的好帮手
+        第 4 层：端口与 HTTP
       
     </span>
   </a>
@@ -1031,10 +672,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 排查心法
+        日常排错四件套
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速故障索引
       
     </span>
   </a>
@@ -1045,6 +697,335 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../log/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 学习日志
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 学习日志
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-08-13 · 软件包与代理入门
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-08-13 · 软件包与代理入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/01-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 课 · Linux 软件包入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/02-install-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 课 · 动手安装实战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/03-proxy-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 课 · 为什么要用代理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/04-clash-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 课 · Clash Party 配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/05-dns-override/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 课 · DNS 覆写是什么
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/06-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 6 课 · 常见问题排查手册
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1307,10 +1288,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 排查总纲：先分清问题类型
+        标准排查顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-docker-desktop-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 层：Docker Desktop 与 Engine
       
     </span>
   </a>
@@ -1321,7 +1313,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 排查工具箱
+        第 2 层：镜像
       
     </span>
   </a>
@@ -1332,7 +1324,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 常见问题速查表
+        第 3 层：容器
       
     </span>
   </a>
@@ -1340,49 +1332,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-http" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 案例复盘：两个真实排查
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 案例复盘：两个真实排查">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#achatgpt-403" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 A：ChatGPT 登录 403
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        案例 B：浏览器报代理地址有问题
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 日志是排查的好帮手
+        第 4 层：端口与 HTTP
       
     </span>
   </a>
@@ -1390,10 +1343,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 排查心法
+        日常排错四件套
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速故障索引
       
     </span>
   </a>
@@ -1420,175 +1384,149 @@
   
 
 
-<h1 id="6">第 6 课 · 常见问题排查手册<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong>课程目标</strong>：掌握"上不了网 / 服务连不上"的系统性排查方法，学会用命令定位问题。
-<strong>学习用时</strong>：约 20 分钟。</p>
-</blockquote>
-<hr />
-<h2 id="1">1. 排查总纲：先分清问题类型<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>遇到任何"连不上"的问题，第一步不是乱试，而是<strong>归类</strong>：</p>
-<pre class="mermaid"><code>flowchart TD
-    A[问题: 连不上] --&gt; B{是网络问题&lt;br&gt;还是配置问题?}
-    B --&gt; C[网络问题&lt;br&gt;墙 / 节点 / 端口不通]
-    B --&gt; D[配置问题&lt;br&gt;代理指向 / token / 白名单]
-    C --&gt; E[排查: 代理测试 / 出口 IP / 端口监听]
-    D --&gt; F[排查: 环境变量 / 配置文件 / 日志]</code></pre>
-<p><strong>判断技巧</strong>：网络问题通常表现为<strong>超时</strong>（timeout、000）；配置问题通常表现为<strong>有响应但被拒绝</strong>（401/403）。</p>
-<hr />
-<h2 id="2">2. 排查工具箱<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ① 进程在不在</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pgrep<span class="w"> </span>-af<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;clash|mihomo&#39;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ② 端口有没有监听</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">127</span>.0.0.1
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># ③ 代理出网测试（200 = 通，000 = 不通）</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>curl<span class="w"> </span>-x<span class="w"> </span>http://127.0.0.1:7890<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;HTTP %{http_code}\n&quot;</span><span class="w"> </span>https://www.google.com
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># ④ 直连对比（判断是不是被墙）</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>curl<span class="w"> </span>-s<span class="w"> </span>-m<span class="w"> </span><span class="m">10</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;HTTP %{http_code}\n&quot;</span><span class="w"> </span>https://www.baidu.com
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># ⑤ 出口 IP 和地区（判断节点是否干净）</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>curl<span class="w"> </span>-x<span class="w"> </span>http://127.0.0.1:7890<span class="w"> </span>https://api.ip.sb/geoip
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># ⑥ 系统代理设置</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>gsettings<span class="w"> </span>get<span class="w"> </span>org.gnome.system.proxy<span class="w"> </span>mode
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>gsettings<span class="w"> </span>get<span class="w"> </span>org.gnome.system.proxy.http<span class="w"> </span>port
+<h1 id="docker">Docker 排错手册<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<h2 id="_1">标准排查顺序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>不要一遇到错误就重装。先回答四个问题：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. Docker Engine 正常吗？
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>2. 镜像存在吗？
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>3. 容器创建并运行了吗？
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>4. 端口和应用响应正常吗？
 </code></pre></div>
-<pre class="mermaid"><code>flowchart LR
-    subgraph 网络层[网络问题排查]
-        A[进程] --&gt; B[端口] --&gt; C[代理出网] --&gt; D[出口IP]
-    end
-    subgraph 配置层[配置问题排查]
-        E[环境变量] --&gt; F[配置文件] --&gt; G[日志]
-    end</code></pre>
-<hr />
-<h2 id="3">3. 常见问题速查表<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h2 id="1-docker-desktop-engine">第 1 层：Docker Desktop 与 Engine<a class="headerlink" href="#1-docker-desktop-engine" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">docker</span> <span class="n">desktop</span> <span class="n">status</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">docker</span> <span class="n">version</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">docker</span> <span class="n">info</span>
+</code></pre></div>
+<p>判断：</p>
+<ul>
+<li>Client 和 Server 都有：CLI 与 Engine 通信正常。</li>
+<li>只有 Client：Docker Desktop、WSL 2 或 Engine 没启动。</li>
+<li><code>Docker Desktop is unable to start</code>：继续查看 Desktop 日志和 WSL 状态。</li>
+</ul>
+<p>本次 Windows 安装中，Docker Desktop 最初无法启动，日志明确显示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wsl is not installed
+</code></pre></div>
+<p>安装 WSL、设置默认版本为 2 后，Engine 正常启动。这个案例说明：<strong>先看日志中的前置条件错误，不要把启动失败误认为镜像源问题。</strong></p>
+<h2 id="2">第 2 层：镜像<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">docker</span> <span class="n">images</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">docker</span> <span class="n">image</span> <span class="n">inspect</span> <span class="n">172</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">4</span><span class="p">:</span><span class="n">5000</span><span class="p">/</span><span class="n">nginx-demo</span><span class="p">:</span><span class="n">v1</span>
+</code></pre></div>
+<p>常见问题：</p>
 <table>
 <thead>
 <tr>
-<th>#</th>
-<th>症状</th>
-<th>原因</th>
-<th>解法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>浏览器报"代理服务器地址有问题"</td>
-<td>系统代理指向的端口没有服务在监听</td>
-<td><code>ss -tlnp</code> 确认实际端口，改系统代理设置对齐</td>
-</tr>
-<tr>
-<td>2</td>
-<td>ChatGPT 登录 403 "Country not supported"</td>
-<td>出口节点 IP 被 OpenAI 拉黑（机房段）</td>
-<td>换干净节点（美/日/新加坡主流机房），开 DNS 覆写</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Telegram 机器人连不上</td>
-<td>网关环境变量 <code>TELEGRAM_PROXY</code> 指向旧端口</td>
-<td>更新为当前代理端口</td>
-</tr>
-<tr>
-<td>4</td>
-<td>开了全局模式还是打不开外网</td>
-<td>模式选择器拨到了 DIRECT 直连</td>
-<td>切到代理组 / 自动选择</td>
-</tr>
-<tr>
-<td>5</td>
-<td>网关服务 active 但机器人不回复</td>
-<td>白名单把用户消息拦截了（授权问题）</td>
-<td>查日志 <code>Unauthorized user</code>，修白名单</td>
-</tr>
-<tr>
-<td>6</td>
-<td>GitHub 下载超时</td>
-<td>直连被墙</td>
-<td>用 ghfast.top / ghproxy.net 镜像</td>
-</tr>
-<tr>
-<td>7</td>
-<td>安装包报"wrong architecture"</td>
-<td>下载了错误的架构（arm64 装到 x64）</td>
-<td>确认 <code>uname -m</code>，重新下载</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4">4. 案例复盘：两个真实排查<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<h3 id="achatgpt-403">案例 A：ChatGPT 登录 403<a class="headerlink" href="#achatgpt-403" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A[ChatGPT 登录报&lt;br&gt;403 Country not supported] --&gt; B{账号问题?}
-    B --&gt;|不是| C{网络通吗?}
-    C --&gt;|通| D[查出口 IP 和机房]
-    D --&gt; E[发现: G-Core Labs&lt;br&gt;俄罗斯背景被拉黑机房]
-    E --&gt; F[换美国/日本干净节点]
-    F --&gt; G[✅ 登录成功]</code></pre>
-<p><strong>要点</strong>：403 不是网络不通——请求<strong>到达了</strong> OpenAI 服务器，但服务器拒绝。拒绝原因要看出口 IP 的"身份"（机房/地区），而不是账号或密码。</p>
-<h3 id="b">案例 B：浏览器报代理地址有问题<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A[浏览器报&lt;br&gt;代理服务器地址有问题] --&gt; B[查系统代理设置&lt;br&gt;gsettings]
-    B --&gt; C[发现指向 7897]
-    C --&gt; D[查实际监听&lt;br&gt;ss -tlnp]
-    D --&gt; E[客户端监听 7890&lt;br&gt;7897 无服务]
-    E --&gt; F[改系统代理为 7890]
-    F --&gt; G[✅ 恢复正常]</code></pre>
-<p><strong>要点</strong>：换了代理客户端，端口可能变（Clash Verge 7897 → 追云 7890 → Clash Party ?）。<strong>任何依赖代理端口的配置都要跟着更新</strong>：系统代理、环境变量、网关配置。</p>
-<hr />
-<h2 id="5">5. 日志是排查的好帮手<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Hermes 网关日志</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tail<span class="w"> </span>-50<span class="w"> </span>~/.hermes/logs/gateway.log
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tail<span class="w"> </span>-30<span class="w"> </span>~/.hermes/logs/errors.log
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 看关键行</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;ConnectError|TimedOut|Unauthorized|reconnected&#39;</span><span class="w"> </span>~/.hermes/logs/gateway.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
-</code></pre></div>
-<p><strong>日志关键词对照</strong>：</p>
-<table>
-<thead>
-<tr>
-<th>日志内容</th>
+<th>报错</th>
 <th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ConnectError</code> / <code>TimedOut</code></td>
-<td>网络不通（超时类）→ 网络问题</td>
+<td><code>manifest unknown</code></td>
+<td>仓库中没有这个名称或标签</td>
 </tr>
 <tr>
-<td><code>HTTP 401/403</code></td>
-<td>凭证/地区被拒 → 配置问题</td>
+<td><code>pull access denied</code></td>
+<td>名称错误、权限不足或需要登录</td>
 </tr>
 <tr>
-<td><code>Unauthorized user: xxx</code></td>
-<td>白名单拦截 → 授权配置问题</td>
+<td><code>server gave HTTP response to HTTPS client</code></td>
+<td>HTTP Registry 未加入 <code>insecure-registries</code></td>
 </tr>
 <tr>
-<td><code>reconnected successfully</code></td>
-<td>已自动恢复，无需处理</td>
+<td><code>connection refused</code> / <code>timeout</code></td>
+<td>地址、服务、防火墙或网络链路异常</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>💡 <strong>重要认知</strong>：网关日志里出现"连接失败"<strong>不一定要干预</strong>——适配器会自动退避重试（8 次/轮），网络抖动会自愈。看到 <code>✓ reconnected successfully</code> 就说明恢复了，别乱改配置。</p>
-</blockquote>
-<hr />
-<h2 id="6_1">6. 排查心法<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h2>
+<h2 id="3">第 3 层：容器<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">docker</span> <span class="nb">ps </span><span class="n">-a</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">docker</span> <span class="n">inspect</span> <span class="n">web-server</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">docker</span> <span class="n">logs</span> <span class="p">-</span><span class="n">-tail</span> <span class="n">100</span> <span class="n">web-server</span>
+</code></pre></div>
+<p>重点看：</p>
+<ul>
+<li>容器名是否拼对</li>
+<li><code>STATUS</code> 是 <code>Up</code> 还是 <code>Exited</code></li>
+<li><code>ExitCode</code> 是多少</li>
+<li>日志是否有配置、权限或依赖错误</li>
+<li>端口和挂载是否符合预期</li>
+</ul>
+<p>常见退出码：</p>
+<ul>
+<li><code>0</code>：程序正常结束</li>
+<li><code>1</code>：应用一般错误</li>
+<li><code>126</code>：命令存在但不能执行</li>
+<li><code>127</code>：命令不存在</li>
+<li><code>137</code>：收到 SIGKILL，也可能与内存不足有关；必须结合日志和 <code>OOMKilled</code> 判断</li>
+</ul>
+<h2 id="4-http">第 4 层：端口与 HTTP<a class="headerlink" href="#4-http" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">docker</span> <span class="n">port</span> <span class="n">web-server</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Get-NetTCPConnection</span> <span class="n">-LocalPort</span> <span class="n">8080</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">curl</span><span class="p">.</span><span class="n">exe</span> <span class="n">-v</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">8080</span><span class="p">/</span>
+</code></pre></div>
+<p>判断顺序：</p>
 <ol>
-<li><strong>先归类</strong>：网络问题 vs 配置问题，两类解法完全不同</li>
-<li><strong>看日志</strong>：日志会告诉你真相（超时 = 网络，401/403 = 配置）</li>
-<li><strong>用工具</strong>：<code>ss</code> / <code>curl</code> / <code>gsettings</code> / <code>pgrep</code>，一条条验证</li>
-<li><strong>别乱改</strong>：自愈的问题（reconnected）不需要动配置</li>
-<li><strong>记录坑</strong>：踩过的坑写下来，就是最好的学习笔记（这篇手册就是这么来的 😄）</li>
+<li><code>docker ps</code> 是否显示 <code>8080-&gt;80/tcp</code>。</li>
+<li>Windows 8080 是否有进程监听。</li>
+<li><code>curl.exe</code> 是否返回 HTTP 状态码。</li>
+<li>curl 成功但浏览器失败时，检查是否被浏览器改成 HTTPS、代理是否介入、缓存是否过期。</li>
 </ol>
-<hr />
-<p><em>上一篇：<a href="../05-dns-override/">第 5 课 · DNS 覆写是什么</a> · 返回<a href="../../">首页</a></em></p>
+<div class="admonition tip">
+<p class="admonition-title">HTTP 和 HTTPS 不可混用</p>
+<p>nginx 只监听普通 HTTP 时，应访问 <code>http://127.0.0.1:8080/</code>。浏览器自动跳到 <code>https://127.0.0.1:8080/</code> 会导致 TLS/连接错误。</p>
+</div>
+<h2 id="_2">日常排错四件套<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">docker</span> <span class="nb">ps </span><span class="n">-a</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">docker</span> <span class="n">logs</span> <span class="n">容器名</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">docker</span> <span class="n">inspect</span> <span class="n">容器名</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">docker</span> <span class="n">stats</span>
+</code></pre></div>
+<p>补充磁盘检查：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">docker</span> <span class="n">system</span> <span class="n">df</span>
+</code></pre></div>
+<p>不要在没有确认数据范围时运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker system prune -a --volumes
+</code></pre></div>
+<p>它可能删除未使用的容器、镜像、网络、构建缓存和 Volume。</p>
+<h2 id="_3">快速故障索引<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>优先检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker 命令无法连接</td>
+<td><code>docker version</code>、Desktop 状态、WSL 状态</td>
+</tr>
+<tr>
+<td><code>No such container</code></td>
+<td><code>docker ps -a</code>，核对真实名称</td>
+</tr>
+<tr>
+<td>容器一启动就退出</td>
+<td><code>docker logs</code>、<code>docker inspect</code></td>
+</tr>
+<tr>
+<td><code>port is already allocated</code></td>
+<td>Windows 端口占用、其他容器端口映射</td>
+</tr>
+<tr>
+<td>本机能访问、局域网不能</td>
+<td>监听地址、Windows 防火墙、网络隔离</td>
+</tr>
+<tr>
+<td>curl 成功、浏览器失败</td>
+<td>HTTP/HTTPS、浏览器代理、缓存</td>
+</tr>
+<tr>
+<td>数据删除容器后丢失</td>
+<td>是否正确使用 Volume 或 Bind Mount</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1624,7 +1562,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../05-dns-override/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 5 课 · DNS 覆写是什么">
+          <a href="../04-storage-build-compose/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 数据、构建与 Compose">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1634,20 +1572,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                第 5 课 · DNS 覆写是什么
+                数据、构建与 Compose
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../log/2026-08-14/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2026-08-14 · ChatGPT 解锁记">
+          <a href="../../log/" class="md-footer__link md-footer__link--next" aria-label="下一页: 日志总览">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                2026-08-14 · ChatGPT 解锁记
+                日志总览
               </div>
             </div>
             <div class="md-footer__button md-icon">
