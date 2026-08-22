@@ -44,9 +44,9 @@
 
 - [2026-08-19 · Docker 基础主干与工程入门](2026-08-19.md)
 
-### 08-22 · Windows Docker Desktop 实战
+### 08-22 · Docker 全链路与补强
 
-> 从 Engine 因 WSL 缺失无法启动，到内网 HTTP Registry、nginx 端口映射和浏览器排错的完整证据链。
+> 上午 Windows Docker Desktop 全链路实战（WSL 2 / 镜像源 / HTTP Registry / nginx 排错证据链）；下午 Docker 概念补强（history/inspect、ENV/ENTRYPOINT、两电脑模拟云部署、ROS/GPU 结合毕设）。
 
-- [2026-08-22 · Windows Docker Desktop 全链路实战](2026-08-22.md)
-- [进入 Docker 主题知识库](../docker/index.md)
+- [2026-08-22 · Docker 全链路实战与概念补强](2026-08-22.md)
+- [Docker 主题知识库](../docker/index.md)

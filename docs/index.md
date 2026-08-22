@@ -21,7 +21,7 @@
 - **2026-08-15 · Codex CLI 工程学习**：从安全上手到工程闭环，附交互式工作台
 - **2026-08-18 · 工具链探索**：上午 dsh（安装/插件/故障排查/systemd），下午 Docker 入门（镜像/容器/隔离原理）
 - **2026-08-19 · Docker 基础主干与工程入门**：主干一日通关（生命周期/数据/端口/网络/Dockerfile/Compose/Registry）+ 排错四件套 + 15 坑清单
-- **2026-08-22 · Windows Docker Desktop 全链路实战**：WSL 2、镜像源、HTTP Registry、nginx 部署与浏览器排错
+- **2026-08-22 · Docker 全链路与补强**：上午 Windows Docker Desktop 实战（WSL 2/镜像源/HTTP Registry）；下午概念补强（history/inspect、ENV/ENTRYPOINT、云部署模拟、ROS/GPU）
 
 > 点击章节名进入总览，每日内容在侧边栏展开。
 
