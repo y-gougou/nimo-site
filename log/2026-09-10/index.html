@@ -1352,10 +1352,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、路由细化：住宅 IP 只背该背的流量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、路由细化：住宅 IP 只背该背的流量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 一个被实测推翻的假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 最终路由表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 规则收进覆写 JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、踩坑记录
+        六、踩坑记录
       
     </span>
   </a>
@@ -1366,19 +1416,19 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        六、总结
+        七、总结
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="六、总结">
+    <nav class="md-nav" aria-label="七、总结">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        七个要点
+        八个要点
       
     </span>
   </a>
@@ -1599,10 +1649,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、路由细化：住宅 IP 只背该背的流量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、路由细化：住宅 IP 只背该背的流量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 一个被实测推翻的假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 最终路由表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 规则收进覆写 JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、踩坑记录
+        六、踩坑记录
       
     </span>
   </a>
@@ -1613,19 +1713,19 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        六、总结
+        七、总结
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="六、总结">
+    <nav class="md-nav" aria-label="七、总结">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        七个要点
+        八个要点
       
     </span>
   </a>
@@ -1674,7 +1774,7 @@
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">一句话总结</p>
-<p>一个「Chrome 登录不了 Google 账号」的问题，背后藏着<strong>四个互相独立的根因</strong>——企业 VPN 的 HTTPS 拦截、损坏的 Cookie、干扰登录的浏览器扩展、被 Google 风控的数据中心 IP。用「分层排查 + 数据说话」逐个击破，并把 Google 流量统一切到住宅 IP 后彻底解决；由此推演出「多设备统一出口」的账号安全方案。</p>
+<p>一个「Chrome 登录不了 Google 账号」的问题，背后藏着<strong>四个互相独立的根因</strong>——企业 VPN 的 HTTPS 拦截、损坏的 Cookie、干扰登录的浏览器扩展、被 Google 风控的数据中心 IP。用「分层排查 + 数据说话」逐个击破；实测证明登录后切回数据中心节点仍会被踢，最终把路由细化成「Google/AI 走住宅、其余走便宜节点」，并推演出「多设备统一出口」的账号安全方案。</p>
 </div>
 <hr />
 <h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -1729,6 +1829,16 @@
 <td>8</td>
 <td>分层排查方法论</td>
 <td>网络层 → 应用层 → 账号层，逐层排除</td>
+</tr>
+<tr>
+<td>9</td>
+<td>登录后切数据中心仍被踢</td>
+<td>住宅 IP 是刚需，不是可选</td>
+</tr>
+<tr>
+<td>10</td>
+<td>路由要细化</td>
+<td>住宅 IP 只背 Google/AI，其余走便宜节点</td>
 </tr>
 </tbody>
 </table>
@@ -1880,7 +1990,55 @@
 <li><strong>别混着用</strong>：同一账号避免"某台住宅、某台数据中心"来回切换——这种混合状态最容易触发风控</li>
 </ul>
 <hr />
-<h2 id="_7">五、踩坑记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="ip">五、路由细化：住宅 IP 只背该背的流量<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 一个被实测推翻的假设<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>「登录态已经建立，切回普通美国节点应该就不触发风控了吧？」</p>
+</blockquote>
+<p>实测：登录成功后，把 Google 从住宅 IP 切回数据中心节点 <code>US-3TCP</code>，一点「个人信息」立刻报 <strong>400 malformed</strong> 被踢。</p>
+<p><strong>结论：住宅 IP 是刚需，不是可选</strong>——这个账号对 IP 极其敏感，数据中心 IP 一律触发风控，跟登录态无关。</p>
+<h3 id="52">5.2 最终路由表<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>流量</th>
+<th>出口</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google</td>
+<td>住宅 IP</td>
+<td>会风控，必须住宅</td>
+</tr>
+<tr>
+<td>ChatGPT / Claude</td>
+<td>住宅 IP</td>
+<td>会风控，必须住宅</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>HK 自动选择</td>
+<td>不需要住宅，走 HK 快节点</td>
+</tr>
+<tr>
+<td>其余国外流量</td>
+<td>主代理（便宜节点）</td>
+<td>不需要住宅，走数据中心</td>
+</tr>
+</tbody>
+</table>
+<p>关键认知：<strong>住宅 IP 只背「会风控的服务」，其余流量走便宜节点</strong>——既省资源又提速（GitHub 实测从 441ms 降到 129ms）。</p>
+<h3 id="53-js">5.3 规则收进覆写 JS<a class="headerlink" href="#53-js" title="Permanent link">&para;</a></h3>
+<p>所有住宅相关规则统一放进 Clash Party 的 <strong>JS 覆写</strong>（<code>override/xxx.js</code>），而不是改基础订阅：</p>
+<ol>
+<li>订阅更新不会冲掉你的规则</li>
+<li>覆写 JS 就是"路由中心"，可原样复制到其他 Clash Party 设备</li>
+</ol>
+<p>成本认知：住宅 IP 按月付费 = 固定成本；普通机场（追云加速等）只有数据中心节点，帮不了 Google 风控。</p>
+<hr />
+<h2 id="_7">六、踩坑记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1924,8 +2082,8 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_8">六、总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="_9">七个要点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h2 id="_8">七、总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">八个要点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ol>
 <li>登录失败先分「网页版」还是「同步」——两条链路，诊断路径不同</li>
 <li><strong>无痕模式是最快的二分法</strong>：能登录就排除账号和网络</li>
@@ -1934,6 +2092,7 @@
 <li><strong>数据中心 IP 会被 Google 风控，住宅 IP 才是稳的出口</strong></li>
 <li>删扩展要在 <code>chrome://extensions</code> 操作，否则同步会恢复</li>
 <li><strong>多设备要统一出口到同一个住宅 IP</strong>，账号行为才一致</li>
+<li><strong>住宅 IP 只背会风控的服务</strong>（Google/AI），其余走便宜节点，省成本又提速</li>
 </ol>
 <h3 id="_10">今日感悟<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <blockquote>
