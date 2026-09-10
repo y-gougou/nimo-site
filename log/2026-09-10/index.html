@@ -2128,7 +2128,7 @@
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">一句话总结</p>
-<p>一个「Chrome 登录不了 Google 账号」的问题，背后藏着<strong>四个互相独立的根因</strong>——企业 VPN 的 HTTPS 拦截、损坏的 Cookie、干扰登录的浏览器扩展、被 Google 风控的数据中心 IP。用「分层排查 + 数据说话」逐个击破；实测证明登录后切回数据中心节点仍会被踢，最终把路由细化成「Google/AI 走住宅、其余走便宜节点」，并把方案落地到 Windows ×2 / Ubuntu / iOS / Android 五台设备，顺带搞懂了策略组。</p>
+<p>一个「Chrome 登录不了 Google 账号」的问题，背后藏着<strong>四个互相独立的根因</strong>——企业 VPN 的 HTTPS 拦截、损坏的 Cookie、干扰登录的浏览器扩展、被 Google 风控的数据中心 IP。用「分层排查 + 数据说话」逐个击破；实测证明登录后切回数据中心节点仍会被踢，最终把路由细化成「Google/AI 走住宅、其余走便宜节点」，并把方案落地到 Windows ×2 / Ubuntu / iOS / Android 五台设备。收尾时还揪出「梯子抽风」的通用病根：<strong>选中的节点挂了</strong>，顺带搞懂了策略组。</p>
 </div>
 <hr />
 <h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -2213,6 +2213,16 @@
 <td>14</td>
 <td>多设备维护清单</td>
 <td>会变的只有机场节点名，其余固定</td>
+</tr>
+<tr>
+<td>15</td>
+<td>梯子抽风先查节点</td>
+<td>订阅失败 / 上不了网，先看选中的节点是不是死了</td>
+</tr>
+<tr>
+<td>16</td>
+<td>配置统一 ≠ 行为统一</td>
+<td><code>select</code> 组的选择每台机器独立记忆</td>
 </tr>
 </tbody>
 </table>
@@ -2319,7 +2329,7 @@
 <ol>
 <li>数据中心 IP 是风控根源，其他设备还在走数据中心节点就会重演"被踢"</li>
 <li>统一到一个固定住宅 IP，账号行为最像"一个真实美国用户"</li>
-<li>本机配置本来就是"所有国外流量走住宅 IP"（<code>MATCH,住宅IP</code>），其他设备照做即天然一致</li>
+<li>本机配置已把「Google/AI → 住宅、其余 → 主代理」，其他设备照做即天然一致</li>
 </ol>
 <h3 id="43">4.3 各设备怎么同步<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
 <table>
@@ -2427,8 +2437,8 @@
 </tr>
 <tr>
 <td>GitHub</td>
-<td>HK 自动选择</td>
-<td>不需要住宅，走 HK 快节点</td>
+<td>自动选择</td>
+<td>不需要住宅，走普通快节点（别硬指某地区）</td>
 </tr>
 <tr>
 <td>其余国外流量</td>
@@ -2478,8 +2488,8 @@
 <tr>
 <td>GitHub</td>
 <td>无专门规则</td>
-<td>→ HK 快节点</td>
-<td>GitHub 不需要住宅，走 HK 提速</td>
+<td>→ 自动选择</td>
+<td>GitHub 不需要住宅；最初指 HK，后因 HK 会集体挂改为「自动选择」</td>
 </tr>
 </tbody>
 </table>
@@ -2492,7 +2502,7 @@
 <p><strong>MATCH 从「住宅 IP」改成「主代理」</strong>：旧版把所有未匹配流量都塞进住宅 IP（浪费带宽 + 慢，3 跳链路）。新版改成主代理（普通节点），只让 Google/AI 走住宅，普通流量走便宜节点。</p>
 </li>
 <li>
-<p><strong>新增 GitHub → HK</strong>：GitHub 不需要住宅 IP，走 HK 快节点（实测 441ms → 129ms）。</p>
+<p><strong>新增 GitHub → 快节点</strong>：GitHub 不需要住宅 IP，最初指向 HK（实测 441ms → 129ms），后因 HK 节点会集体挂，改成更稳的「自动选择」。</p>
 </li>
 </ol>
 <p>规则改动的本质（Clash 语法对照）：</p>
@@ -2508,7 +2518,7 @@
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="l l-Scalar l-Scalar-Plain">RULE-SET,Google-IP,住宅IP</span><span class="w">          </span><span class="c1"># ← 新增</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="l l-Scalar l-Scalar-Plain">DOMAIN-SUFFIX,openai.com,住宅IP</span><span class="w">    </span><span class="c1"># 保留</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># ... 其余 AI 域名（保留）</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="l l-Scalar l-Scalar-Plain">DOMAIN-SUFFIX,github.com,HK自动选择</span><span class="w">  </span><span class="c1"># ← 新增</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="l l-Scalar l-Scalar-Plain">DOMAIN-SUFFIX,github.com,自动选择</span><span class="w">   </span><span class="c1"># ← 新增（最初指 HK，后改自动选择）</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># ...</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="l l-Scalar l-Scalar-Plain">MATCH,主代理</span><span class="w">              </span><span class="c1"># ← 修改：普通流量走主代理</span>
 </code></pre></div>
