@@ -1479,6 +1479,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 重要认知：配置一样 ≠ 运行状态一样
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1511,7 +1522,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        十个要点
+        十一个要点
       
     </span>
   </a>
@@ -1859,6 +1870,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 重要认知：配置一样 ≠ 运行状态一样
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1891,7 +1913,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        十个要点
+        十一个要点
       
     </span>
   </a>
@@ -2385,6 +2407,15 @@
 </tbody>
 </table>
 <p>Google/AI 走住宅（规则指定），其余走「主代理 → 自动选择」，各司其职。</p>
+<h3 id="65">6.5 重要认知：配置一样 ≠ 运行状态一样<a class="headerlink" href="#65" title="Permanent link">&para;</a></h3>
+<p>本次多设备排查最本质的一个发现：</p>
+<ul>
+<li><strong><code>主代理</code> 是 select（手动）组</strong>，配合 <code>store-selected: true</code>，你上次点的节点会存进<strong>本机的 <code>cache.db</code></strong>——<strong>每台机器各存各的</strong>。</li>
+<li>所以<strong>同一份订阅，两台机器可能选中不同节点</strong>：这台记的是 <code>US5-HY2</code>（已挂），那台记的是别的（可用），结果完全不同。</li>
+<li>节点死活还取决于<strong>服务器状态 + 本机网络/ISP 路由 + 时间</strong>：同一节点在这台通、在那台挂，很正常。</li>
+<li>订阅更新的"直连"路径也因机器的网络 / DNS / TUN 而异。</li>
+</ul>
+<p><strong>运维启示</strong>：<strong>「配置统一」不等于「行为统一」</strong>。要么每台机器的 <code>主代理</code> 都改成「<strong>自动选择</strong>」（自动跳过死节点），要么逐台核对——否则改了一台，另一台可能还是坏的。</p>
 <hr />
 <h2 id="_7">七、踩坑记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
@@ -2445,11 +2476,23 @@
 <td>所有流量走住宅</td>
 <td><code>FINAL→PROXY</code> 跟随首页全局节点，选普通节点才能只让 Google/AI 走住宅</td>
 </tr>
+<tr>
+<td>9</td>
+<td>主代理选中死节点</td>
+<td>订阅更新 / 普通流量全挂</td>
+<td><code>select</code> 组的手动选择存在本机（<code>store-selected</code>），各机不同；统一改成「自动选择」</td>
+</tr>
+<tr>
+<td>10</td>
+<td>配置一样但行为不同</td>
+<td>改了这台那台还是坏的</td>
+<td>「配置统一」≠「行为统一」，<code>select</code> 组的选择是每台机器独立记忆的</td>
+</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="_8">八、总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="_9">十个要点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_9">十一个要点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ol>
 <li>登录失败先分「网页版」还是「同步」——两条链路，诊断路径不同</li>
 <li><strong>无痕模式是最快的二分法</strong>：能登录就排除账号和网络</li>
@@ -2461,6 +2504,7 @@
 <li><strong>住宅 IP 只背会风控的服务</strong>（Google/AI），其余走便宜节点，省成本又提速</li>
 <li><strong>策略组是选择器</strong>：select=手动总闸，url-test=自动挑最快，看懂主代理和自动选择就懂了分流</li>
 <li><strong>多设备维护清单</strong>：会变的只有机场节点名，把「住宅 IP + 12 中转节点 + 规则」记牢即可</li>
+<li><strong>「配置统一」≠「行为统一」</strong>：<code>select</code> 组的选择存在每台机器本地，主代理统一用「自动选择」才省心</li>
 </ol>
 <h3 id="_10">今日感悟<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <blockquote>
