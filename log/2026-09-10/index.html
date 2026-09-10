@@ -12,13 +12,13 @@
         <meta name="author" content="Nimo">
       
       
-        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/log/2026-08-15/">
+        <link rel="canonical" href="https://y-gougou.github.io/nimo-site/log/2026-09-10/">
       
       
-        <link rel="prev" href="../2026-08-14/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../codex-cli/">
+        <link rel="next" href="../../course/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>今日学习记录 - Nimo 的麦迪逊花园</title>
+        <title>2026-09-10 · Chrome 无法登录 Google 账号排查记 - Nimo 的麦迪逊花园</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2026-08-15-codex-cli" class="md-skip">
+        <a href="#2026-09-10-chrome-google" class="md-skip">
           跳转至
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              今日学习记录
+              2026-09-10 · Chrome 无法登录 Google 账号排查记
             
           </span>
         </div>
@@ -668,10 +668,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2026-09-10/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-09-10 · Chrome 无法登录 Google 账号排查记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -687,6 +714,231 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 今日学习清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、问题现象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、排查方法论：分层定位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、四个真凶，层层剥开
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、四个真凶，层层剥开">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easyconnect-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真凶一：深信服 EasyConnect 的 HTTPS 拦截
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真凶二：损坏的 Cookie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真凶三：浏览器扩展干扰
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真凶四：数据中心 IP 被 Google 风控
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、多设备统一出口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、多设备统一出口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 先纠正一个误区
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 需要统一什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 各设备怎么同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 两个提醒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、踩坑记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、总结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七个要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日感悟
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -977,8 +1229,6 @@
                 
   
   
-    
-  
   
   
     
@@ -997,11 +1247,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1029,7 +1279,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1044,37 +1294,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    今日学习记录
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2026-08-15/" class="md-nav__link">
         
   
   
@@ -1090,214 +1313,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📌 今日学习清单
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#codex-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、我今天建立的 Codex CLI 心智模型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、安全启动与权限
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、五类常见工程任务
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="三、五类常见工程任务">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 阅读陌生项目
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 修改或新增功能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 排查故障
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4 检查交付
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 延续长任务
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#codex" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、自动化专业学生怎样用 Codex
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、自动化专业学生怎样用 Codex">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        控制与仿真
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        单片机与嵌入式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实验数据
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、我的四级学习路线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、今日感悟
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、下一步计划
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1442,21 +1457,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#codex-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、我今天建立的 Codex CLI 心智模型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、安全启动与权限
+        一、问题现象
       
     </span>
   </a>
@@ -1467,19 +1471,30 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三、五类常见工程任务
+        二、排查方法论：分层定位
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="三、五类常见工程任务">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、四个真凶，层层剥开
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、四个真凶，层层剥开">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+  <a href="#easyconnect-https" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 阅读陌生项目
+        真凶一：深信服 EasyConnect 的 HTTPS 拦截
       
     </span>
   </a>
@@ -1487,10 +1502,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
+  <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 修改或新增功能
+        真凶二：损坏的 Cookie
       
     </span>
   </a>
@@ -1498,10 +1513,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 排查故障
+        真凶三：浏览器扩展干扰
       
     </span>
   </a>
@@ -1509,21 +1524,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34" class="md-nav__link">
+  <a href="#ip-google" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 检查交付
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 延续长任务
+        真凶四：数据中心 IP 被 Google 风控
       
     </span>
   </a>
@@ -1536,44 +1540,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#codex" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、自动化专业学生怎样用 Codex
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、自动化专业学生怎样用 Codex">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        控制与仿真
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        单片机与嵌入式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        实验数据
+        四、多设备统一出口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、多设备统一出口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 先纠正一个误区
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 需要统一什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 各设备怎么同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 两个提醒
       
     </span>
   </a>
@@ -1589,7 +1604,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、我的四级学习路线
+        五、踩坑记录
       
     </span>
   </a>
@@ -1600,21 +1615,38 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        六、今日感悟
+        六、总结
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七个要点
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        七、下一步计划
+        今日感悟
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1638,17 +1670,19 @@
   
 
 
-<h1 id="2026-08-15-codex-cli">2026-08-15 · Codex CLI：从命令到工程闭环<a class="headerlink" href="#2026-08-15-codex-cli" title="Permanent link">&para;</a></h1>
+<h1 id="2026-09-10-chrome-google">2026-09-10 · Chrome 无法登录 Google 账号排查记<a class="headerlink" href="#2026-09-10-chrome-google" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>📅 <strong>学习日志</strong> · 2026 年 8 月 15 日 · 自动化专业 / 工程实践</p>
+<p>📅 <strong>学习日志</strong> · 2026 年 9 月 10 日</p>
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">一句话总结</p>
-<p>Codex CLI 不只是“帮我写代码”的聊天窗口。真正高效的用法，是让它围绕明确目标读取工程、制定计划、小步修改、真实验证，再把结果交付清楚。</p>
+<p>一个「Chrome 登录不了 Google 账号」的问题，背后藏着<strong>四个互相独立的根因</strong>——企业 VPN 的 HTTPS 拦截、损坏的 Cookie、干扰登录的浏览器扩展、被 Google 风控的数据中心 IP。用「分层排查 + 数据说话」逐个击破，并把 Google 流量统一切到住宅 IP 后彻底解决；由此推演出「多设备统一出口」的账号安全方案。</p>
 </div>
-<p><a class="md-button md-button--primary" href="../../codex-cli/">打开 Codex CLI 交互式工作台 →</a></p>
 <hr />
 <h2 id="_1">📌 今日学习清单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>季度总结直接看这里，每一条都能展开成下面的正文。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -1660,195 +1694,253 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>先确认工作环境</td>
-<td>用 <code>/status</code> 看目录、模型、权限和上下文</td>
+<td>登录报错要分场景</td>
+<td>网页版登录 ≠ Chrome 同步登录，是两条完全不同的链路</td>
 </tr>
 <tr>
 <td>2</td>
-<td>区分两类命令</td>
-<td><code>/命令</code> 控制 Codex，<code>!命令</code> 在终端执行</td>
+<td>无痕模式是定位神器</td>
+<td>无痕能登录 = 账号和网络都没问题，问题在扩展/配置</td>
 </tr>
 <tr>
 <td>3</td>
-<td>先给目标再给文件</td>
-<td>目标、上下文、约束、完成标准缺一不可</td>
+<td>企业安全软件会 HTTPS 拦截</td>
+<td>装了根证书做中间人 → 登录报 "Request canceled"</td>
 </tr>
 <tr>
 <td>4</td>
-<td>复杂任务先规划</td>
-<td>用 <code>/plan</code> 明确范围、风险和验证方案</td>
+<td>400 malformed = Cookie 坏了</td>
+<td>清 Cookie 即可，跟网络无关</td>
 </tr>
 <tr>
 <td>5</td>
-<td>修改必须有证据</td>
-<td>测试、编译、仿真或日志要真实运行</td>
+<td>数据中心 IP 会被 Google 风控</td>
+<td>登录后点栏目被踢出 = 出口 IP 被标记</td>
 </tr>
 <tr>
 <td>6</td>
-<td>交付前主动审查</td>
-<td>用 <code>/diff</code> 和 <code>/review</code> 找遗漏与回归风险</td>
+<td>住宅 IP 更受信任</td>
+<td>Google 流量应走住宅 IP，而非数据中心节点</td>
 </tr>
 <tr>
 <td>7</td>
-<td>长任务管理上下文</td>
-<td>用 <code>/rename</code>、<code>/compact</code>、<code>/resume</code> 保持连续性</td>
+<td>多设备要统一出口</td>
+<td>所有设备 Google 走同一个住宅 IP，账号行为才一致</td>
 </tr>
 <tr>
 <td>8</td>
-<td>用 Skills 固化流程</td>
-<td>将重复的专业工作交给稳定、可复用的工作流</td>
+<td>分层排查方法论</td>
+<td>网络层 → 应用层 → 账号层，逐层排除</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="codex-cli">一、我今天建立的 Codex CLI 心智模型<a class="headerlink" href="#codex-cli" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[明确目标] --&gt; B[提供上下文]
-    B --&gt; C[规划改动]
-    C --&gt; D[小步实施]
-    D --&gt; E[运行验证]
-    E --&gt; F[审查差异]
-    F --&gt; G[交付总结]
-    E --&gt;|失败| B
-    F --&gt;|发现风险| C</code></pre>
-<p>以前容易把任务说成：“帮我改一下这个程序。”问题在于，Codex 不知道我真正要解决什么、哪些地方不能动、怎样才算完成。</p>
-<p>现在更可靠的表达是：</p>
-<blockquote>
-<p><strong>目标 Goal + 上下文 Context + 约束 Constraints + 完成标准 Done when</strong></p>
-</blockquote>
-<p>例如：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>目标：给 PID 仿真程序增加阶跃输入参数。
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>上下文：入口在 src/simulation.py，现有测试在 tests/。
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>约束：不改变原有接口；时间用秒，角度用弧度；不新增依赖。
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>完成标准：新增边界测试，运行全部测试，并说明改动文件与剩余风险。
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>请先制定计划，再开始修改。
-</code></pre></div>
-<hr />
-<h2 id="_2">二、安全启动与权限<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>我目前更适合使用受控权限启动：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>codex<span class="w"> </span>--sandbox<span class="w"> </span>workspace-write<span class="w"> </span>--ask-for-approval<span class="w"> </span>on-request
-</code></pre></div>
-<ul>
-<li><code>workspace-write</code>：允许 Codex 修改当前工作区，但不随意写系统其他位置</li>
-<li><code>on-request</code>：需要网络访问、系统级操作或扩大权限时，再由我确认</li>
-<li><code>/status</code>：进入项目后先检查实际工作目录、模型、权限和上下文</li>
-<li><code>/permissions</code>：需要时重新查看或调整当前会话的权限策略</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">我的安全原则</p>
-<p>不因为“省一步”就给无限权限。先让 Codex说明准备做什么，再对真正需要的操作授权。</p>
-</div>
-<hr />
-<h2 id="_3">三、五类常见工程任务<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="31">3.1 阅读陌生项目<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>请先阅读当前项目，不修改任何文件。
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>输出项目结构、程序入口、数据流、运行命令、测试方法，
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>以及三个最值得注意的风险。请区分代码事实和你的推断。
-</code></pre></div>
-<p>适合课程设计、开源项目和学长留下的工程。第一轮只建立地图，不急着改代码。</p>
-<h3 id="32">3.2 修改或新增功能<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
-<ol>
-<li><code>/plan</code>：列出改动范围、接口、风险和验证方案</li>
-<li>确认计划后再实施，避免顺手重构无关代码</li>
-<li>运行真实测试或仿真</li>
-<li><code>/diff</code> 查看修改，再用 <code>/review</code> 复查</li>
-</ol>
-<h3 id="33">3.3 排查故障<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>这是预期现象、实际现象和完整报错。
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>请先列出按可能性排序的原因，并为每个原因设计验证实验。
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>不要立即重写全部代码；找到证据后再提出最小修复。
-</code></pre></div>
-<p>关键变化是：从“猜一个原因”改成“原因 → 实验 → 证据 → 最小修复”。</p>
-<h3 id="34">3.4 检查交付<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>/diff</code>：确认已暂存、未暂存和未跟踪文件</li>
-<li><code>!测试命令</code>：真实执行测试、格式化、静态检查或编译</li>
-<li><code>/review</code>：重点检查功能错误、边界条件、单位、异常处理和缺失测试</li>
-<li>最终摘要：写清改了什么、证据是什么、还剩什么风险</li>
-</ul>
-<h3 id="35">3.5 延续长任务<a class="headerlink" href="#35" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>/rename</code>：给会话起一个可识别的名字</li>
-<li><code>/compact</code>：对话过长时压缩上下文</li>
-<li><code>/fork</code> 或 <code>/side</code>：探索另一条路线，不污染主任务</li>
-<li><code>/resume</code>：下次继续保存的会话</li>
-</ul>
-<hr />
-<h2 id="codex">四、自动化专业学生怎样用 Codex<a class="headerlink" href="#codex" title="Permanent link">&para;</a></h2>
-<h3 id="_4">控制与仿真<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>检查 PID、状态空间模型和采样周期的单位</li>
-<li>为参数边界、饱和、异常输入增加测试</li>
-<li>运行 MATLAB、Python 或 C/C++ 仿真后解释实际曲线</li>
-<li>比较修改前后的超调量、稳态误差和响应时间</li>
-</ul>
-<h3 id="_5">单片机与嵌入式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>先阅读芯片手册和工程配置，再修改寄存器或外设代码</li>
-<li>让 Codex指出中断、并发、缓冲区和时序风险</li>
-<li>要求给出可在硬件上执行的最小验证步骤</li>
-<li>明确哪些结论来自代码，哪些必须上板测量</li>
-</ul>
-<h3 id="_6">实验数据<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li>用脚本清洗 CSV，再计算误差和统计量</li>
-<li>让图表标明变量、单位、采样条件和异常点</li>
-<li>保留原始数据，生成过程可重复</li>
-<li>不把“图看起来合理”当作验证结论</li>
-</ul>
-<hr />
-<h2 id="_7">五、我的四级学习路线<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_2">一、问题现象<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>一个账号登录，前后冒出<strong>四种不同报错</strong>，每种指向不同的根因：</p>
 <table>
 <thead>
 <tr>
 <th>阶段</th>
-<th>目标</th>
-<th>实践任务</th>
+<th>报错</th>
+<th>真正原因</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Level 1 · 安全上手</td>
-<td>看清环境再行动</td>
-<td>只读分析一个已有项目，找到入口和测试命令</td>
+<td>① 一开始</td>
+<td><code>Request canceled</code></td>
+<td>深信服 VPN 拦截 HTTPS</td>
 </tr>
 <tr>
-<td>Level 2 · 工程闭环</td>
-<td>修改必须带验证</td>
-<td>完成一次小改动、边界测试和 <code>/review</code></td>
+<td>② 卸载深信服后</td>
+<td><code>400. That's an error (malformed)</code></td>
+<td>Cookie 损坏</td>
 </tr>
 <tr>
-<td>Level 3 · 固化规范</td>
-<td>让规则自动加载</td>
-<td>用 <code>/init</code> 建立 <code>AGENTS.md</code>，写入单位与验证要求</td>
+<td>③ 清 Cookie 后</td>
+<td><code>Request canceled</code>（同步登录）</td>
+<td>浏览器扩展干扰</td>
 </tr>
 <tr>
-<td>Level 4 · 扩展自动化</td>
-<td>复用成熟流程</td>
-<td>用 Skills、MCP 或 <code>codex exec</code> 处理重复任务</td>
+<td>④ 网页能登录后</td>
+<td>点栏目被踢回未登录</td>
+<td>数据中心 IP 被风控</td>
+</tr>
+</tbody>
+</table>
+<p>核心认知：<strong>报错文字相同，不代表原因相同</strong>。同一个 "Request canceled"，第一次是安全软件拦截，第二次是扩展干扰。</p>
+<hr />
+<h2 id="_3">二、排查方法论：分层定位<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[登录失败] --&gt; B[网络层：域名/端口通不通?]
+    B --&gt;|通| C[应用层：扩展/Cookie/QUIC 干扰?]
+    B --&gt;|不通| B1[代理/DNS/拦截问题]
+    C --&gt;|正常| D[账号层：风控/安全标记?]
+    C --&gt;|异常| C1[逐项排除]</code></pre>
+<p>三条经验（本期最有价值的部分）：</p>
+<ol>
+<li><strong>无痕模式对比法</strong>：无痕能登录 → 账号和网络 100% 没问题，问题锁定在「扩展 / Cookie / 浏览器配置」。</li>
+<li><strong>网页版 vs 同步登录是两条链路</strong>：头像菜单里的「登录 Chrome」走的是 Chrome 同步专用 OAuth 流程，比网页版 <code>accounts.google.com</code> 更脆弱。</li>
+<li><strong>数据说话</strong>：用 <code>https://xxx.google.com/generate_204</code> 逐域名测连通，用内核日志 <code>core-*.log</code> 看流量真实走向，用 IP 定位看出口 IP 性质——不靠猜。</li>
+</ol>
+<hr />
+<h2 id="_4">三、四个真凶，层层剥开<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="easyconnect-https">真凶一：深信服 EasyConnect 的 HTTPS 拦截<a class="headerlink" href="#easyconnect-https" title="Permanent link">&para;</a></h3>
+<p><strong>发现过程</strong>：系统「受信任的根证书」里有一枚 <code>Sangfor Technologies Inc.</code> 证书，进程列表里有 <code>ECAgent.exe</code>、<code>SangforPWEx</code>、<code>SangforSP</code> 等服务。</p>
+<p><strong>原理</strong>：深信服 SSL VPN 为了「检查加密流量」，往系统塞根证书做 HTTPS 中间人拦截。即使 VPN 显示断开，它的防护服务仍在后台运行，把 Chrome 发给 Google 的登录请求掐断 → "Request canceled"。</p>
+<p><strong>清理步骤</strong>（私人电脑可彻底卸载）：</p>
+<ol>
+<li>停服务：<code>SangforPWEx</code>、<code>SangforSP</code></li>
+<li>结束进程：<code>ECAgent</code>、<code>SangforUDProtectEx</code></li>
+<li>删根证书（certmgr.msc → 受信任的根证书颁发机构）</li>
+<li>删驱动：<code>SangforVnic.sys</code>、<code>sc delete SangforVnic</code></li>
+<li>删残留目录与 <code>SangforNspX64.dll</code>（Winsock 注入）</li>
+</ol>
+<h3 id="cookie">真凶二：损坏的 Cookie<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<p>表现是 <code>400. That's an error ... malformed</code>。这是 <strong>Google 服务器拒绝</strong>——收到的 Cookie 头异常。清 Cookie（<code>Ctrl+Shift+Del</code> 或删 <code>Network\Cookies</code> 文件）即解。</p>
+<h3 id="_5">真凶三：浏览器扩展干扰<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>无痕能登录、正常窗口报错 → 差异在扩展。定位到两个第三方扩展：<strong>AutoGLM</strong>（AI 浏览器自动化，向页面注入脚本）、<strong>迅雷下载支持</strong>。禁用后同步登录即可走通。</p>
+<p>注意：登录 Chrome 同步后，同步会自动恢复账号里存的扩展——要永久删除必须在 <code>chrome://extensions</code> 点「移除」，光删文件夹会被同步重新下载。</p>
+<h3 id="ip-google">真凶四：数据中心 IP 被 Google 风控<a class="headerlink" href="#ip-google" title="Permanent link">&para;</a></h3>
+<p>最隐蔽的一个：<strong>登录能成功，但一点「个人信息」等栏目就被踢回未登录</strong>。</p>
+<p><strong>根因</strong>：Google 流量固定走 <code>US-3TCP</code>（VLESS+Reality 数据中心节点），而不是住宅 IP。Google 认为「数据中心 IP + 频繁登录」可疑，于是在你访问敏感页面时<strong>主动吊销会话</strong>。</p>
+<pre class="mermaid"><code>flowchart LR
+    A[账号画像: 中国用户] --&gt; C[Google 风控]
+    B[出口: 美国数据中心 IP] --&gt; C
+    C --&gt; D[登录后点栏目就被踢]</code></pre>
+<p><strong>解法</strong>：把 Google 规则从 <code>US-3TCP</code> 改指向住宅 IP。修改 mihomo 规则三行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 改前</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMAIN-KEYWORD,googleapis,Google</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,Google-Site,Google</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,Google-IP,Google</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 改后（指向住宅 IP 组）</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMAIN-KEYWORD,googleapis,住宅IP</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,Google-Site,住宅IP</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,Google-IP,住宅IP</span>
+</code></pre></div>
+<p>验证：内核日志从 <code>using Google[US-3TCP]</code> 变为 <code>using 住宅IP[住宅IP-美国芝加哥]</code>，之后登录稳定、不再被踢。</p>
+<hr />
+<h2 id="_6">四、多设备统一出口<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>改了本机，还有一个更重要的后半场：账号同时登在 Windows ×2、Ubuntu、iOS、Android 上，出口 IP 不一致会怎样？</p>
+</blockquote>
+<h3 id="41">4.1 先纠正一个误区<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Google 不会因为「几台设备用不同的美国 IP」就封号（封号只针对严重违规）。它真正做的是：</p>
+<ul>
+<li><strong>数据中心 IP</strong> → 触发风控（就是本机遇到的"被踢"）</li>
+<li><strong>多 IP 短时间访问同一账号</strong> → 提示"是不是你本人"</li>
+</ul>
+<p>所以风险不是封号，而是<strong>其他设备也被踢 + 频繁安全验证</strong>。</p>
+<h3 id="42">4.2 需要统一什么<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p><strong>核心一条：让所有设备的 Google 流量都走同一个住宅 IP</strong>（而非"配置文件逐字节一致"）。</p>
+<p>理由：</p>
+<ol>
+<li>数据中心 IP 是风控根源，其他设备还在走数据中心节点就会重演"被踢"</li>
+<li>统一到一个固定住宅 IP，账号行为最像"一个真实美国用户"</li>
+<li>本机配置本来就是"所有国外流量走住宅 IP"（<code>MATCH,住宅IP</code>），其他设备照做即天然一致</li>
+</ol>
+<h3 id="43">4.3 各设备怎么同步<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本机 Windows</td>
+<td>✅ 已完成</td>
+</tr>
+<tr>
+<td>另一台 Windows</td>
+<td>复制本机改好的 Clash Party 配置，或同样改 Google 规则</td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td>按所用客户端（mihomo/sing-box）加规则：Google 域名 → 住宅 IP 节点</td>
+</tr>
+<tr>
+<td>iOS（Shadowrocket）</td>
+<td>加规则：Google 域名 → 住宅 IP（用 <code>chain = 中间节点</code> 链式）</td>
+</tr>
+<tr>
+<td>Android（Clash Meta）</td>
+<td>同本机内核，复用同一套 JS 覆写 + 规则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三要素</strong>（每台设备都要有）：</p>
+<ol>
+<li>住宅 IP 节点（socks5，<code>dialer-proxy</code> / <code>chain</code> 指向中间节点组）</li>
+<li>中间节点候选池（<code>连住宅IP</code> url-test 组）</li>
+<li>规则：Google 域名 → 住宅 IP 组</li>
+</ol>
+<h3 id="44">4.4 两个提醒<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>并发上限</strong>：多设备共用一个住宅 IP，注意服务商并发限制；Google 流量轻量一般没问题，但别几台设备同时狂刷</li>
+<li><strong>别混着用</strong>：同一账号避免"某台住宅、某台数据中心"来回切换——这种混合状态最容易触发风控</li>
+</ul>
+<hr />
+<h2 id="_7">五、踩坑记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>坑</th>
+<th>表现</th>
+<th>教训</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>深信服后台驻留</td>
+<td>VPN 断开仍拦截</td>
+<td>服务进程没退干净，别只看 VPN 连接状态</td>
+</tr>
+<tr>
+<td>2</td>
+<td>重装 Chrome 不清配置</td>
+<td>旧 Cookie/扩展还在</td>
+<td>卸载 Chrome 不会删 <code>User Data</code>，需手动备份清理</td>
+</tr>
+<tr>
+<td>3</td>
+<td>静默卸载参数 <code>/S</code> 不生效</td>
+<td>退出码 1，文件残留</td>
+<td>多组件套件要逐个 uninstall.exe 处理</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TUN 劫持 DNS</td>
+<td>域名解析成 198.18.x.x</td>
+<td>查真实 IP 要用公共 DNS 或 DoH 绕过</td>
+</tr>
+<tr>
+<td>5</td>
+<td>同报错不同因</td>
+<td>Request canceled 出现两次</td>
+<td>别被报错文字迷惑，要分层定位</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="_8">六、今日感悟<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_8">六、总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">七个要点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ol>
+<li>登录失败先分「网页版」还是「同步」——两条链路，诊断路径不同</li>
+<li><strong>无痕模式是最快的二分法</strong>：能登录就排除账号和网络</li>
+<li>企业安全软件（深信服等）的 HTTPS 拦截是登录问题的高频元凶，查根证书</li>
+<li><code>400 malformed</code> = Cookie 坏，<code>Request canceled</code> 要分场景深挖</li>
+<li><strong>数据中心 IP 会被 Google 风控，住宅 IP 才是稳的出口</strong></li>
+<li>删扩展要在 <code>chrome://extensions</code> 操作，否则同步会恢复</li>
+<li><strong>多设备要统一出口到同一个住宅 IP</strong>，账号行为才一致</li>
+</ol>
+<h3 id="_10">今日感悟<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>🌱 AI 能不能用好，关键并不在算力多少，而在于任务是否清楚、上下文是否准确、结果是否经过验证。</p>
+<p>🌱 一个登录问题拆出了四个独立根因，最深的体会是：<strong>报错只是现象，不是结论</strong>。同一句 "Request canceled"，可能来自安全软件、扩展、Cookie、IP 风控四个完全不同的源头——不层层排除，就容易在错误的方向上反复试错。而排错之后的"多设备统一"，才是把单次修复沉淀成长期稳定的关键。</p>
 </blockquote>
-<p>作为学生，我不需要一开始就追求复杂的多代理系统。先把“小任务做完整”练熟：读懂、计划、修改、测试、复查。这个闭环稳定之后，Skills 和自动化才真正有价值。</p>
-<hr />
-<h2 id="_9">七、下一步计划<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ul>
-<li>用 Codex 完成一个自动化专业的小型真实任务</li>
-<li>为自己的课程设计创建精简版 <code>AGENTS.md</code></li>
-<li>建立固定的“修改前计划 + 修改后验证”模板</li>
-<li>把每天的新知识继续写入本站学习日志</li>
-</ul>
-<p><a class="md-button md-button--primary" href="../../codex-cli/">继续进入交互式工作台练习 →</a></p>
 
 
 
@@ -1884,7 +1976,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../2026-08-14/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2026-08-14 · ChatGPT 解锁记">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 日志总览">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1894,20 +1986,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                2026-08-14 · ChatGPT 解锁记
+                日志总览
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../codex-cli/" class="md-footer__link md-footer__link--next" aria-label="下一页: 交互式工作台">
+          <a href="../../course/" class="md-footer__link md-footer__link--next" aria-label="下一页: 课程总览">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                交互式工作台
+                课程总览
               </div>
             </div>
             <div class="md-footer__button md-icon">
