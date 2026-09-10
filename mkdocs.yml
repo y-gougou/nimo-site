@@ -75,6 +75,7 @@ nav:
     - 排错手册: docker/05-troubleshooting.md
   - 📚 学习日志:
     - 日志总览: log/index.md
+    - 2026-09-10 · Chrome 无法登录 Google 账号排查记: log/2026-09-10.md
     - 2026-08-13 · 软件包与代理入门:
       - 课程总览: course/index.md
       - 第 1 课 · Linux 软件包入门: course/01-package.md
