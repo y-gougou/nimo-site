@@ -1604,6 +1604,89 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#flclash-shadowrocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、多设备同步落地：FlClash 与 Shadowrocket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、多设备同步落地：FlClash 与 Shadowrocket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 同步架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-clash-party-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 三台 Clash Party：订阅 + 远程 JS 覆写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-flclash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 安卓 FlClash：两次踩坑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-ios-shadowrocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 iOS Shadowrocket：旧配置失效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 关键认知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 维护清单
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2013,6 +2096,89 @@
     <span class="md-ellipsis">
       
         今日感悟
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flclash-shadowrocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、多设备同步落地：FlClash 与 Shadowrocket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、多设备同步落地：FlClash 与 Shadowrocket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 同步架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-clash-party-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 三台 Clash Party：订阅 + 远程 JS 覆写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-flclash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 安卓 FlClash：两次踩坑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-ios-shadowrocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 iOS Shadowrocket：旧配置失效
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 关键认知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 维护清单
       
     </span>
   </a>
@@ -2661,6 +2827,72 @@
 <blockquote>
 <p>🌱 今天最大的收获不是"配好了一个梯子"，而是<strong>把配置当工程来做</strong>：先定义结构（分组 + 分类规则），再用<strong>真实内核做导入前验证</strong>，用<strong>对照实验</strong>定位归因，最后用<strong>护栏</strong>兜住未来的变动。规则会过时、节点会改名、网站会封 IP——但只要"验证方法"和"护栏思维"在，这套东西就能一直稳定地演进下去。</p>
 </blockquote>
+<hr />
+<h2 id="flclash-shadowrocket">十二、多设备同步落地：FlClash 与 Shadowrocket<a class="headerlink" href="#flclash-shadowrocket" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>规则写完只是第一步，真正落地到五台设备又是另一场硬仗。目标是让 Win / Ubuntu / 安卓 / iOS 用上<strong>同一套分流</strong>。</p>
+</blockquote>
+<h3 id="121">12.1 同步架构<a class="headerlink" href="#121" title="Permanent link">&para;</a></h3>
+<p>真相源头全部放云端：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>机场订阅（节点）   +   云端 Gist（规则/配置）
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>        │                    │
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>   ┌────┴────┬─────────────┴───────────┐
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>   │         │                        │
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Clash Party  FlClash(安卓)        Shadowrocket(iOS)
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a> ×3 台       内嵌节点快照           精确节点名分组
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>客户端</th>
+<th>用什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Win / Ubuntu / Win11</td>
+<td>Clash Party</td>
+<td>订阅 + 远程 JS 覆写</td>
+</tr>
+<tr>
+<td>安卓</td>
+<td>FlClash</td>
+<td>云端自包含 YAML（内嵌节点快照）</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>Shadowrocket</td>
+<td>订阅 + 云端 <code>.conf</code>（分组+规则）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-clash-party-js">12.2 三台 Clash Party：订阅 + 远程 JS 覆写<a class="headerlink" href="#122-clash-party-js" title="Permanent link">&para;</a></h3>
+<p>最简单的一条线：导入同一个订阅，再填同一个远程覆写 URL。覆写脚本<strong>无密钥、按节点名称动态匹配</strong>，机场改名不失效。</p>
+<h3 id="123-flclash">12.3 安卓 FlClash：两次踩坑<a class="headerlink" href="#123-flclash" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>「覆写」不是自由 JS</strong>：FlClash 的覆写分两种——结构化覆写（只能加规则/改组，成员必须已存在）和脚本覆写（存在单独的脚本表，还要挂到某个配置上）。直接把 <code>main(config)</code> 贴进去，<strong>根本不会执行</strong>。</li>
+<li><strong>proxy-providers 运行时拉取失败</strong>：让内核运行时去机场订阅拉节点，在 FlClash 上拉不到，组里只剩一个占位项、网络检测超时。</li>
+<li><strong>解法</strong>：把 163 个节点<strong>内嵌</strong>进配置，做成静态快照——慢、土，但零依赖、必然成功。</li>
+</ol>
+<h3 id="124-ios-shadowrocket">12.4 iOS Shadowrocket：旧配置失效<a class="headerlink" href="#124-ios-shadowrocket" title="Permanent link">&para;</a></h3>
+<p>旧配置还在用<strong>旧机场的节点名</strong>，外加一条链式住宅 socks5；换机场后节点名全部失效 → 链式断 → 体验崩。</p>
+<p>新配置三处改动：
+1. 去掉链式，直接走新机场自带的<strong>美国住宅节点</strong>；
+2. 分组用<strong>精确节点名</strong>（美国家宽 / 香港 / 日本 / 学术 / 流媒体 / 通讯）；
+3. 规则按域名分流，<code>FINAL</code> 兜底到首页手动选的节点。</p>
+<h3 id="125">12.5 关键认知<a class="headerlink" href="#125" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>不同客户端对同一 mihomo 特性的支持不一致</strong>：JS 覆写、proxy-providers 在 FlClash 上都不是"开箱即用"。</li>
+<li>跨端同步时，<strong>最稳的不是"运行时动态拉取"，而是"提前生成好的静态配置"</strong>。</li>
+<li>再次印证：<strong>「配置一样」≠「行为一样」</strong>，每个客户端实现细节都不同。</li>
+</ul>
+<h3 id="126">12.6 维护清单<a class="headerlink" href="#126" title="Permanent link">&para;</a></h3>
+<ul>
+<li>机场改节点名/加节点 → 电脑端订阅自动更新；<strong>安卓 / iOS 的静态快照要重新生成</strong>。</li>
+<li>改规则 → 只改云端覆写一处，电脑端更新即生效；快照端再重新生成。</li>
+</ul>
+<hr />
 
 
 
