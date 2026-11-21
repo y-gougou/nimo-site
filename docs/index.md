@@ -24,6 +24,7 @@
 - **2026-08-22 · Docker 全链路与补强**：上午 Windows Docker Desktop 实战（WSL 2/镜像源/HTTP Registry）；下午概念补强（history/inspect、ENV/ENTRYPOINT、云部署模拟、ROS/GPU）
 - **2026-09-10 · Chrome 无法登录 Google 账号排查记**：四个独立根因 + 住宅 IP 路由细化 + 五台设备统一 + 策略组与「梯子抽风先查节点」
 - **2026-09-14 · Clash Party 规则工程**：换机场重写覆写（动态匹配 + 29 个 mrs 规则集）、导入前用真实内核校验、合并重叠总开关、美区 Apple 走家宽 + 出口 IP 对照实验定位 ping0.cc；同日五设备（Clash Party×3 / FlClash / Shadowrocket）同步落地，记录跨端踩坑
+- **2026-11-21 · Claude 防封环境 Day 1**：网络防漏全链路（白名单分流 + TUN + 断网防火墙）、指纹浏览器 100% 真实度、本机痕迹清理、新号注册与 72 小时养号纪律
 
 > 点击章节名进入总览，每日内容在侧边栏展开。
 
